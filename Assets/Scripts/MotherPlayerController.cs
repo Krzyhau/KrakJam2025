@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Monke.KrakJam2025
@@ -11,36 +12,31 @@ namespace Monke.KrakJam2025
         [SerializeField]
         private float movementMultiplier;
 
-        private List<PlayerController> playersInside;
+        private List<PlayerController> playersInside = new();
 
         private Vector2 cachedMultipleVector;
 
-        private void Awake()
+        private void Subscribe(PlayerController player)
         {
-            foreach (PlayerController player in playersInside)
-            {
-                player.OnPlayerMove += OnPlayerMove;
-                player.OnPlayerSplit += OnPlayerSplit;
-            }
+            player.OnPlayerSplit += OnPlayerSplit;
         }
 
-        private void OnDestroy()
+        private void Unsubscribe(PlayerController player)
         {
-            foreach (var player in playersInside)
-            {
-                player.OnPlayerMove -= OnPlayerMove;
-                player.OnPlayerSplit -= OnPlayerSplit;
-            }
+            player.OnPlayerSplit -= OnPlayerSplit;
         }
 
         public void AddPlayerInside(PlayerController player)
         {
+            Debug.Log($"add: {player}");
             playersInside.Add(player);
+            Subscribe(player);
         } 
 
         private void OnPlayerSplit(PlayerController player)
         {
             playersInside.Remove(player);
+            Unsubscribe(player);
         }
 
         private void OnPlayerMove(Vector2 playerVector)
@@ -50,7 +46,15 @@ namespace Monke.KrakJam2025
 
         private void FixedUpdate()
         {
-            rb2d.MovePosition(rb2d.position + (movementMultiplier * Time.fixedDeltaTime * cachedMultipleVector));
+            if (playersInside != null && playersInside.Count > 0)
+            {
+                Debug.Log(playersInside.Count);
+                Debug.Log(playersInside[0]);
+                float totalInputX = playersInside.Sum(x => x.CachedInput.x);
+                float totalInputY = playersInside.Sum(x => x.CachedInput.y);
+                Vector2 totalInput = new(totalInputX, totalInputY);
+                rb2d.AddForce(movementMultiplier * Time.fixedDeltaTime * totalInput, ForceMode2D.Impulse);
+            }
         }
     }
 }

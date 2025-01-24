@@ -6,7 +6,6 @@ namespace Monke.KrakJam2025
 {
     public class PlayerController : MonoBehaviour
     {
-        public event Action<Vector2> OnPlayerMove;
         public event Action<PlayerController> OnPlayerSplit;
 
         [SerializeField]
@@ -15,19 +14,18 @@ namespace Monke.KrakJam2025
 		[SerializeField]
 		private Rigidbody2D rb2d;
 
-		private Vector2 cachedInput;
+		public Vector2 CachedInput { get; private set; }
 
         private void OnMove(InputValue value)
         {
-            cachedInput = value.Get<Vector2>();
-            OnPlayerMove?.Invoke(cachedInput);
+            CachedInput = value.Get<Vector2>();
         }
 
 		private void FixedUpdate()
 		{
 			if (rb2d != null)
 			{
-				rb2d.AddForce(movementSpeed * Time.fixedDeltaTime * cachedInput, ForceMode2D.Impulse);
+				rb2d.AddForce(movementSpeed * Time.fixedDeltaTime * CachedInput, ForceMode2D.Impulse);
 			}
 		}
 

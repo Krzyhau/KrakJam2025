@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c45419dfa4e446b4ba80d349c537c688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb2d: {fileID: 0}
-  movementMultiplier: 0
+  rb2d: {fileID: 473542860179020288}
+  movementMultiplier: 5
 --- !u!1 &4536055267741538794
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9b280ffd5fb314a8d5ad7130c64c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mother: {fileID: 0}
+  mother: {fileID: 1613516353984695191}
 --- !u!58 &9219816701653886723
 CircleCollider2D:
   m_ObjectHideFlags: 0
