@@ -32,13 +32,19 @@ namespace Monke.KrakJam2025
         {
             playersInside.Add(player);
             Subscribe(player);
+
+            player.ChangeMovement(false);
+            player.transform.SetParent(this.Rb2D.transform, false);
+            player.transform.localPosition = Vector2.zero;
         } 
 
         private void OnPlayerSplit(PlayerController player)
         {
-            player.ChangeMovement(true);
-            playersInside.Remove(player);
             Unsubscribe(player);
+            playersInside.Remove(player);
+
+            player.ChangeMovement(true);
+            player.transform.SetParent(null);
         }
 
         private void FixedUpdate()
