@@ -322,6 +322,7 @@ GameObject:
   - component: {fileID: 967183158625331424}
   - component: {fileID: 3469097310709353488}
   - component: {fileID: 2562032805228744778}
+  - component: {fileID: 3358876699551403178}
   m_Layer: 0
   m_Name: PlayerBubble
   m_TagString: Bouncable
@@ -419,3 +420,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3358876699551403178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6292062153589596132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 053513e1ca77b544e9b3d4ad4511d4f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb2d: {fileID: 2562032805228744778}
+  registerOnStart: 1
