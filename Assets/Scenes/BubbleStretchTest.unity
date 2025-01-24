@@ -670,7 +670,7 @@ GameObject:
   - component: {fileID: 2143074681}
   - component: {fileID: 2143074680}
   m_Layer: 0
-  m_Name: bubble_dev
+  m_Name: MotherBubbleMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -690,6 +690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteShapeController: {fileID: 2143074681}
   levelOfDetail: 32
+  lerpSpeed: 5
   insideStretch:
     Distance: 3
     Exponent: 2
