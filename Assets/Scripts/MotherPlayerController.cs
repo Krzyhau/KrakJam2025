@@ -12,6 +12,8 @@ namespace Monke.KrakJam2025
         [SerializeField]
         private float movementMultiplier;
 
+        public Rigidbody2D Rb2D => rb2d;
+
         private List<PlayerController> playersInside = new();
 
         private Vector2 cachedMultipleVector;
@@ -34,13 +36,9 @@ namespace Monke.KrakJam2025
 
         private void OnPlayerSplit(PlayerController player)
         {
+            player.ChangeMovement(true);
             playersInside.Remove(player);
             Unsubscribe(player);
-        }
-
-        private void OnPlayerMove(Vector2 playerVector)
-        {
-            cachedMultipleVector += playerVector;
         }
 
         private void FixedUpdate()
