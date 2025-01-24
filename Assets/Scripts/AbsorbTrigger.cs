@@ -9,8 +9,10 @@ namespace Monke.KrakJam2025
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            mother.AddPlayerInside(collision.GetComponentInParent<PlayerController>());
-            collision.transform.SetParent(mother.transform, false);
+            var player = collision.GetComponentInParent<PlayerController>();
+            player.ShouldMove = false;
+            mother.AddPlayerInside(player);
+            player.transform.SetParent(mother.transform, false);
         }
     }
 }

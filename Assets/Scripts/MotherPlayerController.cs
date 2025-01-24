@@ -28,7 +28,6 @@ namespace Monke.KrakJam2025
 
         public void AddPlayerInside(PlayerController player)
         {
-            Debug.Log($"add: {player}");
             playersInside.Add(player);
             Subscribe(player);
         } 
@@ -48,8 +47,6 @@ namespace Monke.KrakJam2025
         {
             if (playersInside != null && playersInside.Count > 0)
             {
-                Debug.Log(playersInside.Count);
-                Debug.Log(playersInside[0]);
                 float totalInputX = playersInside.Sum(x => x.CachedInput.x);
                 float totalInputY = playersInside.Sum(x => x.CachedInput.y);
                 Vector2 totalInput = new(totalInputX, totalInputY);

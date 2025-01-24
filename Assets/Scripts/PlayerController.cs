@@ -15,6 +15,7 @@ namespace Monke.KrakJam2025
 		private Rigidbody2D rb2d;
 
 		public Vector2 CachedInput { get; private set; }
+        public bool ShouldMove { get; set; } = true;
 
         private void OnMove(InputValue value)
         {
@@ -23,7 +24,7 @@ namespace Monke.KrakJam2025
 
 		private void FixedUpdate()
 		{
-			if (rb2d != null)
+			if (rb2d != null && ShouldMove)
 			{
 				rb2d.AddForce(movementSpeed * Time.fixedDeltaTime * CachedInput, ForceMode2D.Impulse);
 			}
