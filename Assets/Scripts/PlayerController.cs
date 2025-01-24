@@ -1,22 +1,27 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Monke.KrakJam2025
 {
-	public class PlayerController : MonoBehaviour
-	{
-		[SerializeField]
-		private float movementSpeed = 10f;
+    public class PlayerController : MonoBehaviour
+    {
+        public event Action<Vector2> OnPlayerMove;
+        public event Action<PlayerController> OnPlayerSplit;
+
+        [SerializeField]
+        private float movementSpeed = 10f;
 
 		[SerializeField]
 		private Rigidbody2D rb2d;
 
 		private Vector2 cachedInput;
 
-		private void OnMove(InputValue value)
-		{
-			cachedInput = value.Get<Vector2>();
-		}
+        private void OnMove(InputValue value)
+        {
+            cachedInput = value.Get<Vector2>();
+            OnPlayerMove?.Invoke(cachedInput);
+        }
 
 		private void FixedUpdate()
 		{
@@ -26,9 +31,10 @@ namespace Monke.KrakJam2025
 			}
 		}
 
-		private void OnInteract()
-		{
-			
-		}
-	}
+        private void OnSplit()
+        {
+            // do split deformation
+            OnPlayerSplit?.Invoke(this);
+        }
+    }
 }
