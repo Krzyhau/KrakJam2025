@@ -12,18 +12,31 @@ namespace Monke.KrakJam2025
 
         [Header("Properties")]
         [Min(4), SerializeField] private int levelOfDetail;
+        [SerializeField] private float lerpSpeed = 5.0f;
         [SerializeField] private StretchForceParameters insideStretch;
         [SerializeField] private StretchForceParameters outsideStretch;
 
-        [SerializeField] private List<Transform> insideStretchers = new();
-        [SerializeField] private List<Transform> outsideStretchers = new();
+        [SerializeField] private List<Transform> stretchers = new();
 
         private float targetSize;
         private Vector3[] shapeVertices = Array.Empty<Vector3>();
+        private Vector3[] lerpedShapeVertices = Array.Empty<Vector3>();
 
         public void SetTargetSize(float size)
         {
             targetSize = size;
+        }
+
+        public void SetStretcherState(Transform transform, bool state)
+        {
+            if (state && !stretchers.Contains(transform))
+            {
+                stretchers.Add(transform);
+            }
+            else if (!state && stretchers.Contains(transform))
+            {
+                stretchers.Remove(transform);
+            }
         }
 
         private void Start()
@@ -38,17 +51,20 @@ namespace Monke.KrakJam2025
 
         private void RegenerateShape()
         {
+            EnsureCorrectVerticesCount();
             RegenerateShapeVertices();
+            NormalizeDistancesToSize();
+            RegenerateLerpedShapeVertices();
 
             Spline spline = spriteShapeController.spline;
             spline.Clear();
 
-            for (int i = 0; i < shapeVertices.Length; i++)
+            for (int i = 0; i < lerpedShapeVertices.Length; i++)
             {
-                spline.InsertPointAt(i, shapeVertices[i]);
+                spline.InsertPointAt(i, lerpedShapeVertices[i]);
 
-                var prevPoint = shapeVertices[i == 0 ? shapeVertices.Length - 1 : i - 1];
-                var nextPoint = shapeVertices[i == shapeVertices.Length - 1 ? 0 : i + 1];
+                var prevPoint = lerpedShapeVertices[i == 0 ? lerpedShapeVertices.Length - 1 : i - 1];
+                var nextPoint = lerpedShapeVertices[i == lerpedShapeVertices.Length - 1 ? 0 : i + 1];
 
                 var tangentVector = (nextPoint - prevPoint) * 0.25f;
 
@@ -60,18 +76,19 @@ namespace Monke.KrakJam2025
             spriteShapeController.RefreshSpriteShape();
         }
 
+        private void EnsureCorrectVerticesCount()
+        {
+            if (shapeVertices.Length != levelOfDetail)
+            {
+                shapeVertices = new Vector3[levelOfDetail];
+            }
+        }
+
         private void RegenerateShapeVertices()
         {
-            int vertices = levelOfDetail + 4;
-
-            if(shapeVertices.Length != vertices)
+            for (int i = 0; i < shapeVertices.Length; i++)
             {
-                shapeVertices = new Vector3[vertices];
-            }
-
-            for (int i = 0; i < vertices; i++)
-            {
-                float circlePosRad = i / (float)vertices * Mathf.PI * 2.0f;
+                float circlePosRad = i / (float)shapeVertices.Length * Mathf.PI * 2.0f;
                 Vector3 circleNormal = new(Mathf.Cos(circlePosRad), Mathf.Sin(circlePosRad), 0);
 
                 var circlePoint = circleNormal * targetSize;
@@ -81,8 +98,34 @@ namespace Monke.KrakJam2025
 
                 shapeVertices[i] = circlePoint;
             }
+        }
 
-            NormalizeDistancesToSize();
+        private float GetStretchForceForPoint(Vector3 vertexPosition)
+        {
+            float stretchForce = 0.0f;
+
+            foreach (var stretcher in stretchers)
+            {
+                stretchForce += GetStretcherForceInPoint(vertexPosition, stretcher);
+            }
+
+            return stretchForce;
+        }
+
+        float GetStretcherForceInPoint(Vector3 vertexPoint, Transform stretcher)
+        {
+            Vector3 stretcherLocalPoint = transform.InverseTransformPoint(stretcher.position);
+            stretcherLocalPoint.z = 0.0f;
+
+            Vector3 stretcherToVertexDelta = vertexPoint - stretcherLocalPoint;
+
+            bool isInside = stretcherLocalPoint.magnitude < targetSize;
+            var stretchParams = isInside ? insideStretch : outsideStretch;
+            float scalar = isInside ? 1.0f : -1.0f;
+
+            float stretchDelta = stretcherToVertexDelta.magnitude / stretchParams.Distance;
+            float stretchExpDelta = Mathf.Pow(stretchDelta, stretchParams.Exponent);
+            return Mathf.Lerp(stretchParams.Force, 0f, stretchExpDelta) * scalar;
         }
 
         private void NormalizeDistancesToSize()
@@ -102,31 +145,18 @@ namespace Monke.KrakJam2025
             }
         }
 
-        private float GetStretchForceForPoint(Vector3 vertexPosition)
+        private void RegenerateLerpedShapeVertices()
         {
-            float stretchForce = 0.0f;
-            Vector3 vertexWorldPoint = transform.TransformPoint(vertexPosition);
-
-            foreach (var insideStretcher in insideStretchers)
+            if (lerpedShapeVertices.Length != levelOfDetail)
             {
-                stretchForce += GetStretcherForceInPoint(vertexWorldPoint, insideStretcher, insideStretch);
+                lerpedShapeVertices = new Vector3[levelOfDetail];
+                Array.Copy(shapeVertices, lerpedShapeVertices, levelOfDetail);
             }
 
-            foreach (var outsideStretcher in outsideStretchers)
+            for (int i = 0; i < shapeVertices.Length; i++)
             {
-                stretchForce -= GetStretcherForceInPoint(vertexWorldPoint, outsideStretcher, outsideStretch);
+                lerpedShapeVertices[i] = Vector3.Lerp(lerpedShapeVertices[i], shapeVertices[i], Time.deltaTime * lerpSpeed);
             }
-
-            return stretchForce;
-        }
-
-        float GetStretcherForceInPoint(Vector3 vertexWorldPoint, Transform stretcher, StretchForceParameters stretchParams)
-        {
-            Vector3 deltaVector = stretcher.position - vertexWorldPoint;
-            Vector3 projectedDeltaVector = Vector3.ProjectOnPlane(deltaVector, transform.forward);
-            float stretchDelta = deltaVector.magnitude / stretchParams.Distance;
-            float stretchExpDelta = Mathf.Pow(stretchDelta, stretchParams.Exponent);
-            return Mathf.Lerp(stretchParams.Force, 0f, stretchExpDelta);
         }
 
         [Serializable]

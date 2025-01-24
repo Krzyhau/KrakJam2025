@@ -698,9 +698,8 @@ MonoBehaviour:
     Distance: 3
     Exponent: 1
     Force: 1
-  insideStretchers:
+  stretchers:
   - {fileID: 322052399}
-  outsideStretchers:
   - {fileID: 1260461891}
 --- !u!114 &2143074681
 MonoBehaviour:
