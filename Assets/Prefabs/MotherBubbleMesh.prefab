@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 946956748661362802}
   - component: {fileID: 5677009276248546739}
   - component: {fileID: 9101263394826759277}
-  - component: {fileID: 5756923423831811792}
   m_Layer: 0
   m_Name: MotherBubbleMesh
   m_TagString: Untagged
@@ -403,43 +402,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteShapeController: {fileID: 5677009276248546739}
   levelOfDetail: 32
-  easingAcceleration: 200
-  easingDampening: 10
-  insideStretch:
-    Distance: 3
-    Exponent: 0.95
-    Force: 1.5
-  outsideStretch:
-    Distance: 1.71
-    Exponent: 2.74
-    Force: 1
-  stretchers:
-  - {fileID: 0}
-  - {fileID: 0}
---- !u!114 &5756923423831811792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1236015547112804316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54465ee2550193b4685d2a2c5e698f9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteShapeController: {fileID: 5677009276248546739}
-  levelOfDetail: 32
   easingAcceleration: 300
   easingDampening: 10
   insideStretch:
-    Distance: 5
-    Exponent: 0.5
-    Force: 2.5
+    Distance: 6
+    Exponent: 0.25
+    Force: 4
   outsideStretch:
     Distance: 2
-    Exponent: 1.99
+    Exponent: 2
     Force: 1
-  stretchers:
-  - {fileID: 0}
-  - {fileID: 0}
+  stretchers: []

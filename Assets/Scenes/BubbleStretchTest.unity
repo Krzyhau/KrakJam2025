@@ -717,14 +717,10 @@ PrefabInstance:
       propertyPath: m_Creator
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 5756923423831811792, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
-      propertyPath: 'stretchers.Array.data[0]'
-      value: 
-      objectReference: {fileID: 322052399}
-    - target: {fileID: 5756923423831811792, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
-      propertyPath: 'stretchers.Array.data[1]'
-      value: 
-      objectReference: {fileID: 1260461891}
+    - target: {fileID: 9101263394826759277, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
+      propertyPath: stretchers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9101263394826759277, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
       propertyPath: 'stretchers.Array.data[0]'
       value: 
