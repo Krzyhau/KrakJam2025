@@ -6,12 +6,24 @@ namespace Monke.KrakJam2025
     public class PlayerController : MonoBehaviour
     {
         [SerializeField]
-        private float movementSpeed;
+        private float movementSpeed = 10f;
+
+        [SerializeField]
+        private Rigidbody2D rb2d;
+
+        private Vector2 cachedInput;
 
         private void OnMove(InputValue value)
         {
-            var vect = value.Get<Vector2>();
-            this.transform.Translate(vect * Time.deltaTime * movementSpeed);
+            cachedInput = value.Get<Vector2>();
+        }
+
+        private void FixedUpdate()
+        {
+            if (rb2d != null)
+            {
+                rb2d.MovePosition(rb2d.position + (movementSpeed * Time.fixedDeltaTime * cachedInput));
+            }
         }
 
         private void OnInteract()
