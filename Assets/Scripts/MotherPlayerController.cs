@@ -16,8 +16,6 @@ namespace Monke.KrakJam2025
 
         private List<PlayerController> playersInside = new();
 
-        private Vector2 cachedMultipleVector;
-
         private void Subscribe(PlayerController player)
         {
             player.OnPlayerSplit += OnPlayerSplit;
@@ -30,6 +28,10 @@ namespace Monke.KrakJam2025
 
         public void AddPlayerInside(PlayerController player)
         {
+            if (playersInside.Contains(player))
+            {
+                return;
+            }
             playersInside.Add(player);
             Subscribe(player);
 
@@ -40,6 +42,10 @@ namespace Monke.KrakJam2025
 
         private void OnPlayerSplit(PlayerController player)
         {
+            if (!playersInside.Contains(player))
+            {
+                return;
+            }
             Unsubscribe(player);
             playersInside.Remove(player);
 

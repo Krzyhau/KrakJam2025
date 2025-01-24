@@ -15,6 +15,7 @@ namespace Monke.KrakJam2025
 
 		public PlayerBubbleContext PlayerBubbleContext => _playerBubbleContext;
 
+		// TODO: take weight from players to mother
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
 			if (collision.gameObject.tag == "Bouncable")
