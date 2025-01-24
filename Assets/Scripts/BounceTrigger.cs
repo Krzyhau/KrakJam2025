@@ -13,9 +13,6 @@ namespace Monke.KrakJam2025
         private void OnTriggerEnter2D(Collider2D collision)
         {
             var bounceDirection = this.transform.position - collision.gameObject.transform.position;
-            Debug.Log(bounceDirection);
-            Debug.Log(bounceDirection.normalized);
-            Debug.Log(bounceForce);
             rb2d.AddForce(bounceDirection.normalized * bounceForce, ForceMode2D.Impulse);
         }
     }

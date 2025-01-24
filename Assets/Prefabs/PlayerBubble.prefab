@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7215962538618637424}
   - component: {fileID: 8754511373708475048}
   - component: {fileID: 2843506232095843973}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &2843506232095843973
 CircleCollider2D:
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 6261324833895372863}
   - component: {fileID: 967183158625331424}
   - component: {fileID: 3469097310709353488}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PlayerBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
