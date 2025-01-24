@@ -5,6 +5,7 @@ using UnityEngine.U2D;
 
 namespace Monke.KrakJam2025
 {
+    [ExecuteAlways]
     public class MotherBubbleShapeManipulator : MonoBehaviour
     {
         [Header("Dependencies")]
@@ -12,13 +13,15 @@ namespace Monke.KrakJam2025
 
         [Header("Properties")]
         [Min(4), SerializeField] private int levelOfDetail;
-        [SerializeField] private float lerpSpeed = 5.0f;
+        [SerializeField] private float easingSpeed = 5.0f;
+        [SerializeField] private float stretchersLerpSpeed = 5.0f;
         [SerializeField] private StretchForceParameters insideStretch;
         [SerializeField] private StretchForceParameters outsideStretch;
 
         [SerializeField] private List<Transform> stretchers = new();
 
         private float targetSize;
+        private readonly Dictionary<Transform, float> stretchersLerpStates = new();
         private Vector3[] shapeVertices = Array.Empty<Vector3>();
         private Vector3[] lerpedShapeVertices = Array.Empty<Vector3>();
 
@@ -32,10 +35,12 @@ namespace Monke.KrakJam2025
             if (state && !stretchers.Contains(transform))
             {
                 stretchers.Add(transform);
+                stretchersLerpStates.Add(transform, 0.0f);
             }
             else if (!state && stretchers.Contains(transform))
             {
                 stretchers.Remove(transform);
+                stretchersLerpStates.Remove(transform);
             }
         }
 
@@ -51,6 +56,7 @@ namespace Monke.KrakJam2025
 
         private void RegenerateShape()
         {
+            UpdateStretchersLerpValues();
             EnsureCorrectVerticesCount();
             RegenerateShapeVertices();
             NormalizeDistancesToSize();
@@ -74,6 +80,29 @@ namespace Monke.KrakJam2025
             }
 
             spriteShapeController.RefreshSpriteShape();
+        }
+
+        private void UpdateStretchersLerpValues()
+        {
+            foreach(var stretcher in stretchers) {
+                if(!stretchersLerpStates.ContainsKey(stretcher))
+                {
+                    stretchersLerpStates[stretcher] = 0.0f;
+                }
+
+                var stretcherLocalPoint = GetStretcherLocalPoint(stretcher);
+                float distance = stretcherLocalPoint.magnitude;
+                float targetLerp = distance < targetSize ? 1.0f : 0.0f;
+                stretchersLerpStates[stretcher] = Mathf.MoveTowards(
+                    stretchersLerpStates[stretcher], targetLerp, stretchersLerpSpeed * Time.deltaTime);
+            }
+        }
+
+        private Vector3 GetStretcherLocalPoint(Transform stretcher)
+        {
+            Vector3 stretcherLocalPoint = transform.InverseTransformPoint(stretcher.position);
+            stretcherLocalPoint.z = 0.0f;
+            return stretcherLocalPoint;
         }
 
         private void EnsureCorrectVerticesCount()
@@ -114,18 +143,27 @@ namespace Monke.KrakJam2025
 
         float GetStretcherForceInPoint(Vector3 vertexPoint, Transform stretcher)
         {
-            Vector3 stretcherLocalPoint = transform.InverseTransformPoint(stretcher.position);
-            stretcherLocalPoint.z = 0.0f;
-
+            Vector3 stretcherLocalPoint = GetStretcherLocalPoint(stretcher);
             Vector3 stretcherToVertexDelta = vertexPoint - stretcherLocalPoint;
 
-            bool isInside = stretcherLocalPoint.magnitude < targetSize;
+            float stretcherLerpState = StretcherLerpStateToScalar(stretcher);
+            bool isInside = stretcherLerpState >= 0.5f;
             var stretchParams = isInside ? insideStretch : outsideStretch;
-            float scalar = isInside ? 1.0f : -1.0f;
 
             float stretchDelta = stretcherToVertexDelta.magnitude / stretchParams.Distance;
             float stretchExpDelta = Mathf.Pow(stretchDelta, stretchParams.Exponent);
-            return Mathf.Lerp(stretchParams.Force, 0f, stretchExpDelta) * scalar;
+            return Mathf.Lerp(stretchParams.Force, 0f, stretchExpDelta) * stretcherLerpState;
+        }
+
+        float StretcherLerpStateToScalar(Transform stretcher)
+        {
+            float stretcherLerpState = EaseInOutQuint(stretchersLerpStates[stretcher]);
+            return Mathf.Lerp(-1.0f, 1.0f, stretcherLerpState);
+
+            float EaseInOutQuint(float x)
+            {
+                return x < 0.5 ? 16 * x * x * x * x * x : 1 - Mathf.Pow(-2 * x + 2, 5) / 2;
+            }
         }
 
         private void NormalizeDistancesToSize()
@@ -155,7 +193,7 @@ namespace Monke.KrakJam2025
 
             for (int i = 0; i < shapeVertices.Length; i++)
             {
-                lerpedShapeVertices[i] = Vector3.Lerp(lerpedShapeVertices[i], shapeVertices[i], Time.deltaTime * lerpSpeed);
+                lerpedShapeVertices[i] = Vector3.Lerp(lerpedShapeVertices[i], shapeVertices[i], Time.deltaTime * easingSpeed);
             }
         }
 

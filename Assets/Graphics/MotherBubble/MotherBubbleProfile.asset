@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: MotherBubbleProfile
   m_EditorClassIdentifier: 
   m_Angles:
-  - m_Start: -38
-    m_End: 51
+  - m_Start: -41
+    m_End: 48
     m_Order: 4
     m_Sprites: []
   m_FillTexture: {fileID: 10305, guid: 0000000000000000f000000000000000, type: 0}
