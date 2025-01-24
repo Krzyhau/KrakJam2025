@@ -29,6 +29,10 @@ namespace Monke.KrakJam2025
 
 		private void Register()
 		{
+			if (vortexSystem == null)
+			{
+				return;
+			}
 			vortexSystem.RegisterObject(this);
 		}
 
