@@ -35,7 +35,7 @@ namespace Monke.KrakJam2025
 			GoToSpawnPoint();
 		}
 
-		private void GoToSpawnPoint()
+		public void GoToSpawnPoint()
 		{
 			rb2d.transform.position = SpawnPoint.transform.position;
 		}

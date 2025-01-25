@@ -10,8 +10,13 @@ namespace Monke.KrakJam2025
 		[SerializeField]
 		private Collider2D _collider2d;
 
+		[SerializeField]
+		private PlayerDeathHandler _playerDeath;
+
 		public PlayerController PlayerController => _playerController;
 
 		public Collider2D Collider2D => _collider2d;
+
+		public PlayerDeathHandler PlayerDeath => _playerDeath;
 	}
 }
