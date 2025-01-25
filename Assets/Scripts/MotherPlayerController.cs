@@ -15,8 +15,6 @@ namespace Monke.KrakJam2025
         [SerializeField]
         private MotherBubbleContext motherBubbleContext;
 
-        public Rigidbody2D Rb2D => rb2d;
-
         private List<PlayerBubbleContext> playersInside = new();
 
         private void Subscribe(PlayerController player)
@@ -29,33 +27,35 @@ namespace Monke.KrakJam2025
             player.OnPlayerSplit -= OnPlayerSplit;
         }
 
-        public void AddPlayerInside(PlayerBubbleContext player)
+        public void AddPlayerInside(PlayerBubbleContext playerContext)
         {
-            if (playersInside.Contains(player))
+            if (playersInside.Contains(playerContext))
             {
                 return;
             }
-            playersInside.Add(player);
-            Subscribe(player.PlayerController);
+            playersInside.Add(playerContext);
+            Subscribe(playerContext.PlayerController);
 
-            motherBubbleContext.BubbleWeightSystem.AddWeight(player.BubbleWeightSystem.Weight);
+            motherBubbleContext.BubbleWeightSystem.AddWeight(playerContext.BubbleWeightSystem.Weight);
 
-            player.PlayerController.ChangeMovement(false);
-            player.transform.SetParent(this.Rb2D.transform, false);
-            player.transform.localPosition = Vector2.zero;
+            playerContext.PlayerController.ChangeMovement(false);
+            playerContext.Transform.SetParent(rb2d.transform, false);
+            playerContext.Transform.localPosition = Vector2.zero;
         } 
 
-        private void OnPlayerSplit(PlayerBubbleContext player)
+        private void OnPlayerSplit(PlayerBubbleContext playerContext)
         {
-            if (!playersInside.Contains(player))
+            if (!playersInside.Contains(playerContext))
             {
                 return;
             }
-            Unsubscribe(player.PlayerController);
-            playersInside.Remove(player);
+            Unsubscribe(playerContext.PlayerController);
+            playersInside.Remove(playerContext);
 
-            player.PlayerController.ChangeMovement(true);
-            player.transform.SetParent(null);
+            motherBubbleContext.BubbleWeightSystem.RemoveWeight(playerContext.BubbleWeightSystem.Weight);
+
+            playerContext.PlayerController.ChangeMovement(true);
+            playerContext.Transform.SetParent(null);
         }
 
         private void FixedUpdate()

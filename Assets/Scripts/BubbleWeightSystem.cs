@@ -33,6 +33,11 @@ namespace Monke.KrakJam2025
 			Weight += additionalWeight;
 		}
 
+		public void RemoveWeight(float weight)
+		{
+			Weight -= weight;
+		}
+
 		public void SetWeight(float newWeight)
 		{
 			Weight = newWeight;
