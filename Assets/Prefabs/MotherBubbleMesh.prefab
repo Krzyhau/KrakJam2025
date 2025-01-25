@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5204328966886213263}
@@ -113,7 +113,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6852218140778474650}
@@ -145,9 +145,9 @@ MonoBehaviour:
   meshesData:
   - Height: 0
     material: {fileID: 2100000, guid: 504b62d49f9895041a185b9d81a35d33, type: 2}
-  - Height: 1
+  - Height: 2
     material: {fileID: 2100000, guid: e45d3f87814622248acc66246bdcc6b2, type: 2}
-  - Height: 0.75
+  - Height: 1.5
     material: {fileID: 2100000, guid: 1089ea4d39cf1e543a70c87e4ea3b4f7, type: 2}
-  - Height: 0.85
+  - Height: 1.25
     material: {fileID: 2100000, guid: 709d4cfdd8a359a4b8f7d9f09ab5a08f, type: 2}

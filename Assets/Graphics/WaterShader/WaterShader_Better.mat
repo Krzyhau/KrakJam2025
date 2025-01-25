@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WaterShader
+  m_Name: WaterShader_Better
   m_Shader: {fileID: -6465566751694194690, guid: 68c98783129c07a44b628e746c82d1f2, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -16,7 +16,7 @@ Material:
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2999
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
@@ -38,18 +38,19 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _LineWaveRandomness: 1.5
-    - _LineWaveScale: 1
-    - _NoiseSpeed: 0.03
+    - _LineWaveRandomness: 0.6
+    - _LineWaveScale: 0.2
+    - _LineWaveStep: 0.02
+    - _NoiseSpeed: 0.5
     - _PositionOffsetScale: 0.2
     - _QueueControl: 0
-    - _QueueOffset: 0
-    - _ShoreHigherBorder: 0.3
+    - _QueueOffset: -1
+    - _ShoreHigherBorder: 0.6
     - _ShoreLowerBorder: 0.1
-    - _ShoreNoiseScale: 3
-    - _Smoothness: 0
+    - _ShoreNoiseScale: 1.5
+    - _Smoothness: 0.68
     m_Colors:
-    - _LineWaveColor: {r: 0.9188679, g: 0.96349055, b: 1, a: 0.8196079}
+    - _LineWaveColor: {r: 0.4509434, g: 0.76468986, b: 1, a: 0.8196079}
     - _ShoreColor: {r: 1, g: 1, b: 1, a: 1}
     - _WaterColor: {r: 0.28490567, g: 0.6487519, b: 1, a: 0.5019608}
   m_BuildTextureStacks: []
