@@ -215,7 +215,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 10
-  m_AngularDamping: 0.05
+  m_AngularDamping: 10
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -623,7 +623,7 @@ PrefabInstance:
       objectReference: {fileID: 7418380033322031497}
     - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
       propertyPath: weight
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
       propertyPath: shapeManipulator
@@ -633,6 +633,54 @@ PrefabInstance:
       propertyPath: bubbleMainTransform
       value: 
       objectReference: {fileID: 8779559392400427715}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToMassCurve.m_Curve.Array.data[1].time
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToMassCurve.m_Curve.Array.data[1].value
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToScaleCurve.m_Curve.Array.data[1].time
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToScaleCurve.m_Curve.Array.data[1].value
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToMassCurve.m_Curve.Array.data[0].inSlope
+      value: 0.006666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToMassCurve.m_Curve.Array.data[1].inSlope
+      value: 0.006666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToMassCurve.m_Curve.Array.data[0].outSlope
+      value: 0.006666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToMassCurve.m_Curve.Array.data[1].outSlope
+      value: 0.006666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToScaleCurve.m_Curve.Array.data[0].inSlope
+      value: 0.006666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToScaleCurve.m_Curve.Array.data[1].inSlope
+      value: 0.006666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToScaleCurve.m_Curve.Array.data[0].outSlope
+      value: 0.006666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToScaleCurve.m_Curve.Array.data[1].outSlope
+      value: 0.006666667
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

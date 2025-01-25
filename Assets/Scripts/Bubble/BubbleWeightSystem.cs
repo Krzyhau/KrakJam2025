@@ -32,6 +32,11 @@ namespace Monke.KrakJam2025
 			}
 		}
 
+		private void Start()
+		{
+			UpdateMassAndScale();
+		}
+
 		public void AddWeight(float additionalWeight)
 		{
 			Weight += additionalWeight;
@@ -51,12 +56,12 @@ namespace Monke.KrakJam2025
 		{
 			if (shapeManipulator != null)
 			{
-                shapeManipulator.SetTargetSize(10 * weightToScaleCurve.Evaluate(weight));
-            }
+				shapeManipulator.SetTargetSize(weightToScaleCurve.Evaluate(weight));
+			}
 			else
 			{
-				bubbleMainTransform.localScale = Vector2.one * weightToScaleCurve.Evaluate(weight);
-            }
+				bubbleMainTransform.localScale = Vector3.one * weightToScaleCurve.Evaluate(weight);
+			}
 
 			rb2d.mass = weightToMassCurve.Evaluate(weight);
 		}
