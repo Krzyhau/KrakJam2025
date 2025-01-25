@@ -42,7 +42,7 @@ namespace Monke.KrakJam2025
             Subscribe(playerContext.Input);
 
             Debug.Log(playerContext.WeightSystem.Weight);
-            motherBubbleContext.WeightSystem.AddWeight(playerContext.WeightSystem.Weight);
+            // motherBubbleContext.WeightSystem.AddWeight(playerContext.WeightSystem.Weight);
 
             playerContext.Input.ChangeMovement(false);
             playerContext.Transform.SetParent(rb2d.transform, false);
@@ -60,7 +60,7 @@ namespace Monke.KrakJam2025
             Unsubscribe(playerContext.Input);
             playersInside.Remove(playerContext);
 
-            motherBubbleContext.WeightSystem.RemoveWeight(playerContext.WeightSystem.Weight);
+            // motherBubbleContext.WeightSystem.RemoveWeight(playerContext.WeightSystem.Weight);
 
             playerContext.Input.ChangeMovement(true);
             playerContext.Transform.SetParent(null);

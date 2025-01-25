@@ -21,6 +21,7 @@ namespace Monke.KrakJam2025
 
         [SerializeField]
         private float targetSize;
+
         private Vector3[] shapeVertexVelocities = Array.Empty<Vector3>();
         private Vector3[] shapeVertices = Array.Empty<Vector3>();
         private Vector3[] lerpedShapeVertices = Array.Empty<Vector3>();

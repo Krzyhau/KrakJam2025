@@ -16,6 +16,7 @@ namespace Monke.KrakJam2025
 		[SerializeField]
 		private AnimationCurve weightToMassCurve;
 
+		[SerializeField]
 		private float weight;
 
 		public float Weight
