@@ -189,6 +189,9 @@ MonoBehaviour:
   _motherBubbleLayer:
     serializedVersion: 2
     m_Bits: 256
+  _bubbleLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &3534155313860949191
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,6 +25,9 @@ namespace Monke.KrakJam2025
 		[SerializeField]
 		private LayerMask _motherBubbleLayer;
 
+		[SerializeField]
+		private LayerMask _bubbleLayer;
+
 		private List<PlayerBubbleContext> playersInside = new();
 
 		private const float SAFE_SPACE = 1;
@@ -54,7 +57,7 @@ namespace Monke.KrakJam2025
 
 			playerContext.Transform.SetParent(rb2d.transform, true);
 			playerContext.Transform.localPosition = Vector2.zero;
-			playerContext.Collider2D.excludeLayers = 0;
+			playerContext.Collider2D.excludeLayers = _bubbleLayer;
 
 			OnPlayerAbsorbed?.Invoke(playerContext);
 			motherBubbleContext.AudioSource.PlayOneShot(motherBubbleContext.AbsorbSound);
