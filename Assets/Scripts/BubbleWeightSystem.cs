@@ -17,6 +17,9 @@ namespace Monke.KrakJam2025
 		private AnimationCurve weightToMassCurve;
 
 		[SerializeField]
+		private MotherBubbleShapeManipulator shapeManipulator;
+
+		[SerializeField]
 		private float weight;
 
 		public float Weight
@@ -46,7 +49,15 @@ namespace Monke.KrakJam2025
 
 		private void UpdateMassAndScale()
 		{
-			bubbleMainTransform.localScale = Vector2.one * weightToScaleCurve.Evaluate(weight);
+			if (shapeManipulator != null)
+			{
+                shapeManipulator.SetTargetSize(10 * weightToScaleCurve.Evaluate(weight));
+            }
+			else
+			{
+				bubbleMainTransform.localScale = Vector2.one * weightToScaleCurve.Evaluate(weight);
+            }
+
 			rb2d.mass = weightToMassCurve.Evaluate(weight);
 		}
 	}
