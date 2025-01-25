@@ -17,7 +17,6 @@ namespace Monke.KrakJam2025
         [SerializeField]
         private PlayerBubbleContext playerContext;
 
-        public Rigidbody2D Rb2D => rb2d;
 		public Vector2 CachedInput { get; private set; }
 
         private bool shouldMove = true;
@@ -25,7 +24,8 @@ namespace Monke.KrakJam2025
         public void ChangeMovement(bool shouldMovePlayer)
         {
             shouldMove = shouldMovePlayer;
-            Rb2D.bodyType = shouldMovePlayer ? RigidbodyType2D.Dynamic : RigidbodyType2D.Kinematic;
+            rb2d.bodyType = shouldMovePlayer ? RigidbodyType2D.Dynamic : RigidbodyType2D.Kinematic;
+            rb2d.simulated = shouldMovePlayer;
         }
 
         private void OnMove(InputValue value)
