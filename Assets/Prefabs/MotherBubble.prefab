@@ -522,6 +522,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9101263394826759277, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
+      propertyPath: bubbleShapeOwner
+      value: 
+      objectReference: {fileID: 8779559392400427715}
+    - target: {fileID: 9101263394826759277, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
       propertyPath: meshesData.Array.size
       value: 5
       objectReference: {fileID: 0}

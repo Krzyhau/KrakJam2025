@@ -9,6 +9,7 @@ namespace Monke.KrakJam2025
     {
         private const int LevelOfDetail = 64;
 
+        [SerializeField] private Transform bubbleShapeOwner;
         [SerializeField] private float easingAcceleration = 5.0f;
         [SerializeField] private float easingDampening = 5.0f;
         [SerializeField] private StretchForceParameters insideStretch;
@@ -198,13 +199,13 @@ namespace Monke.KrakJam2025
 
         private void EnsureProperGameObjectSize()
         {
-            float currentSize = transform.localScale.x;
+            float currentSize = bubbleShapeOwner.localScale.x;
             if (currentSize == targetSize)
             {
                 return;
             }
 
-            transform.localScale = new Vector3(targetSize, targetSize, targetSize);
+            bubbleShapeOwner.localScale = new Vector3(targetSize, targetSize, targetSize);
 
             for(int i = 0; i < lerpedShapeOffsets.Length; i++)
             {
