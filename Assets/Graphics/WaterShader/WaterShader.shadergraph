@@ -528,7 +528,7 @@
                 "m_Node": {
                     "m_Id": "8c94f0f48c2b44ceb4b45eeebe949c31"
                 },
-                "m_SlotId": 2
+                "m_SlotId": 3
             }
         },
         {
@@ -612,7 +612,7 @@
                 "m_Node": {
                     "m_Id": "2fbd05fb684f4ab0a9b64400abae9aaa"
                 },
-                "m_SlotId": 2
+                "m_SlotId": 3
             }
         },
         {
@@ -1554,7 +1554,7 @@
     "m_ObjectId": "22a6de8278a741e8bf5e5ec66f1d341b",
     "m_Title": "Shore Mask",
     "m_Position": {
-        "x": -1352.8001708984375,
+        "x": -1352.800048828125,
         "y": -160.79998779296876
     }
 }
@@ -3506,8 +3506,8 @@
     "m_ObjectId": "6dcd7017ff2e4d86aa3fc6f6bdce24f3",
     "m_Title": "Noise sample point",
     "m_Position": {
-        "x": -2347.2001953125,
-        "y": 101.59999084472656
+        "x": -2347.199951171875,
+        "y": 101.59991455078125
     }
 }
 
@@ -3659,7 +3659,7 @@
     "m_Title": "Wave Lines",
     "m_Position": {
         "x": -1488.0,
-        "y": 610.4000854492188
+        "y": 610.4000244140625
     }
 }
 
