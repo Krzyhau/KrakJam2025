@@ -5,109 +5,109 @@ using UnityEngine;
 
 namespace Monke.KrakJam2025
 {
-    public class MotherPlayerController : MonoBehaviour
-    {
-        public event Action<PlayerBubbleContext> OnPlayerAbsorbed;
-        public event Action<PlayerBubbleContext> OnPlayerSplitted;
+	public class MotherPlayerController : MonoBehaviour
+	{
+		public event Action<PlayerBubbleContext> OnPlayerAbsorbed;
+		public event Action<PlayerBubbleContext> OnPlayerSplitted;
 
-        [SerializeField]
-        private Rigidbody2D rb2d;
+		[SerializeField]
+		private Rigidbody2D rb2d;
 
-        [SerializeField]
-        private Transform hamster;
+		[SerializeField]
+		private Transform hamster;
 
-        [SerializeField]
-        private float movementMultiplier;
+		[SerializeField]
+		private float movementMultiplier;
 
-        [SerializeField]
-        private MotherBubbleContext motherBubbleContext;
+		[SerializeField]
+		private MotherBubbleContext motherBubbleContext;
 
-        [SerializeField]
-        private MotherBubbleShapeManipulator shapeManipulator;
+		[SerializeField]
+		private MotherBubbleShapeManipulator shapeManipulator;
 
-        private List<PlayerBubbleContext> playersInside = new();
+		private List<PlayerBubbleContext> playersInside = new();
 
-        private void Subscribe(PlayerController player)
-        {
-            player.OnPlayerSplit += OnPlayerSplit;
-        }
+		private float radius = 5f;
+		private float moveSpeed = 5f;
 
-        private void Unsubscribe(PlayerController player)
-        {
-            player.OnPlayerSplit -= OnPlayerSplit;
-        }
+		private void Subscribe(PlayerController player)
+		{
+			player.OnPlayerSplit += OnPlayerSplit;
+		}
 
-        public void AddPlayerInside(PlayerBubbleContext playerContext)
-        {
-            if (playersInside.Contains(playerContext))
-            {
-                return;
-            }
+		private void Unsubscribe(PlayerController player)
+		{
+			player.OnPlayerSplit -= OnPlayerSplit;
+		}
 
-            playersInside.Add(playerContext);
-            Subscribe(playerContext.Input);
+		public void AddPlayerInside(PlayerBubbleContext playerContext)
+		{
+			if (playersInside.Contains(playerContext))
+			{
+				return;
+			}
 
-            motherBubbleContext.WeightSystem.AddWeight(playerContext.WeightSystem.Weight);
+			playersInside.Add(playerContext);
+			Subscribe(playerContext.PlayerController);
 
-            playerContext.Input.ChangeMovement(false);
-            playerContext.Transform.SetParent(rb2d.transform, true);
-            playerContext.Transform.localPosition = Vector2.zero;
+			motherBubbleContext.WeightSystem.AddWeight(playerContext.WeightSystem.Weight);
 
-            OnPlayerAbsorbed?.Invoke(playerContext);
+			playerContext.PlayerController.ChangeMovement(false);
+			playerContext.Transform.SetParent(rb2d.transform, true);
+			playerContext.Transform.localPosition = Vector2.zero;
 
-            shapeManipulator.SetStretcherState(hamster, true);
-        } 
+			OnPlayerAbsorbed?.Invoke(playerContext);
 
-        private void OnPlayerSplit(PlayerBubbleContext playerContext)
-        {
-            if (!playersInside.Contains(playerContext))
-            {
-                return;
-            }
-            Unsubscribe(playerContext.Input);
-            playersInside.Remove(playerContext);
+			shapeManipulator.SetStretcherState(hamster, true);
+		}
 
-            motherBubbleContext.WeightSystem.RemoveWeight(playerContext.WeightSystem.Weight);
+		private void OnPlayerSplit(PlayerBubbleContext playerContext)
+		{
+			if (!playersInside.Contains(playerContext))
+			{
+				return;
+			}
+			Unsubscribe(playerContext.PlayerController);
+			playersInside.Remove(playerContext);
 
-            playerContext.Input.ChangeMovement(true);
-            playerContext.Transform.SetParent(null);
+			motherBubbleContext.WeightSystem.RemoveWeight(playerContext.WeightSystem.Weight);
 
-            OnPlayerSplitted?.Invoke(playerContext);
-            shapeManipulator.SetStretcherState(hamster, false);
-        }
+			playerContext.PlayerController.ChangeMovement(true);
+			playerContext.Transform.SetParent(null);
 
-        private void FixedUpdate()
-        {
-            if (playersInside != null && playersInside.Count > 0)
-            {
-                float totalInputX = playersInside.Sum(x => x.Input.CachedInput.x);
-                float totalInputY = playersInside.Sum(x => x.Input.CachedInput.y);
-                Vector2 totalInput = new(totalInputX, totalInputY);
-                rb2d.AddForce(movementMultiplier * Time.fixedDeltaTime * totalInput, ForceMode2D.Impulse);
+			OnPlayerSplitted?.Invoke(playerContext);
+			shapeManipulator.SetStretcherState(hamster, false);
+		}
 
-                Vector3 currentPosition = hamster.position;
+		private void FixedUpdate()
+		{
+			if (playersInside != null && playersInside.Count > 0)
+			{
+				float totalInputX = playersInside.Sum(x => x.PlayerController.CachedInput.x);
+				float totalInputY = playersInside.Sum(x => x.PlayerController.CachedInput.y);
+				Vector2 totalInput = new(totalInputX, totalInputY);
+				rb2d.AddForce(movementMultiplier * Time.fixedDeltaTime * totalInput, ForceMode2D.Impulse);
 
-                float angle = Mathf.Atan2(currentPosition.y, currentPosition.x);
-                float currentRadius = currentPosition.magnitude;
+				Vector3 currentPosition = hamster.position;
 
-                currentRadius = Mathf.Min(currentRadius, radius);
+				float angle = Mathf.Atan2(currentPosition.y, currentPosition.x);
+				float currentRadius = currentPosition.magnitude;
 
-                float x = Mathf.Cos(angle) * currentRadius;
-                float y = Mathf.Sin(angle) * currentRadius;
+				currentRadius = Mathf.Min(currentRadius, radius);
 
-                float moveX = totalInput.x * moveSpeed * Time.deltaTime;
-                float moveY = totalInput.y * moveSpeed * Time.deltaTime; 
+				float x = Mathf.Cos(angle) * currentRadius;
+				float y = Mathf.Sin(angle) * currentRadius;
 
-                angle += moveX + moveY;
+				float moveX = totalInput.x * moveSpeed * Time.deltaTime;
+				float moveY = totalInput.y * moveSpeed * Time.deltaTime;
 
-                float newX = Mathf.Cos(angle) * currentRadius;
-                float newY = Mathf.Sin(angle) * currentRadius;
+				angle += moveX + moveY;
 
-                hamster.position = new Vector3(newX, newY, currentPosition.z);
-            }
-        }
+				float newX = Mathf.Cos(angle) * currentRadius;
+				float newY = Mathf.Sin(angle) * currentRadius;
 
-        public float radius = 5f;
-        public float moveSpeed = 5f;
-    }
+				hamster.position = new Vector3(newX, newY, currentPosition.z);
+			}
+		}
+	}
 }

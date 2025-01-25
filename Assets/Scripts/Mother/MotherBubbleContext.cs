@@ -1,12 +1,7 @@
-using UnityEngine;
-
 namespace Monke.KrakJam2025
 {
-    public class MotherBubbleContext : MonoBehaviour
-    {
-        [SerializeField]
-        private BubbleWeightSystem bubbleWeightSystem;
+	public class MotherBubbleContext : BubbleContext
+	{
 
-        public BubbleWeightSystem WeightSystem => bubbleWeightSystem;
-    }
+	}
 }

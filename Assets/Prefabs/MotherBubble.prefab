@@ -57,8 +57,6 @@ MonoBehaviour:
   movementMultiplier: 10
   motherBubbleContext: {fileID: 2028291250106182074}
   shapeManipulator: {fileID: 5865413560333154103}
-  radius: 10
-  moveSpeed: 20
 --- !u!114 &3534155313860949191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,6 +483,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MotherBubbleContext
       objectReference: {fileID: 0}
+    - target: {fileID: 7162042507594149651, guid: 30f047e0172514b4caa49ab2c5351f7a, type: 3}
+      propertyPath: mainTransform
+      value: 
+      objectReference: {fileID: 8779559392400427715}
     - target: {fileID: 7162042507594149651, guid: 30f047e0172514b4caa49ab2c5351f7a, type: 3}
       propertyPath: bubbleWeightSystem
       value: 
