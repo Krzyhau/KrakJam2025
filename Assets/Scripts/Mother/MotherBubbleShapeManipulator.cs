@@ -189,8 +189,8 @@ namespace Monke.KrakJam2025
                 var vertex = meshFilterVertices[i];
                 float horizontalAngle = Mathf.Atan2(-vertex.z, vertex.x);
                 int vertexIndex = Mathf.RoundToInt((horizontalAngle / (Mathf.PI * 2.0f) + 0.5f) * LevelOfDetail) % LevelOfDetail;
-                meshFilterVertices[i] = meshToUse.mesh.vertices[i] * lerpedShapeOffsets[vertexIndex] / targetSize;
-                meshFilterVertices[i].y = meshToUse.mesh.vertices[i].y;
+                meshFilterVertices[i] = meshToUse.sharedMesh.vertices[i] * lerpedShapeOffsets[vertexIndex] / targetSize;
+                meshFilterVertices[i].y = meshToUse.sharedMesh.vertices[i].y;
             }
 
             shapedMesh.vertices = meshFilterVertices;
