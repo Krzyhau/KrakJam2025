@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.U2D;
 
 namespace Monke.KrakJam2025
 {
     public class MotherBubbleShapeManipulator : MonoBehaviour
     {
         [Header("Dependencies")]
-        [SerializeField] private SpriteShapeController spriteShapeController;
+        [SerializeField] private MeshFilter meshFilter;
 
         [Header("Properties")]
         [Min(4), SerializeField] private int levelOfDetail;
@@ -19,10 +18,12 @@ namespace Monke.KrakJam2025
 
         [SerializeField] private List<Transform> stretchers = new();
 
+        [SerializeField]
         private float targetSize;
         private Vector3[] shapeVertexVelocities = Array.Empty<Vector3>();
         private Vector3[] shapeVertices = Array.Empty<Vector3>();
         private Vector3[] lerpedShapeVertices = Array.Empty<Vector3>();
+        private Mesh mesh;
 
         public void SetTargetSize(float size)
         {
@@ -44,6 +45,7 @@ namespace Monke.KrakJam2025
         private void Start()
         {
             SetTargetSize(4f);
+            RegenerateMesh();
         }
 
         private void Update()
@@ -58,24 +60,15 @@ namespace Monke.KrakJam2025
             NormalizeDistancesToSize();
             RegenerateLerpedShapeVertices();
 
-            Spline spline = spriteShapeController.spline;
-            spline.Clear();
-
-            for (int i = 0; i < lerpedShapeVertices.Length; i++)
+            var vertices = new Vector3[shapeVertices.Length + 1];
+            vertices[0] = Vector3.zero;
+            for (int i = 0; i < shapeVertices.Length; i++)
             {
-                spline.InsertPointAt(i, lerpedShapeVertices[i]);
-
-                var prevPoint = lerpedShapeVertices[i == 0 ? lerpedShapeVertices.Length - 1 : i - 1];
-                var nextPoint = lerpedShapeVertices[i == lerpedShapeVertices.Length - 1 ? 0 : i + 1];
-
-                var tangentVector = (nextPoint - prevPoint) * 0.25f;
-
-                spline.SetTangentMode(i, ShapeTangentMode.Continuous);
-                spline.SetLeftTangent(i, tangentVector * -1.0f);
-                spline.SetRightTangent(i, tangentVector);
+                vertices[i+1] = lerpedShapeVertices[i];
             }
-
-            spriteShapeController.RefreshSpriteShape();
+            mesh.vertices = vertices;
+            mesh.RecalculateNormals();
+            mesh.RecalculateBounds();
         }
 
         private Vector3 GetStretcherLocalPoint(Transform stretcher)
@@ -90,7 +83,44 @@ namespace Monke.KrakJam2025
             if (shapeVertices.Length != levelOfDetail)
             {
                 shapeVertices = new Vector3[levelOfDetail];
+                RegenerateMesh();
             }
+        }
+
+        private void RegenerateMesh()
+        {
+            if(mesh != null)
+            {
+                Destroy(mesh);
+            }
+
+            mesh = new Mesh();
+            mesh.name = "MotherBubbleMesh";
+            mesh.MarkDynamic();
+
+            var vertices = new Vector3[shapeVertices.Length + 1];
+            var uvs = new Vector2[shapeVertices.Length + 1];
+            var triangles = new int[shapeVertices.Length * 3];
+
+            uvs[0] = new Vector2(0.5f, 0.5f);
+            vertices[0] = Vector3.zero;
+
+            for (int i = 0; i < shapeVertices.Length; i++)
+            {
+                float circlePosRad = i / (float)shapeVertices.Length * Mathf.PI * 2.0f;
+                Vector2 circleNormal = new(Mathf.Cos(circlePosRad), Mathf.Sin(circlePosRad));
+                uvs[i+1] = (Vector2.one + circleNormal) * 0.5f;
+
+                triangles[i * 3] = 0;
+                triangles[i * 3 + 1] = i + 1;
+                triangles[i * 3 + 2] = (i + 1) % shapeVertices.Length + 1;
+            }
+
+            mesh.vertices = vertices;
+            mesh.uv = uvs;
+            mesh.triangles = triangles;
+
+            meshFilter.mesh = mesh;
         }
 
         private void RegenerateShapeVertices()
@@ -98,7 +128,7 @@ namespace Monke.KrakJam2025
             for (int i = 0; i < shapeVertices.Length; i++)
             {
                 float circlePosRad = i / (float)shapeVertices.Length * Mathf.PI * 2.0f;
-                Vector3 circleNormal = new(Mathf.Cos(circlePosRad), Mathf.Sin(circlePosRad), 0);
+                Vector3 circleNormal = new(-Mathf.Cos(circlePosRad), Mathf.Sin(circlePosRad), 0);
 
                 var circlePoint = circleNormal * targetSize;
 
