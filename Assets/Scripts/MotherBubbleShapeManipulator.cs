@@ -4,28 +4,25 @@ using UnityEngine;
 
 namespace Monke.KrakJam2025
 {
-    [ExecuteAlways]
     public class MotherBubbleShapeManipulator : MonoBehaviour
     {
-        [Header("Dependencies")]
-        [SerializeField] private MeshFilter meshFilter;
+        private const int LevelOfDetail = 64;
 
-        [Header("Properties")]
-        [Min(4), SerializeField] private int levelOfDetail;
         [SerializeField] private float easingAcceleration = 5.0f;
         [SerializeField] private float easingDampening = 5.0f;
         [SerializeField] private StretchForceParameters insideStretch;
         [SerializeField] private StretchForceParameters outsideStretch;
+        [SerializeField] private MeshFilter meshToUse;
+        [SerializeField] private MeshData[] meshesData;
 
-        [SerializeField] private List<Transform> stretchers = new();
-
-        [SerializeField]
+        readonly private List<MeshFilter> displayMeshes = new();
+        readonly private List<Transform> stretchers = new();
         private float targetSize;
+        private Mesh shapedMesh;
 
-        private Vector3[] shapeVertexVelocities = Array.Empty<Vector3>();
-        private Vector3[] shapeVertices = Array.Empty<Vector3>();
-        private Vector3[] lerpedShapeVertices = Array.Empty<Vector3>();
-        private Mesh mesh;
+        private float[] shapeVelocities = Array.Empty<float>();
+        private float[] shapeOffsets = Array.Empty<float>();
+        private float[] lerpedShapeOffsets = Array.Empty<float>();
 
         public void SetTargetSize(float size)
         {
@@ -47,7 +44,34 @@ namespace Monke.KrakJam2025
         private void Start()
         {
             SetTargetSize(4f);
-            RegenerateMesh();
+            CreateMeshes();
+        }
+
+        private void CreateMeshes()
+        {
+            shapedMesh = new Mesh();
+            shapedMesh.MarkDynamic();
+
+            shapedMesh.vertices = meshToUse.mesh.vertices;
+            shapedMesh.triangles = meshToUse.mesh.triangles;
+            shapedMesh.uv = meshToUse.mesh.uv;
+
+            shapedMesh.RecalculateBounds();
+            shapedMesh.RecalculateNormals();
+
+            foreach (var mesh in meshesData)
+            {
+                var meshFilter = new GameObject("BubelMesh").AddComponent<MeshFilter>();
+                var meshRenderer = meshFilter.gameObject.AddComponent<MeshRenderer>();
+                meshRenderer.material = mesh.material;
+                meshFilter.sharedMesh = shapedMesh;
+
+                meshFilter.transform.localScale = new Vector3(1, mesh.Height, 1);
+                meshFilter.transform.SetParent(transform, false);
+
+                displayMeshes.Add(meshFilter);
+            }
+            meshToUse.gameObject.SetActive(false);
         }
 
         private void Update()
@@ -64,87 +88,32 @@ namespace Monke.KrakJam2025
             RegenerateShapeVertices();
             NormalizeDistancesToSize();
             RegenerateLerpedShapeVertices();
-
-            var vertices = new Vector3[shapeVertices.Length + 1];
-            vertices[0] = Vector3.zero;
-            for (int i = 0; i < shapeVertices.Length; i++)
-            {
-                vertices[i+1] = lerpedShapeVertices[i];
-            }
-            mesh.vertices = vertices;
-            mesh.RecalculateNormals();
-            mesh.RecalculateBounds();
+            RegenerateMeshes();
         }
 
         private Vector3 GetStretcherLocalPoint(Transform stretcher)
         {
             Vector3 stretcherLocalPoint = transform.InverseTransformPoint(stretcher.position);
-            stretcherLocalPoint.z = 0.0f;
+            stretcherLocalPoint.y = 0.0f;
             return stretcherLocalPoint;
         }
 
         private void EnsureCorrectVerticesCount()
         {
-            if (shapeVertices.Length != levelOfDetail)
+            if (shapeOffsets.Length != LevelOfDetail)
             {
-                shapeVertices = new Vector3[levelOfDetail];
-                RegenerateMesh();
+                shapeOffsets = new float[LevelOfDetail];
             }
-        }
-
-        private void RegenerateMesh()
-        {
-            if(mesh != null)
-            {
-#if !UNITY_EDITOR
-                Destroy(mesh);
-#else
-                DestroyImmediate(mesh);
-#endif
-            }
-
-            mesh = new Mesh();
-            mesh.name = "MotherBubbleMesh";
-            mesh.MarkDynamic();
-
-            var vertices = new Vector3[shapeVertices.Length + 1];
-            var uvs = new Vector2[shapeVertices.Length + 1];
-            var triangles = new int[shapeVertices.Length * 3];
-
-            uvs[0] = new Vector2(0.5f, 0.5f);
-            vertices[0] = Vector3.zero;
-
-            for (int i = 0; i < shapeVertices.Length; i++)
-            {
-                float circlePosRad = i / (float)shapeVertices.Length * Mathf.PI * 2.0f;
-                Vector2 circleNormal = new(Mathf.Cos(circlePosRad), Mathf.Sin(circlePosRad));
-                uvs[i+1] = (Vector2.one + circleNormal) * 0.5f;
-
-                triangles[i * 3] = 0;
-                triangles[i * 3 + 1] = i + 1;
-                triangles[i * 3 + 2] = (i + 1) % shapeVertices.Length + 1;
-            }
-
-            mesh.vertices = vertices;
-            mesh.uv = uvs;
-            mesh.triangles = triangles;
-
-            meshFilter.mesh = mesh;
         }
 
         private void RegenerateShapeVertices()
         {
-            for (int i = 0; i < shapeVertices.Length; i++)
+            for (int i = 0; i < shapeOffsets.Length; i++)
             {
-                float circlePosRad = i / (float)shapeVertices.Length * Mathf.PI * 2.0f;
-                Vector3 circleNormal = new(-Mathf.Cos(circlePosRad), Mathf.Sin(circlePosRad), 0);
-
-                var circlePoint = circleNormal * targetSize;
-
-                float stretchForce = GetStretchForceForPoint(circlePoint);
-                circlePoint += stretchForce * circleNormal;
-
-                shapeVertices[i] = circlePoint;
+                float circlePosRad = i / (float)shapeOffsets.Length * Mathf.PI * 2.0f;
+                Vector3 circleNormal = new(-Mathf.Cos(circlePosRad), 0, Mathf.Sin(circlePosRad));
+                float stretchForce = GetStretchForceForPoint(circleNormal * targetSize);
+                shapeOffsets[i] = targetSize + stretchForce;
             }
         }
 
@@ -177,38 +146,59 @@ namespace Monke.KrakJam2025
         private void NormalizeDistancesToSize()
         {
             float totalDistances = 0.0f;
-            for (int i = 0; i < shapeVertices.Length; i++)
+            for (int i = 0; i < shapeOffsets.Length; i++)
             {
-                totalDistances += shapeVertices[i].magnitude;
+                totalDistances += shapeOffsets[i];
             }
 
-            float averageDistance = totalDistances / shapeVertices.Length;
+            float averageDistance = totalDistances / shapeOffsets.Length;
             float sizeDifference = targetSize / averageDistance;
 
-            for (int i = 0; i < shapeVertices.Length; i++)
+            for (int i = 0; i < shapeOffsets.Length; i++)
             {
-                shapeVertices[i] *= sizeDifference;
+                shapeOffsets[i] *= sizeDifference;
             }
         }
 
         private void RegenerateLerpedShapeVertices()
         {
-            if (lerpedShapeVertices.Length != levelOfDetail)
+            if (lerpedShapeOffsets.Length != LevelOfDetail)
             {
-                lerpedShapeVertices = new Vector3[levelOfDetail];
-                Array.Copy(shapeVertices, lerpedShapeVertices, levelOfDetail);
+                lerpedShapeOffsets = new float[LevelOfDetail];
+                Array.Copy(shapeOffsets, lerpedShapeOffsets, LevelOfDetail);
             }
 
-            if (shapeVertexVelocities.Length != levelOfDetail)
+            if (shapeVelocities.Length != LevelOfDetail)
             {
-                shapeVertexVelocities = new Vector3[levelOfDetail];
+                shapeVelocities = new float[LevelOfDetail];
             }
 
-            for (int i = 0; i < shapeVertices.Length; i++)
+            for (int i = 0; i < shapeOffsets.Length; i++)
             {
-                shapeVertexVelocities[i] += (shapeVertices[i] - lerpedShapeVertices[i]) * easingAcceleration * Time.deltaTime;
-                shapeVertexVelocities[i] *= Mathf.Max(0.0f, 1.0f - easingDampening * Time.deltaTime);
-                lerpedShapeVertices[i] += shapeVertexVelocities[i] * Time.deltaTime;
+                shapeVelocities[i] += (shapeOffsets[i] - lerpedShapeOffsets[i]) * easingAcceleration * Time.deltaTime;
+                shapeVelocities[i] *= Mathf.Max(0.0f, 1.0f - easingDampening * Time.deltaTime);
+                lerpedShapeOffsets[i] += shapeVelocities[i] * Time.deltaTime;
+            }
+        }
+
+        private void RegenerateMeshes()
+        {
+            foreach (var meshFilter in displayMeshes)
+            {
+                var mesh = meshFilter.mesh;
+                mesh.MarkDynamic();
+                var meshFilterVertices = mesh.vertices;
+
+                for (int i = 0; i < meshFilterVertices.Length; i++)
+                {
+                    var vertex = meshFilterVertices[i];
+                    float horizontalAngle = Mathf.Atan2(-vertex.z, vertex.x);
+                    int vertexIndex = Mathf.RoundToInt((horizontalAngle / (Mathf.PI * 2.0f) + 0.5f) * LevelOfDetail) % LevelOfDetail;
+                    meshFilterVertices[i] = meshToUse.mesh.vertices[i] * lerpedShapeOffsets[vertexIndex];
+                    meshFilterVertices[i].y = meshToUse.mesh.vertices[i].y;
+                }
+
+                mesh.vertices = meshFilterVertices;
             }
         }
 
@@ -218,6 +208,13 @@ namespace Monke.KrakJam2025
             public float Distance;
             public float Exponent;
             public float Force;
+        }
+
+        [Serializable]
+        public struct MeshData
+        {
+            public float Height;
+            public Material material;
         }
     }
 }
