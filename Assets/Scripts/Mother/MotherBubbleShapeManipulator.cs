@@ -18,7 +18,7 @@ namespace Monke.KrakJam2025
 
         readonly private List<MeshFilter> displayMeshes = new();
         readonly private List<Transform> stretchers = new();
-        private float targetSize;
+        private float targetSize = 1f;
         private Mesh shapedMesh;
 
         private float[] shapeVelocities = Array.Empty<float>();
@@ -87,6 +87,7 @@ namespace Monke.KrakJam2025
             NormalizeDistancesToSize();
             RegenerateLerpedShapeVertices();
             RegenerateMeshes();
+            EnsureProperGameObjectSize();
         }
 
         private Vector3 GetStretcherLocalPoint(Transform stretcher)
@@ -188,11 +189,27 @@ namespace Monke.KrakJam2025
                 var vertex = meshFilterVertices[i];
                 float horizontalAngle = Mathf.Atan2(-vertex.z, vertex.x);
                 int vertexIndex = Mathf.RoundToInt((horizontalAngle / (Mathf.PI * 2.0f) + 0.5f) * LevelOfDetail) % LevelOfDetail;
-                meshFilterVertices[i] = meshToUse.mesh.vertices[i] * lerpedShapeOffsets[vertexIndex];
+                meshFilterVertices[i] = meshToUse.mesh.vertices[i] * lerpedShapeOffsets[vertexIndex] / targetSize;
                 meshFilterVertices[i].y = meshToUse.mesh.vertices[i].y;
             }
 
             shapedMesh.vertices = meshFilterVertices;
+        }
+
+        private void EnsureProperGameObjectSize()
+        {
+            float currentSize = transform.localScale.x;
+            if (currentSize == targetSize)
+            {
+                return;
+            }
+
+            transform.localScale = new Vector3(targetSize, targetSize, targetSize);
+
+            for(int i = 0; i < lerpedShapeOffsets.Length; i++)
+            {
+                lerpedShapeOffsets[i] *= currentSize / targetSize;
+            }
         }
 
         [Serializable]
