@@ -12,8 +12,8 @@ namespace Monke.KrakJam2025
 
 		public Transform Transform => _playerController.transform;
 
-		public BubbleWeightSystem BubbleWeightSystem => _bubbleWeightSystem;
+		public BubbleWeightSystem WeightSystem => _bubbleWeightSystem;
 
-		public PlayerController PlayerController => _playerController;
+		public PlayerController Input => _playerController;
 	}
 }

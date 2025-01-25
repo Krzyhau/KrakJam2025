@@ -7,6 +7,6 @@ namespace Monke.KrakJam2025
         [SerializeField]
         private BubbleWeightSystem bubbleWeightSystem;
 
-        public BubbleWeightSystem BubbleWeightSystem => bubbleWeightSystem;
+        public BubbleWeightSystem WeightSystem => bubbleWeightSystem;
     }
 }

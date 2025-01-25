@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Monke.KrakJam2025
 {
+    [ExecuteAlways]
     public class MotherBubbleShapeManipulator : MonoBehaviour
     {
         [Header("Dependencies")]
@@ -91,7 +92,11 @@ namespace Monke.KrakJam2025
         {
             if(mesh != null)
             {
+#if !UNITY_EDITOR
                 Destroy(mesh);
+#else
+                DestroyImmediate(mesh);
+#endif
             }
 
             mesh = new Mesh();

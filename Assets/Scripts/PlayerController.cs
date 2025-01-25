@@ -43,7 +43,6 @@ namespace Monke.KrakJam2025
 
         private void OnSplit()
         {
-            // do split deformation
             OnPlayerSplit?.Invoke(playerContext);
         }
     }

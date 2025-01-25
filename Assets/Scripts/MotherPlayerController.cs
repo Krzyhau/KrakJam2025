@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,6 +7,9 @@ namespace Monke.KrakJam2025
 {
     public class MotherPlayerController : MonoBehaviour
     {
+        public event Action<PlayerBubbleContext> OnPlayerAbsorbed;
+        public event Action<PlayerBubbleContext> OnPlayerSplitted;
+
         [SerializeField]
         private Rigidbody2D rb2d;
 
@@ -33,14 +37,18 @@ namespace Monke.KrakJam2025
             {
                 return;
             }
+
             playersInside.Add(playerContext);
-            Subscribe(playerContext.PlayerController);
+            Subscribe(playerContext.Input);
 
-            motherBubbleContext.BubbleWeightSystem.AddWeight(playerContext.BubbleWeightSystem.Weight);
+            Debug.Log(playerContext.WeightSystem.Weight);
+            motherBubbleContext.WeightSystem.AddWeight(playerContext.WeightSystem.Weight);
 
-            playerContext.PlayerController.ChangeMovement(false);
+            playerContext.Input.ChangeMovement(false);
             playerContext.Transform.SetParent(rb2d.transform, false);
             playerContext.Transform.localPosition = Vector2.zero;
+
+            OnPlayerAbsorbed?.Invoke(playerContext);
         } 
 
         private void OnPlayerSplit(PlayerBubbleContext playerContext)
@@ -49,21 +57,23 @@ namespace Monke.KrakJam2025
             {
                 return;
             }
-            Unsubscribe(playerContext.PlayerController);
+            Unsubscribe(playerContext.Input);
             playersInside.Remove(playerContext);
 
-            motherBubbleContext.BubbleWeightSystem.RemoveWeight(playerContext.BubbleWeightSystem.Weight);
+            motherBubbleContext.WeightSystem.RemoveWeight(playerContext.WeightSystem.Weight);
 
-            playerContext.PlayerController.ChangeMovement(true);
+            playerContext.Input.ChangeMovement(true);
             playerContext.Transform.SetParent(null);
+
+            OnPlayerSplitted?.Invoke(playerContext);
         }
 
         private void FixedUpdate()
         {
             if (playersInside != null && playersInside.Count > 0)
             {
-                float totalInputX = playersInside.Sum(x => x.PlayerController.CachedInput.x);
-                float totalInputY = playersInside.Sum(x => x.PlayerController.CachedInput.y);
+                float totalInputX = playersInside.Sum(x => x.Input.CachedInput.x);
+                float totalInputY = playersInside.Sum(x => x.Input.CachedInput.y);
                 Vector2 totalInput = new(totalInputX, totalInputY);
                 rb2d.AddForce(movementMultiplier * Time.fixedDeltaTime * totalInput, ForceMode2D.Impulse);
             }
