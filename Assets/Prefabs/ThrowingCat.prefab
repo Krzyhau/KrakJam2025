@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5847685767749957560}
   - component: {fileID: 8109016395709195615}
+  - component: {fileID: 2240703277703248257}
   m_Layer: 0
-  m_Name: Anchor
+  m_Name: PawPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,6 +56,50 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2240703277703248257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688086879114773900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e04fb9a1e9765d3439abab8a4a26f31b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _catAnimator: {fileID: 8109016395709195615}
+--- !u!1 &4841661059452281462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6057543510720633543}
+  m_Layer: 0
+  m_Name: ThrowSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6057543510720633543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4841661059452281462}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06, y: -2.25, z: -0.27}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3732993858089982420}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5258479082282439899
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,6 +109,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3332772347864748520}
+  - component: {fileID: 9016011589234136378}
   m_Layer: 0
   m_Name: ThrowingCat
   m_TagString: Untagged
@@ -87,6 +133,22 @@ Transform:
   - {fileID: 3482744624576741499}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9016011589234136378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5258479082282439899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d6adca806b50bf43b6d75345bf86baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _catAnimationNotifier: {fileID: 2240703277703248257}
+  _timeToReachEndPoint: 0.4
+  _throwStartingPoint: {fileID: 6057543510720633543}
+  _throwDestinationPoint: {fileID: 0}
 --- !u!1 &6749915761495029891
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,7 +159,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3732993858089982420}
   - component: {fileID: 403910759475066402}
-  - component: {fileID: 6550125283392352012}
   m_Layer: 0
   m_Name: Paw
   m_TagString: Untagged
@@ -117,7 +178,8 @@ Transform:
   m_LocalPosition: {x: -0.16, y: -2.85, z: -0.162}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6057543510720633543}
   m_Father: {fileID: 5847685767749957560}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!212 &403910759475066402
@@ -175,23 +237,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!111 &6550125283392352012
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6749915761495029891}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: b820906548c3a814992a891d730b3b63, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: b820906548c3a814992a891d730b3b63, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
 --- !u!1 &7003155643635750533
 GameObject:
   m_ObjectHideFlags: 0

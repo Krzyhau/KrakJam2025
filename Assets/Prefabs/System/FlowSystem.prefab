@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2580703189314196482
+--- !u!1 &7993048145145923033
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5832221932941531881}
-  - component: {fileID: 3762644175681134641}
+  - component: {fileID: 7273438799329365466}
+  - component: {fileID: -5454202574932477272}
   m_Layer: 0
-  m_Name: ItemSpawningSystem
+  m_Name: FlowSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5832221932941531881
+--- !u!4 &7273438799329365466
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2580703189314196482}
+  m_GameObject: {fileID: 7993048145145923033}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,20 +32,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3762644175681134641
+--- !u!114 &-5454202574932477272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2580703189314196482}
+  m_GameObject: {fileID: 7993048145145923033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d46846c520328e7408069fa4ad789f31, type: 3}
+  m_Script: {fileID: 11500000, guid: 87b99435a2354e547b7a11f5f8891321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemsIdToPrefab:
-  - _itemId: {fileID: 11400000, guid: e5e6dc2dad892e14e887d2474b254341, type: 2}
-    _itemPrefab: {fileID: 3559371617582247931, guid: 750e257d494ff554a8a77455f24015c2, type: 3}
-  - _itemId: {fileID: 11400000, guid: 44eb1bbab2541534099bf88b8d25542e, type: 2}
-    _itemPrefab: {fileID: 7044616177726499408, guid: 419d726b7e0bf4140af649566ca197c7, type: 3}
+  stageFlow:
+  - {fileID: 11400000, guid: 4a41afe5b49fd99458ccbd49454e4ea6, type: 2}

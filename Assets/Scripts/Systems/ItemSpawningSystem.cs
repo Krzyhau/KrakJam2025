@@ -9,13 +9,13 @@ namespace Monke.KrakJam2025
 		[SerializeField]
 		private List<ItemIdToPrefab> _itemsIdToPrefab;
 
-		public GameObject SpawnObject(ItemIdScriptableObject itemId, Transform parent)
+		public BaseItem SpawnObject(ItemIdScriptableObject itemId, Transform parent)
 		{
 			var itemIdToPrefab = _itemsIdToPrefab.Find(x => x.ItemId == itemId);
 			var itemPrefab = itemIdToPrefab.ItemPrefab;
-			var newObject = Instantiate(itemPrefab, parent, false);
-			newObject.transform.parent = null;
-			return newObject;
+			var instantiatedGameObject = Instantiate(itemPrefab, parent);
+			instantiatedGameObject.transform.localPosition = Vector3.zero;
+			return instantiatedGameObject.GetComponent<BaseItem>();
 		}
 
 		[Serializable]

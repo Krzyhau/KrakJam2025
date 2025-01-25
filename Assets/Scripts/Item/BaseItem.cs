@@ -1,0 +1,54 @@
+using MEC;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Monke.KrakJam2025
+{
+	[RequireComponent(typeof(Collider2D))]
+	public abstract class BaseItem : MonoBehaviour
+	{
+		[SerializeField]
+		private AnimationCurve _itemRouteCurve;
+
+		private float _currentTime;
+
+		protected BubbleTrigger _bubbleTrigger;
+
+		protected virtual void OnBubbleCollided() { }
+
+		public void ThrowItem(Vector3 destination, float time)
+		{
+			Timing.RunCoroutine(GetThrownRoutine(destination, time));
+		}
+
+		private IEnumerator<float> GetThrownRoutine(Vector3 destination, float time)
+		{
+			_currentTime = 0f;
+			Vector3 startPosition = transform.position;
+
+			while (_currentTime < time)
+			{
+				_currentTime += Time.deltaTime;
+				var progress = _currentTime / time;
+				transform.position = Vector3.Lerp(startPosition, destination, _itemRouteCurve.Evaluate(progress));
+				yield return Timing.WaitForOneFrame;
+			}
+
+			transform.position = destination;
+		}
+
+		private bool HasCollidedWithBubble(Collision2D collision)
+		{
+			return collision.gameObject.TryGetComponent(out _bubbleTrigger) && _bubbleTrigger.BubbleContext != null;
+		}
+
+		private void OnCollisionEnter2D(Collision2D collision)
+		{
+			if (HasCollidedWithBubble(collision))
+			{
+				OnBubbleCollided();
+			}
+		}
+	}
+}

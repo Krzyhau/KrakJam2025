@@ -3,21 +3,17 @@ using UnityEngine;
 
 namespace Monke.KrakJam2025
 {
-	[RequireComponent(typeof(Collider2D))]
-	public class CollectibleItem : MonoBehaviour
+	public class CollectibleItem : BaseItem
 	{
 		public event Action<BubbleContext> OnItemCollectedEvent;
 
 		[SerializeField]
 		private bool removeOnCollected = true;
 
-		private void OnTriggerEnter2D(Collider2D collision)
+		protected override void OnBubbleCollided()
 		{
-			if (collision.gameObject.TryGetComponent(out BubbleTrigger bubbleTrigger) && bubbleTrigger.BubbleContext != null)
-			{
-				OnItemCollectedEvent?.Invoke(bubbleTrigger.BubbleContext);
-			}
-			
+			OnItemCollectedEvent?.Invoke(_bubbleTrigger.BubbleContext);
+
 			if (removeOnCollected)
 			{
 				Destroy(gameObject);

@@ -1,5 +1,4 @@
 using MEC;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,12 +7,24 @@ namespace Monke.KrakJam2025
 	public class ThrowingCat : MonoBehaviour
 	{
 		[SerializeField]
+		private CatAnimationNotifier _catAnimationNotifier;
+
+		[Header("Throwing data")]
+		[SerializeField]
+		private float _timeToReachEndPoint = 1f;
+
+		[SerializeField]
 		private Transform _throwStartingPoint;
+
+		[SerializeField]
+		private Transform _throwDestinationPoint;
 
 		private ItemSpawningSystem itemSpawningSystem;
 		private StageParametersScriptableObject currentStageParameters;
 		private CoroutineHandle throwingShitRoutine;
 		private float currentTime = 0f;
+		private bool hasThrowEnded;
+		private BaseItem _itemToThrow;
 
 		public void UpdateNewStageParameters(StageParametersScriptableObject newStageParameters)
 		{
@@ -26,22 +37,54 @@ namespace Monke.KrakJam2025
 			throwingShitRoutine = Timing.RunCoroutine(ThrowingShitRoutine());
 		}
 
+		public void StopThrowingShit()
+		{
+			Timing.KillCoroutines(throwingShitRoutine);
+		}
+
 		private void Awake()
 		{
 			FetchComponents();
+		}
+
+		private void FetchComponents()
+		{
+			itemSpawningSystem = FindAnyObjectByType<ItemSpawningSystem>();
+		}
+
+		private void Start()
+		{
+			_catAnimationNotifier.OnThrowItemEvent += OnThrowItem;
+			_catAnimationNotifier.OnThrowEndedEvent += OnThrowEnded;
+		}
+
+		private void OnThrowItem()
+		{
+			_itemToThrow.transform.parent = null;
+			_itemToThrow.ThrowItem(_throwDestinationPoint.position, _timeToReachEndPoint);
+		}
+
+		private void OnThrowEnded()
+		{
+			hasThrowEnded = true;
 		}
 
 		private IEnumerator<float> ThrowingShitRoutine()
 		{
 			while (true)
 			{
+				hasThrowEnded = false;
 				int randomIndex = Random.Range(0, currentStageParameters.PossibleItemsToSpawn.Count);
 				var itemIdToSpawn = currentStageParameters.PossibleItemsToSpawn[randomIndex];
-				var spawnedItem = itemSpawningSystem.SpawnObject(itemIdToSpawn, _throwStartingPoint);
+				_itemToThrow = itemSpawningSystem.SpawnObject(itemIdToSpawn, _throwStartingPoint);
+				_catAnimationNotifier.InvokeThrowAnimation();
 
-				// TODO: handle throw animation
+				while (!hasThrowEnded)
+				{
+					yield return Timing.WaitForOneFrame;
+				}
 
-				var currentTime = 0f;
+				currentTime = 0f;
 				var timeRange = currentStageParameters.TimeRangeForNewItem;
 				var randomTimeToWait = Random.Range(timeRange.x, timeRange.y);
 
@@ -51,11 +94,6 @@ namespace Monke.KrakJam2025
 					yield return Timing.WaitForOneFrame;
 				}
 			}
-		}
-
-		private void FetchComponents()
-		{
-			itemSpawningSystem = FindAnyObjectByType<ItemSpawningSystem>();
 		}
 	}
 }
