@@ -17,7 +17,6 @@ namespace Monke.KrakJam2025
         {
             if (IsReady(collision, out var playerTrigger))
             {
-                Debug.Log("aa");
                 mother.AddPlayerInside(playerTrigger.PlayerBubbleContext);
                 ticker = TickerCreator.CreateNormalTime(cooldown);
                 ticker.Reset();
