@@ -20,20 +20,24 @@ namespace Monke.KrakJam2025
 		[SerializeField]
 		private PlayerBubbleContext playerContext;
 
-		public Vector2 CachedInput { get; private set; }
+		private PlayerSpawnPoint spawnPoint;
+		private PlayerSpawnPoint SpawnPoint => spawnPoint != null 
+			? spawnPoint
+			: spawnPoint = FindAnyObjectByType<PlayerSpawnPoint>();
 
-		private void OnPlayerJoined(PlayerInput playerInput)
-		{
-			Debug.Log("hej");
-			var spawnPoint = FindAnyObjectByType<PlayerSpawnPoint>();
-			rb2d.MovePosition(spawnPoint.transform.position);
-		}
+		public Vector2 CachedInput { get; private set; }
 
 		private void OnEnable()
 		{
 			var scale = visuals.localScale;
 			visuals.localScale = Vector3.zero;
 			visuals.DOScale(scale, 1f).SetEase(Ease.OutElastic);
+			GoToSpawnPoint();
+		}
+
+		private void GoToSpawnPoint()
+		{
+			rb2d.transform.position = SpawnPoint.transform.position;
 		}
 
 		private void OnMove(InputValue value)
