@@ -59,7 +59,8 @@ namespace Monke.KrakJam2025
 			OnPlayerAbsorbed?.Invoke(playerContext);
 
 			shapeManipulator.SetStretcherState(hamster, true);
-		}
+            motherBubbleContext.AudioSource.PlayOneShot(motherBubbleContext.AbsorbSound);
+        }
 
 		private void OnPlayerSplit(PlayerBubbleContext playerContext)
 		{
@@ -77,7 +78,9 @@ namespace Monke.KrakJam2025
 
 			OnPlayerSplitted?.Invoke(playerContext);
 			shapeManipulator.SetStretcherState(hamster, false);
-		}
+
+			motherBubbleContext.AudioSource.PlayOneShot(motherBubbleContext.SplitSound);
+        }
 
 		private void FixedUpdate()
 		{
