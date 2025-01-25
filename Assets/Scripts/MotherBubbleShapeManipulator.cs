@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NUnit.Framework.Internal;
 using UnityEngine;
 
 namespace Monke.KrakJam2025
@@ -183,23 +184,18 @@ namespace Monke.KrakJam2025
 
         private void RegenerateMeshes()
         {
-            foreach (var meshFilter in displayMeshes)
+            var meshFilterVertices = shapedMesh.vertices;
+
+            for (int i = 0; i < meshFilterVertices.Length; i++)
             {
-                var mesh = meshFilter.mesh;
-                mesh.MarkDynamic();
-                var meshFilterVertices = mesh.vertices;
-
-                for (int i = 0; i < meshFilterVertices.Length; i++)
-                {
-                    var vertex = meshFilterVertices[i];
-                    float horizontalAngle = Mathf.Atan2(-vertex.z, vertex.x);
-                    int vertexIndex = Mathf.RoundToInt((horizontalAngle / (Mathf.PI * 2.0f) + 0.5f) * LevelOfDetail) % LevelOfDetail;
-                    meshFilterVertices[i] = meshToUse.mesh.vertices[i] * lerpedShapeOffsets[vertexIndex];
-                    meshFilterVertices[i].y = meshToUse.mesh.vertices[i].y;
-                }
-
-                mesh.vertices = meshFilterVertices;
+                var vertex = meshFilterVertices[i];
+                float horizontalAngle = Mathf.Atan2(-vertex.z, vertex.x);
+                int vertexIndex = Mathf.RoundToInt((horizontalAngle / (Mathf.PI * 2.0f) + 0.5f) * LevelOfDetail) % LevelOfDetail;
+                meshFilterVertices[i] = meshToUse.mesh.vertices[i] * lerpedShapeOffsets[vertexIndex];
+                meshFilterVertices[i].y = meshToUse.mesh.vertices[i].y;
             }
+
+            shapedMesh.vertices = meshFilterVertices;
         }
 
         [Serializable]
