@@ -17,7 +17,15 @@ namespace Monke.KrakJam2025
 
 		private void OnItemCollected(PlayerBubbleContext playerBubbleContext)
 		{
-			playerBubbleContext.WeightSystem.AddWeight(weightValue);
+			if (weightValue > 0)
+			{
+                playerBubbleContext.WeightSystem.AddWeight(weightValue);
+            }
+			else if (weightValue < 0) 
+			{
+				playerBubbleContext.WeightSystem.RemoveWeight(Mathf.Abs(weightValue));
+			}
+
 			collectibleItem.OnItemCollectedEvent -= OnItemCollected;
 		}
 

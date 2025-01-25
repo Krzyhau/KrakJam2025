@@ -12,7 +12,7 @@ namespace Monke.KrakJam2025
 		[SerializeField]
 		private float _vortexPower = 2;
 
-		private readonly List<VortexObject> registeredObjects = new();
+		private List<VortexObject> registeredObjects = new();
 		private readonly HashSet<VortexObject> waitingToRegisterObjects = new();
 		private readonly HashSet<VortexObject> waitingToDeregisterObjects = new();
 
@@ -26,15 +26,15 @@ namespace Monke.KrakJam2025
 
 		private void FixedUpdate()
 		{
-			foreach (var vortexObject in registeredObjects)
+            registeredObjects.RemoveAll(x => waitingToDeregisterObjects.Contains(x));
+            registeredObjects.AddRange(waitingToRegisterObjects);
+            ClearWaitingLists();
+
+            foreach (var vortexObject in registeredObjects)
 			{
 				Vector2 direction = (Vector2)vortexPoint.position - vortexObject.RigidBody.position;
 				vortexObject.RigidBody.AddForce(direction.normalized * _vortexPower);
 			}
-
-			registeredObjects.Except(waitingToDeregisterObjects);
-			registeredObjects.AddRange(waitingToRegisterObjects);
-			ClearWaitingLists();
 		}
 
 		private void ClearWaitingLists()
