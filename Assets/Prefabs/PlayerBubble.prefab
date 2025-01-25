@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2355045300598350462}
   - component: {fileID: 1555054000073783684}
   - component: {fileID: 1649271456572620502}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,8 @@ GameObject:
   - component: {fileID: 3469097310709353488}
   - component: {fileID: 2562032805228744778}
   - component: {fileID: 3358876699551403178}
-  m_Layer: 0
+  - component: {fileID: 2878937025313316062}
+  m_Layer: 6
   m_Name: PlayerBubble
   m_TagString: Bouncable
   m_Icon: {fileID: 0}
@@ -295,6 +296,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb2d: {fileID: 2562032805228744778}
   registerOnStart: 1
+--- !u!58 &2878937025313316062
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6292062153589596132}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.8
 --- !u!1001 &469253086940338176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -347,6 +384,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BubbleWeightSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 6028892307382113699, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
       propertyPath: rb2d
       value: 
@@ -391,6 +432,10 @@ PrefabInstance:
     - target: {fileID: 3205170030645268214, guid: 4ba7b8b8eef0cae47aa47a93ba5c8380, type: 3}
       propertyPath: m_Name
       value: PlayerBubbleContext
+      objectReference: {fileID: 0}
+    - target: {fileID: 3205170030645268214, guid: 4ba7b8b8eef0cae47aa47a93ba5c8380, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4833514538015609774, guid: 4ba7b8b8eef0cae47aa47a93ba5c8380, type: 3}
       propertyPath: mainTransform

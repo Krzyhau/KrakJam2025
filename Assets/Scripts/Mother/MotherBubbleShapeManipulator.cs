@@ -44,7 +44,7 @@ namespace Monke.KrakJam2025
 
         private void Start()
         {
-            SetTargetSize(4f);
+            SetTargetSize(1f);
             CreateMeshes();
         }
 
