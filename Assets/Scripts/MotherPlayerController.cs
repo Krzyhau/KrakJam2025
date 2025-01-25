@@ -12,9 +12,12 @@ namespace Monke.KrakJam2025
         [SerializeField]
         private float movementMultiplier;
 
+        [SerializeField]
+        private MotherBubbleContext motherBubbleContext;
+
         public Rigidbody2D Rb2D => rb2d;
 
-        private List<PlayerController> playersInside = new();
+        private List<PlayerBubbleContext> playersInside = new();
 
         private void Subscribe(PlayerController player)
         {
@@ -26,30 +29,32 @@ namespace Monke.KrakJam2025
             player.OnPlayerSplit -= OnPlayerSplit;
         }
 
-        public void AddPlayerInside(PlayerController player)
+        public void AddPlayerInside(PlayerBubbleContext player)
         {
             if (playersInside.Contains(player))
             {
                 return;
             }
             playersInside.Add(player);
-            Subscribe(player);
+            Subscribe(player.PlayerController);
 
-            player.ChangeMovement(false);
+            motherBubbleContext.BubbleWeightSystem.AddWeight(player.BubbleWeightSystem.Weight);
+
+            player.PlayerController.ChangeMovement(false);
             player.transform.SetParent(this.Rb2D.transform, false);
             player.transform.localPosition = Vector2.zero;
         } 
 
-        private void OnPlayerSplit(PlayerController player)
+        private void OnPlayerSplit(PlayerBubbleContext player)
         {
             if (!playersInside.Contains(player))
             {
                 return;
             }
-            Unsubscribe(player);
+            Unsubscribe(player.PlayerController);
             playersInside.Remove(player);
 
-            player.ChangeMovement(true);
+            player.PlayerController.ChangeMovement(true);
             player.transform.SetParent(null);
         }
 
@@ -57,8 +62,8 @@ namespace Monke.KrakJam2025
         {
             if (playersInside != null && playersInside.Count > 0)
             {
-                float totalInputX = playersInside.Sum(x => x.CachedInput.x);
-                float totalInputY = playersInside.Sum(x => x.CachedInput.y);
+                float totalInputX = playersInside.Sum(x => x.PlayerController.CachedInput.x);
+                float totalInputY = playersInside.Sum(x => x.PlayerController.CachedInput.y);
                 Vector2 totalInput = new(totalInputX, totalInputY);
                 rb2d.AddForce(movementMultiplier * Time.fixedDeltaTime * totalInput, ForceMode2D.Impulse);
             }

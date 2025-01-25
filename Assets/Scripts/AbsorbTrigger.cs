@@ -9,8 +9,10 @@ namespace Monke.KrakJam2025
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            var player = collision.GetComponentInParent<PlayerController>();
-            mother.AddPlayerInside(player);
+            if (collision.gameObject.TryGetComponent(out PlayerTrigger playerTrigger) && playerTrigger.PlayerBubbleContext != null)
+            {
+                mother.AddPlayerInside(playerTrigger.PlayerBubbleContext);
+            }
         }
     }
 }

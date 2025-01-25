@@ -6,13 +6,16 @@ namespace Monke.KrakJam2025
 {
     public class PlayerController : MonoBehaviour
     {
-        public event Action<PlayerController> OnPlayerSplit;
+        public event Action<PlayerBubbleContext> OnPlayerSplit;
 
         [SerializeField]
         private float movementSpeed = 10f;
 
 		[SerializeField]
 		private Rigidbody2D rb2d;
+
+        [SerializeField]
+        private PlayerBubbleContext playerContext;
 
         public Rigidbody2D Rb2D => rb2d;
 		public Vector2 CachedInput { get; private set; }
@@ -41,7 +44,7 @@ namespace Monke.KrakJam2025
         private void OnSplit()
         {
             // do split deformation
-            OnPlayerSplit?.Invoke(this);
+            OnPlayerSplit?.Invoke(playerContext);
         }
     }
 }
