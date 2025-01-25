@@ -135,6 +135,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: MotherBubble
       objectReference: {fileID: 0}
+    - target: {fileID: 7426842364016582101, guid: e545c5c856df1de4aabaadb460af7776, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7426842364016582101, guid: e545c5c856df1de4aabaadb460af7776, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7426842364016582101, guid: e545c5c856df1de4aabaadb460af7776, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7426842364016582101, guid: e545c5c856df1de4aabaadb460af7776, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7426842364016582101, guid: e545c5c856df1de4aabaadb460af7776, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7426842364016582101, guid: e545c5c856df1de4aabaadb460af7776, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7426842364016582101, guid: e545c5c856df1de4aabaadb460af7776, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7426842364016582101, guid: e545c5c856df1de4aabaadb460af7776, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7426842364016582101, guid: e545c5c856df1de4aabaadb460af7776, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 8779559392400427715, guid: e545c5c856df1de4aabaadb460af7776, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.104
