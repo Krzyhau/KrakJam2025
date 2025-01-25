@@ -24,8 +24,8 @@ namespace Monke.KrakJam2025
 		public void ChangeMovement(bool isMotherNotControlling)
 		{
 			this.isMotherNotControlling = isMotherNotControlling;
-			rb2d.bodyType = isMotherNotControlling ? RigidbodyType2D.Dynamic : RigidbodyType2D.Kinematic;
-			rb2d.simulated = isMotherNotControlling;
+			//rb2d.bodyType = isMotherNotControlling ? RigidbodyType2D.Dynamic : RigidbodyType2D.Kinematic;
+			//rb2d.simulated = isMotherNotControlling;
 		}
 
 		private void OnMove(InputValue value)
@@ -44,7 +44,7 @@ namespace Monke.KrakJam2025
 				}
 				else
 				{
-					//rb2d.AddForce(movementSpeed * Time.fixedDeltaTime * CachedInput, ForceMode2D.Impulse);
+					rb2d.AddForce(movementSpeed * Time.fixedDeltaTime * CachedInput, ForceMode2D.Impulse);
 				}
 			}
 		}

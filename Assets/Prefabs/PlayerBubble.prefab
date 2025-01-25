@@ -316,7 +316,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -570,6 +570,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4833514538015609774, guid: 4ba7b8b8eef0cae47aa47a93ba5c8380, type: 3}
+      propertyPath: _collider2d
+      value: 
+      objectReference: {fileID: 2878937025313316062}
     - target: {fileID: 4833514538015609774, guid: 4ba7b8b8eef0cae47aa47a93ba5c8380, type: 3}
       propertyPath: mainTransform
       value: 
