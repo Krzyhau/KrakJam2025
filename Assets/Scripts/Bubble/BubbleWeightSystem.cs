@@ -57,7 +57,7 @@ namespace Monke.KrakJam2025
 		{
 			if (shapeManipulator != null)
 			{
-				shapeManipulator.SetTargetSize(weightToScaleCurve.Evaluate(weight));
+				shapeManipulator.TargetSize = weightToScaleCurve.Evaluate(weight);
 			}
 			else
 			{
