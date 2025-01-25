@@ -3,7 +3,17 @@ guid: fe91b0f010c654f488b10296279f4d33
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MR_SoapBottle01
+    second: {fileID: 2100000, guid: bc4b833b6a92ff14cab6b479527d3c84, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MR_SoapBottle04
+    second: {fileID: 2100000, guid: bc4b833b6a92ff14cab6b479527d3c84, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
