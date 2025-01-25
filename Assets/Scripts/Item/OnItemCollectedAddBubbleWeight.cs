@@ -8,6 +8,15 @@ namespace Monke.KrakJam2025
 		private CollectibleItem collectibleItem;
 
 		[SerializeField]
+		private AudioSource audioSource;
+
+		[SerializeField]
+		private AudioClip absorbSound;
+
+		[SerializeField]
+		private AudioClip damageSound;
+
+		[SerializeField]
 		private float weightValue;
 
 		private void Start()
@@ -24,9 +33,11 @@ namespace Monke.KrakJam2025
 			else if (weightValue < 0) 
 			{
 				bubbleContext.WeightSystem.RemoveWeight(Mathf.Abs(weightValue));
+				audioSource.PlayOneShot(damageSound);
 			}
 
 			collectibleItem.OnItemCollectedEvent -= OnItemCollected;
+			audioSource.PlayOneShot(absorbSound);
 		}
 
 		private void OnDestroy()

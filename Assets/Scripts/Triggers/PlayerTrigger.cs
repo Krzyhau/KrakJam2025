@@ -13,6 +13,12 @@ namespace Monke.KrakJam2025
 		[SerializeField]
 		private float bounceForce;
 
+		[SerializeField]
+		private AudioSource audioSource;
+
+		[SerializeField]
+		private AudioClip bounceSound;
+
 		public PlayerBubbleContext PlayerBubbleContext => _playerBubbleContext;
 
 		private void OnTriggerEnter2D(Collider2D collision)
@@ -21,6 +27,7 @@ namespace Monke.KrakJam2025
 			{
 				var bounceDirection = this.transform.position - collision.gameObject.transform.position;
 				rb2d.AddForce(bounceDirection.normalized * bounceForce, ForceMode2D.Impulse);
+				audioSource.PlayOneShot(bounceSound);
 			}
 		}
 	}
