@@ -38,6 +38,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _LineWaveFlowSpeed: 2
     - _LineWaveRandomness: 0.6
     - _LineWaveScale: 0.2
     - _LineWaveStep: 0.02
