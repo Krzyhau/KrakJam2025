@@ -214,8 +214,9 @@ namespace Monke.KrakJam2025
                 return;
             }
 
-            bubbleShapeOwner.localScale = Vector3.one * TargetSize;
-            transform.localScale = Vector3.one / TargetSize;
+            Vector3 newScale = Vector3.right + Vector3.up;
+            bubbleShapeOwner.localScale = newScale * TargetSize;
+            transform.localScale = newScale / TargetSize;
         }
 
         [Serializable]

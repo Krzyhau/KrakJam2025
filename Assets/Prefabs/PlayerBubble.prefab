@@ -654,6 +654,54 @@ PrefabInstance:
       propertyPath: bubbleMainTransform
       value: 
       objectReference: {fileID: 6261324833895372863}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToMassCurve.m_Curve.Array.data[0].value
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToMassCurve.m_Curve.Array.data[1].value
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToScaleCurve.m_Curve.Array.data[0].value
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToScaleCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToMassCurve.m_Curve.Array.data[0].inSlope
+      value: 0.017
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToMassCurve.m_Curve.Array.data[1].inSlope
+      value: 0.017
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToMassCurve.m_Curve.Array.data[0].outSlope
+      value: 0.017
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToMassCurve.m_Curve.Array.data[1].outSlope
+      value: 0.017
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToScaleCurve.m_Curve.Array.data[0].inSlope
+      value: 0.0069999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToScaleCurve.m_Curve.Array.data[1].inSlope
+      value: 0.0069999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToScaleCurve.m_Curve.Array.data[0].outSlope
+      value: 0.0069999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToScaleCurve.m_Curve.Array.data[1].outSlope
+      value: 0.0069999998
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -22,6 +22,13 @@ namespace Monke.KrakJam2025
 
 		public Vector2 CachedInput { get; private set; }
 
+		private void OnPlayerJoined(PlayerInput playerInput)
+		{
+			Debug.Log("hej");
+			var spawnPoint = FindAnyObjectByType<PlayerSpawnPoint>();
+			rb2d.MovePosition(spawnPoint.transform.position);
+		}
+
 		private void OnEnable()
 		{
 			var scale = visuals.localScale;
