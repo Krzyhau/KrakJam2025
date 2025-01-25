@@ -15,12 +15,20 @@ namespace Monke.KrakJam2025
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (ticker.Done && collision.gameObject.TryGetComponent(out PlayerTrigger playerTrigger) && playerTrigger.PlayerBubbleContext != null)
+            if (IsReady(collision, out var playerTrigger))
             {
+                Debug.Log("aa");
                 mother.AddPlayerInside(playerTrigger.PlayerBubbleContext);
                 ticker = TickerCreator.CreateNormalTime(cooldown);
                 ticker.Reset();
             }
+        }
+
+        private bool IsReady(Collider2D collider, out PlayerTrigger playerTrigger)
+        {
+            playerTrigger = null;
+            var state = ticker.Done && collider.gameObject.TryGetComponent(out playerTrigger) && playerTrigger.PlayerBubbleContext != null;
+            return state;
         }
     }
 }

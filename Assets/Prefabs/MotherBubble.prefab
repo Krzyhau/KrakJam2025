@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mother: {fileID: 1613516353984695191}
-  cooldown: 2
+  cooldown: 1
 --- !u!58 &9219816701653886723
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -306,6 +306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5842360210747705820}
+  - component: {fileID: 5322083544368889680}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -328,6 +329,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8779559392400427715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5322083544368889680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4999637336398859718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3340430e42a152d4ebdcf528bd3b2228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerBubbleContext: {fileID: 0}
+  rb2d: {fileID: 0}
+  bounceForce: 0
 --- !u!1001 &3397979494361897818
 PrefabInstance:
   m_ObjectHideFlags: 0
