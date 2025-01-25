@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Monke.KrakJam2025
@@ -6,7 +7,16 @@ namespace Monke.KrakJam2025
 	public class ItemSpawningSystem : MonoBehaviour
 	{
 		[SerializeField]
-		private ItemIdToPrefab _itemIdToPrefab;
+		private List<ItemIdToPrefab> _itemsIdToPrefab;
+
+		public GameObject SpawnObject(ItemIdScriptableObject itemId, Transform parent)
+		{
+			var itemIdToPrefab = _itemsIdToPrefab.Find(x => x.ItemId == itemId);
+			var itemPrefab = itemIdToPrefab.ItemPrefab;
+			var newObject = Instantiate(itemPrefab, parent, false);
+			newObject.transform.parent = null;
+			return newObject;
+		}
 
 		[Serializable]
 		private struct ItemIdToPrefab

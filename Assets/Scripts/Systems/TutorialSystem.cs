@@ -12,7 +12,7 @@ namespace Monke.KrakJam2025
 
 		private async Task WaitForTutorialCompletion()
 		{
-
+			await Task.Yield();
 		}
 	}
 }
