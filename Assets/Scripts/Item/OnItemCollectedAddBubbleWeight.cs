@@ -15,15 +15,15 @@ namespace Monke.KrakJam2025
 			collectibleItem.OnItemCollectedEvent += OnItemCollected;
 		}
 
-		private void OnItemCollected(PlayerBubbleContext playerBubbleContext)
+		private void OnItemCollected(BubbleContext bubbleContext)
 		{
 			if (weightValue > 0)
 			{
-                playerBubbleContext.WeightSystem.AddWeight(weightValue);
+                bubbleContext.WeightSystem.AddWeight(weightValue);
             }
 			else if (weightValue < 0) 
 			{
-				playerBubbleContext.WeightSystem.RemoveWeight(Mathf.Abs(weightValue));
+				bubbleContext.WeightSystem.RemoveWeight(Mathf.Abs(weightValue));
 			}
 
 			collectibleItem.OnItemCollectedEvent -= OnItemCollected;

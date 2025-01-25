@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 3418245211162917208}
   - component: {fileID: 9219816701653886723}
   m_Layer: 6
-  m_Name: AbsorbTrigger
+  m_Name: MotherTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -249,6 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9b280ffd5fb314a8d5ad7130c64c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bubbleContext: {fileID: 2028291250106182074}
   mother: {fileID: 1613516353984695191}
   cooldown: 1
 --- !u!58 &9219816701653886723

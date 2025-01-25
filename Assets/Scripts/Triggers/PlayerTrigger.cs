@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Monke.KrakJam2025
 {
-	public class PlayerTrigger : MonoBehaviour
+	public class PlayerTrigger : BubbleTrigger
 	{
 		[SerializeField]
 		private PlayerBubbleContext _playerBubbleContext;
@@ -17,7 +17,7 @@ namespace Monke.KrakJam2025
 
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
-			if (collision.gameObject.tag == "Bouncable")
+			if (collision.gameObject.CompareTag("Bouncable"))
 			{
 				var bounceDirection = this.transform.position - collision.gameObject.transform.position;
 				rb2d.AddForce(bounceDirection.normalized * bounceForce, ForceMode2D.Impulse);

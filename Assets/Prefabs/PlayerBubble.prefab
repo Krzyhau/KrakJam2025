@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5633576717088628781}
   - component: {fileID: 6022713329558691309}
   m_Layer: 6
-  m_Name: BubbleBounceTrigger
+  m_Name: PlayerTrigger
   m_TagString: Bouncable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3340430e42a152d4ebdcf528bd3b2228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bubbleContext: {fileID: 1871315692035184193}
   _playerBubbleContext: {fileID: 1871315692035184193}
   rb2d: {fileID: 2562032805228744778}
   bounceForce: 10

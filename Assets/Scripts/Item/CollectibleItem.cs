@@ -6,16 +6,16 @@ namespace Monke.KrakJam2025
 	[RequireComponent(typeof(Collider2D))]
 	public class CollectibleItem : MonoBehaviour
 	{
-		public event Action<PlayerBubbleContext> OnItemCollectedEvent;
+		public event Action<BubbleContext> OnItemCollectedEvent;
 
 		[SerializeField]
 		private bool removeOnCollected = true;
 
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
-			if (collision.gameObject.TryGetComponent(out PlayerTrigger playerTrigger) && playerTrigger.PlayerBubbleContext != null)
+			if (collision.gameObject.TryGetComponent(out BubbleTrigger bubbleTrigger) && bubbleTrigger.BubbleContext != null)
 			{
-				OnItemCollectedEvent?.Invoke(playerTrigger.PlayerBubbleContext);
+				OnItemCollectedEvent?.Invoke(bubbleTrigger.BubbleContext);
 			}
 			
 			if (removeOnCollected)
