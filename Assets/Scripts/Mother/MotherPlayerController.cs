@@ -27,6 +27,8 @@ namespace Monke.KrakJam2025
 
 		private List<PlayerBubbleContext> playersInside = new();
 
+		private const float SAFE_SPACE = 1;
+
 		private void Subscribe(PlayerController player)
 		{
 			player.OnPlayerSplit += OnPlayerSplit;
@@ -50,14 +52,13 @@ namespace Monke.KrakJam2025
 			motherBubbleContext.WeightSystem.AddWeight(playerContext.WeightSystem.Weight);
 			playerContext.WeightSystem.SetWeight(0);
 
-			playerContext.PlayerController.ChangeMovement(false);
 			playerContext.Transform.SetParent(rb2d.transform, true);
 			playerContext.Transform.localPosition = Vector2.zero;
 			playerContext.Collider2D.excludeLayers = 0;
 
 			OnPlayerAbsorbed?.Invoke(playerContext);
-            motherBubbleContext.AudioSource.PlayOneShot(motherBubbleContext.AbsorbSound);
-        }
+			motherBubbleContext.AudioSource.PlayOneShot(motherBubbleContext.AbsorbSound);
+		}
 
 		private void OnPlayerSplit(PlayerBubbleContext playerContext)
 		{
@@ -70,14 +71,18 @@ namespace Monke.KrakJam2025
 
 			motherBubbleContext.WeightSystem.RemoveWeight(playerContext.WeightSystem.Weight);
 
-			playerContext.PlayerController.ChangeMovement(true);
+			var inputDirection = playerContext.PlayerController.CachedInput != Vector2.zero
+				? (Vector3)playerContext.PlayerController.CachedInput
+				: Vector3.right;
+			var offsetFromMother =  inputDirection * (shapeManipulator.TargetSize + SAFE_SPACE);
+			playerContext.Transform.localPosition += offsetFromMother;
 			playerContext.Transform.SetParent(null);
 			playerContext.Collider2D.excludeLayers = _motherBubbleLayer;
 
 			OnPlayerSplitted?.Invoke(playerContext);
 
 			motherBubbleContext.AudioSource.PlayOneShot(motherBubbleContext.SplitSound);
-        }
+		}
 
 		private void FixedUpdate()
 		{

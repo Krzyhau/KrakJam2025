@@ -1,5 +1,5 @@
-using System;
 using DG.Tweening;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,20 +22,11 @@ namespace Monke.KrakJam2025
 
 		public Vector2 CachedInput { get; private set; }
 
-		private bool isMotherNotControlling = true;
-
-        private void OnEnable()
-        {
-            var scale = visuals.localScale;
-			visuals.localScale = Vector3.zero;
-            visuals.DOScale(scale, 1f).SetEase(Ease.OutElastic);
-        }
-
-        public void ChangeMovement(bool isMotherNotControlling)
+		private void OnEnable()
 		{
-			this.isMotherNotControlling = isMotherNotControlling;
-			//rb2d.bodyType = isMotherNotControlling ? RigidbodyType2D.Dynamic : RigidbodyType2D.Kinematic;
-			//rb2d.simulated = isMotherNotControlling;
+			var scale = visuals.localScale;
+			visuals.localScale = Vector3.zero;
+			visuals.DOScale(scale, 1f).SetEase(Ease.OutElastic);
 		}
 
 		private void OnMove(InputValue value)
@@ -47,24 +38,13 @@ namespace Monke.KrakJam2025
 		{
 			if (rb2d != null)
 			{
-				if (isMotherNotControlling)
-				{
-					rb2d.AddForce(movementSpeed * Time.fixedDeltaTime * CachedInput, ForceMode2D.Impulse);
-
-				}
-				else
-				{
-					rb2d.AddForce(movementSpeed * Time.fixedDeltaTime * CachedInput, ForceMode2D.Impulse);
-				}
+				rb2d.AddForce(movementSpeed * Time.fixedDeltaTime * CachedInput, ForceMode2D.Impulse);
 			}
 		}
 
 		private void OnSplit()
 		{
-			if (!isMotherNotControlling)
-			{
-				OnPlayerSplit?.Invoke(playerContext);
-			}
+			OnPlayerSplit?.Invoke(playerContext);
 		}
 	}
 }

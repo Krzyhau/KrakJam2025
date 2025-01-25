@@ -727,6 +727,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FartBubbles
       objectReference: {fileID: 0}
+    - target: {fileID: 5850997337680316994, guid: 819c8eedbef8f75438abd6515ea9ca19, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

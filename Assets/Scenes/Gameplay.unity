@@ -1387,17 +1387,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 41313108}
     m_Modifications:
-    - target: {fileID: 1613516353984695191, guid: e545c5c856df1de4aabaadb460af7776, type: 3}
-      propertyPath: _motherBubbleLayer.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2393149262943544106, guid: e545c5c856df1de4aabaadb460af7776, type: 3}
       propertyPath: m_Name
       value: MotherBubble
-      objectReference: {fileID: 0}
-    - target: {fileID: 6950790795830161621, guid: e545c5c856df1de4aabaadb460af7776, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8779559392400427715, guid: e545c5c856df1de4aabaadb460af7776, type: 3}
       propertyPath: m_LocalPosition.x
