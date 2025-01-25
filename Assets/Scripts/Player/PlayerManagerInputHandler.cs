@@ -1,4 +1,7 @@
+using DG.Tweening;
+using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Monke.KrakJam2025
 {
@@ -13,13 +16,15 @@ namespace Monke.KrakJam2025
         [SerializeField]
         private AudioClip playerLeft;
 
-        private void OnPlayerJoined()
+        [UsedImplicitly]
+        private void OnPlayerJoined(PlayerInput playerInput)
         {
             audioSource.PlayOneShot(playerJoined);
             // PARTICLE PLAY
         }
 
-        private void OnPlayerLeft()
+        [UsedImplicitly]
+        private void OnPlayerLeft(PlayerInput playerInput)
         {
             audioSource.PlayOneShot(playerLeft);
             // PARTICLE PLAY

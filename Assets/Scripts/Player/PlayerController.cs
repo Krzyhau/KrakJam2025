@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,8 @@ namespace Monke.KrakJam2025
 {
 	public class PlayerController : MonoBehaviour
 	{
+		[SerializeField] private Transform visuals;
+
 		public event Action<PlayerBubbleContext> OnPlayerSplit;
 
 		[SerializeField]
@@ -21,7 +24,14 @@ namespace Monke.KrakJam2025
 
 		private bool isMotherNotControlling = true;
 
-		public void ChangeMovement(bool isMotherNotControlling)
+        private void OnEnable()
+        {
+            var scale = visuals.localScale;
+			visuals.localScale = Vector3.zero;
+            visuals.DOScale(scale, 1f).SetEase(Ease.OutElastic);
+        }
+
+        public void ChangeMovement(bool isMotherNotControlling)
 		{
 			this.isMotherNotControlling = isMotherNotControlling;
 			//rb2d.bodyType = isMotherNotControlling ? RigidbodyType2D.Dynamic : RigidbodyType2D.Kinematic;
