@@ -26,7 +26,7 @@ namespace Monke.KrakJam2025
         private float[] shapeOffsets = Array.Empty<float>();
         private float[] lerpedShapeOffsets = Array.Empty<float>();
 
-        public float TargetSize { get; set; }
+        public float TargetSize { get; set; } = 1.0f;
 
         public void SetStretcherState(Transform transform, bool state)
         {
@@ -198,7 +198,7 @@ namespace Monke.KrakJam2025
                 var displacedVertexPos = originalVertex * lerpedShapeOffsets[vertexIndex];
 
                 displacedVertexPos = Vector3.ProjectOnPlane(displacedVertexPos, Vector3.up);
-                displacedVertexPos += Vector3.Project(originalVertex, Vector3.up);
+                displacedVertexPos += Vector3.Project(originalVertex, Vector3.up) * TargetSize;
 
                 meshFilterVertices[i] = displacedVertexPos;
             }
