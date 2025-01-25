@@ -52,7 +52,10 @@ namespace Monke.KrakJam2025
 
         private void Update()
         {
-            RegenerateShape();
+            if (mesh != null)
+            {
+                RegenerateShape();
+            }
         }
 
         private void RegenerateShape()

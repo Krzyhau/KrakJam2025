@@ -45,7 +45,7 @@ namespace Monke.KrakJam2025
             // motherBubbleContext.WeightSystem.AddWeight(playerContext.WeightSystem.Weight);
 
             playerContext.Input.ChangeMovement(false);
-            playerContext.Transform.SetParent(rb2d.transform, false);
+            playerContext.Transform.SetParent(rb2d.transform, true);
             playerContext.Transform.localPosition = Vector2.zero;
 
             OnPlayerAbsorbed?.Invoke(playerContext);

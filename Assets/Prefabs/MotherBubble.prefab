@@ -253,13 +253,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2358240788577968006}
     m_Modifications:
+    - target: {fileID: 303155577338577955, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1236015547112804316, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
       propertyPath: m_Name
       value: MotherBubbleMesh
       objectReference: {fileID: 0}
-    - target: {fileID: 1380871127369962278, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
-      propertyPath: m_Mesh
-      value: 
+    - target: {fileID: 2545843431586663248, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2548918937341832580, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904509598591222433, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5204328966886213263, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
       propertyPath: m_LocalScale.x
@@ -308,6 +320,14 @@ PrefabInstance:
     - target: {fileID: 5204328966886213263, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200202761441018311, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345168875835903298, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
