@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using NUnit.Framework.Internal;
 using UnityEngine;
 
 namespace Monke.KrakJam2025
@@ -21,6 +20,8 @@ namespace Monke.KrakJam2025
         readonly private List<Transform> stretchers = new();
         private float targetSize = 1f;
         private Mesh shapedMesh;
+
+        private Vector3[] cachedMeshToUseVertices;
 
         private float[] shapeVelocities = Array.Empty<float>();
         private float[] shapeOffsets = Array.Empty<float>();
@@ -67,11 +68,13 @@ namespace Monke.KrakJam2025
                 meshRenderer.material = mesh.material;
                 meshFilter.sharedMesh = shapedMesh;
 
-                meshFilter.transform.localScale = new Vector3(1, mesh.Height, 1);
                 meshFilter.transform.SetParent(transform, false);
+                meshFilter.transform.localScale = new Vector3(1f, mesh.Height, 1f);
 
                 displayMeshes.Add(meshFilter);
             }
+
+            cachedMeshToUseVertices = meshToUse.mesh.vertices;
             meshToUse.gameObject.SetActive(false);
         }
 
@@ -93,8 +96,7 @@ namespace Monke.KrakJam2025
         private Vector3 GetStretcherLocalPoint(Transform stretcher)
         {
             Vector3 stretcherLocalPoint = transform.InverseTransformPoint(stretcher.position);
-            stretcherLocalPoint.y = 0.0f;
-            return stretcherLocalPoint;
+            return Vector3.ProjectOnPlane(stretcherLocalPoint, Vector3.up);
         }
 
         private void EnsureCorrectVerticesCount()
@@ -133,7 +135,7 @@ namespace Monke.KrakJam2025
             Vector3 stretcherLocalPoint = GetStretcherLocalPoint(stretcher);
             Vector3 stretcherToVertexDelta = vertexPoint - stretcherLocalPoint;
 
-            bool isInside = stretcherLocalPoint.magnitude <= targetSize;
+            bool isInside = stretcherLocalPoint.magnitude <= 1f;
             var stretchParams = isInside ? insideStretch : outsideStretch;
             var stretchMultiplier = isInside ? 1.0f : -1.0f;
 
@@ -177,6 +179,13 @@ namespace Monke.KrakJam2025
                 shapeVelocities[i] += (shapeOffsets[i] - lerpedShapeOffsets[i]) * easingAcceleration * Time.deltaTime;
                 shapeVelocities[i] *= Mathf.Max(0.0f, 1.0f - easingDampening * Time.deltaTime);
                 lerpedShapeOffsets[i] += shapeVelocities[i] * Time.deltaTime;
+
+                const float minDistance = 0.01f;
+                if(lerpedShapeOffsets[i] < minDistance)
+                {
+                    lerpedShapeOffsets[i] = minDistance;
+                    shapeVelocities[i] = minDistance;
+                }
             }
         }
 
@@ -189,8 +198,13 @@ namespace Monke.KrakJam2025
                 var vertex = meshFilterVertices[i];
                 float horizontalAngle = Mathf.Atan2(-vertex.z, vertex.x);
                 int vertexIndex = Mathf.RoundToInt((horizontalAngle / (Mathf.PI * 2.0f) + 0.5f) * LevelOfDetail) % LevelOfDetail;
-                meshFilterVertices[i] = meshToUse.sharedMesh.vertices[i] * lerpedShapeOffsets[vertexIndex] / targetSize;
-                meshFilterVertices[i].y = meshToUse.sharedMesh.vertices[i].y;
+                var originalVertex = cachedMeshToUseVertices[i];
+                var displacedVertexPos = originalVertex * lerpedShapeOffsets[vertexIndex];
+
+                displacedVertexPos = Vector3.ProjectOnPlane(displacedVertexPos, Vector3.up);
+                displacedVertexPos += Vector3.Project(originalVertex, Vector3.up);
+
+                meshFilterVertices[i] = displacedVertexPos;
             }
 
             shapedMesh.vertices = meshFilterVertices;
@@ -205,8 +219,9 @@ namespace Monke.KrakJam2025
             }
 
             bubbleShapeOwner.localScale = new Vector3(targetSize, targetSize, targetSize);
+            transform.localScale = new Vector3(1f / targetSize, 1f / targetSize, 1f / targetSize);
 
-            for(int i = 0; i < lerpedShapeOffsets.Length; i++)
+            for (int i = 0; i < lerpedShapeOffsets.Length; i++)
             {
                 lerpedShapeOffsets[i] *= currentSize / targetSize;
             }

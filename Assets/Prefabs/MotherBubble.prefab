@@ -229,7 +229,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!68 &6803568648265639762
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -508,6 +508,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9101263394826759277, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
       propertyPath: meshesData.Array.data[0].Height
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 9101263394826759277, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
+      propertyPath: meshesData.Array.data[1].Height
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9101263394826759277, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
+      propertyPath: meshesData.Array.data[2].Height
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 9101263394826759277, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
+      propertyPath: meshesData.Array.data[3].Height
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9101263394826759277, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
