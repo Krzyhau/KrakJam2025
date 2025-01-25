@@ -834,10 +834,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MotherBubbleMesh
       objectReference: {fileID: 0}
-    - target: {fileID: 1355972376182226630, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: d29d9e82da124cd4ba772d5f5c573500, type: 2}
     - target: {fileID: 1380871127369962278, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -881,10 +877,6 @@ PrefabInstance:
     - target: {fileID: 5204328966886213263, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9101263394826759277, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
-      propertyPath: levelOfDetail
-      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 9101263394826759277, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
       propertyPath: 'stretchers.Array.data[0]'
