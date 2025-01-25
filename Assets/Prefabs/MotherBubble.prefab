@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 2358240788577968006}
   - component: {fileID: 2279911089832965024}
   - component: {fileID: 473542860179020288}
+  - component: {fileID: 8906490002359024414}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -245,6 +246,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8906490002359024414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4952312982915295333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 053513e1ca77b544e9b3d4ad4511d4f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb2d: {fileID: 473542860179020288}
+  registerOnStart: 1
 --- !u!1001 &3611295964567989584
 PrefabInstance:
   m_ObjectHideFlags: 0

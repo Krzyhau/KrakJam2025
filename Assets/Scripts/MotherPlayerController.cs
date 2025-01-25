@@ -41,7 +41,6 @@ namespace Monke.KrakJam2025
             playersInside.Add(playerContext);
             Subscribe(playerContext.Input);
 
-            Debug.Log(playerContext.WeightSystem.Weight);
             // motherBubbleContext.WeightSystem.AddWeight(playerContext.WeightSystem.Weight);
 
             playerContext.Input.ChangeMovement(false);
