@@ -8,6 +8,7 @@ namespace Monke.KrakJam2025
 	public class PlayerController : MonoBehaviour
 	{
         public event Action<PlayerBubbleContext> OnPlayerSplit;
+		public event Action OnPlayerStart;
 
         [Header("Visuals")]
 		[SerializeField] private Transform visuals;
@@ -70,6 +71,11 @@ namespace Monke.KrakJam2025
 		private void OnSplit()
 		{
 			OnPlayerSplit?.Invoke(playerContext);
+		}
+
+		private void OnStart()
+		{
+			OnPlayerStart?.Invoke();
 		}
 	}
 }

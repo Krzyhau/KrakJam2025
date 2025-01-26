@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38bcd623198ab5d4a9a6ce4f4c66abb0, type: 3}
   m_Name: Stage_Obstacles
   m_EditorClassIdentifier: 
-  _timeRangeForNewItem: {x: 1, y: 3}
+  _timeRangeForNewItem: {x: 3, y: 5}
   _stageTime: 30
   _possibleItemsToSpawn:
   - {fileID: 11400000, guid: e5e6dc2dad892e14e887d2474b254341, type: 2}

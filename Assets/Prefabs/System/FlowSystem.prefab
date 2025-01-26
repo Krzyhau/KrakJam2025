@@ -45,7 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageFlow:
-  - {fileID: 11400000, guid: 4a41afe5b49fd99458ccbd49454e4ea6, type: 2}
-  - {fileID: 11400000, guid: d68e641d1c6acbe47abc502f1d64c983, type: 2}
-  - {fileID: 11400000, guid: d21af9af806934e4e8497d4c664f988a, type: 2}
+  - {fileID: 11400000, guid: ed3c169217dcc0e47afcf6b1ed0ad8ec, type: 2}
+  - {fileID: 11400000, guid: 288f913886192484e99347446ce98329, type: 2}
+  - {fileID: 11400000, guid: 371f903e5d9264a4abb3f062b59431ee, type: 2}
+  - {fileID: 11400000, guid: 998bfa74af7a0434d9154dfbecc626c2, type: 2}
+  - {fileID: 11400000, guid: 4e10717186c169a418b63432707b302c, type: 2}
+  - {fileID: 11400000, guid: c62c5483c4f5e9b4182eddae23975ebe, type: 2}
+  - {fileID: 11400000, guid: 1c91d147de9b27441b76338810427515, type: 2}
   _timeBetweenStages: 5
+  _timeBeforeStart: 5

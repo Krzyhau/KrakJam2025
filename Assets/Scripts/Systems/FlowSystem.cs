@@ -2,6 +2,7 @@ using MEC;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Monke.KrakJam2025
 {
@@ -18,6 +19,7 @@ namespace Monke.KrakJam2025
 		[SerializeField]
 		private float _timeBeforeStart = 5;
 
+		private PlayerInputManager _playerInputManager;
 		private int currentIndex = 0;
 		private ThrowingCat throwingCat;
 		private CoroutineHandle _stageTimerHandle;
@@ -32,10 +34,12 @@ namespace Monke.KrakJam2025
 		private void FetchComponents()
 		{
 			throwingCat = FindAnyObjectByType<ThrowingCat>();
+			_playerInputManager = FindAnyObjectByType<PlayerInputManager>();
 		}
 
 		public void StartGame()
 		{
+			_playerInputManager.DisableJoining();
 			_stageTimerHandle = Timing.RunCoroutine(StagesRoutine());
 		}
 
