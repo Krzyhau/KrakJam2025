@@ -47,7 +47,6 @@ namespace Monke.KrakJam2025
         {
             audioSource.PlayOneShot(playerLeft);
             CreateSpawnParticlesAt(playerInput.transform);
-            DestroyPlayerUi(playerInput.playerIndex);
         }
 
         private void SpawnPlayerUi(int index)
