@@ -31,7 +31,7 @@ namespace Monke.KrakJam2025
 			}
 		}
 
-		private void Register()
+		public void Register()
 		{
 			if (vortexSystem == null)
 			{
@@ -40,7 +40,7 @@ namespace Monke.KrakJam2025
 			vortexSystem.RegisterObject(this);
 		}
 
-		private void Deregister()
+		public void Deregister()
 		{
 			if (vortexSystem != null)
 			{

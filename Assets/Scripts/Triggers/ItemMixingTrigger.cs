@@ -15,6 +15,12 @@ namespace Monke.KrakJam2025
 		private Transform _orbitSource;
 
 		[SerializeField]
+		private Transform _maxLeftPoint;
+
+		[SerializeField]
+		private Transform _maxRightPoint;
+
+		[SerializeField]
 		private Vector2 _mixingTimeRange = Vector2.one;
 
 		[SerializeField]
@@ -22,6 +28,9 @@ namespace Monke.KrakJam2025
 
 		[SerializeField]
 		private float _forceStrength = 10f;
+
+		[SerializeField]
+		private float _catapultStrength = 10f;
 
 		[SerializeField]
 		private LayerMask _mixingTriggerLayerMask;
@@ -45,15 +54,7 @@ namespace Monke.KrakJam2025
 
 		private void FixedUpdate()
 		{
-			foreach (var itemToRemove in _itemsToRemove)
-			{
-				if (_itemsOnOrbit.Contains(itemToRemove))
-				{
-					_itemsOnOrbit.Remove(itemToRemove);
-				}
-			}
-
-			_itemsToRemove.Clear();
+			RemoveAndCatapultItems();
 
 			_itemsToAdd.ForEach(item => _itemsOnOrbit.Add(item));
 			_itemsToAdd.Clear();
@@ -69,6 +70,28 @@ namespace Monke.KrakJam2025
 				var sgn = directionToTarget.magnitude > _orbitRadius ? -1 : 1;
 				item.Rigidbody2D.AddForce(directionToTarget * _forceStrength * sgn);
 			}
+		}
+
+		private void RemoveAndCatapultItems()
+		{
+			foreach (var itemToRemove in _itemsToRemove)
+			{
+				if (_itemsOnOrbit.Contains(itemToRemove))
+				{
+					_itemsOnOrbit.Remove(itemToRemove);
+					float random = Random.Range(0f, 1f);
+					Vector3 randomVector = Vector3.Lerp
+						(
+						_maxLeftPoint.position - _orbitSource.position,
+						_maxRightPoint.position - _orbitSource.position,
+						random
+						);
+					itemToRemove.Rigidbody2D.AddForce(randomVector.normalized * _catapultStrength, ForceMode2D.Impulse);
+					itemToRemove.RegisterToVortex();
+				}
+			}
+
+			_itemsToRemove.Clear();
 		}
 	}
 }

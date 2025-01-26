@@ -9,6 +9,9 @@ namespace Monke.KrakJam2025
 	public abstract class BaseItem : MonoBehaviour
 	{
 		[SerializeField]
+		private VortexObject _vortexObject;
+
+		[SerializeField]
 		private AnimationCurve _itemRouteCurve;
 
 		private float _currentTime;
@@ -26,6 +29,11 @@ namespace Monke.KrakJam2025
 			: _collider2D = GetComponent<Collider2D>();
 
 		protected virtual void OnBubbleCollided() { }
+
+		public void RegisterToVortex()
+		{
+			_vortexObject.Register();
+		}
 
 		public void ThrowItem(Vector3 destination, float time)
 		{
