@@ -111,9 +111,7 @@ namespace Monke.KrakJam2025
 			_joinedPlayers.ForEach(player => player.OnPlayerStart -= OnPlayerStart);
 			seq?.Kill();
 
-			hubTab.alpha = 0;
-			catTab.alpha = 0;
-			logo.color = new(1, 1, 1, 0);
+            logo.color = new(1, 1, 1, 0);
 
 			var openSilloueteSequence = DOTween.Sequence()
 				.Insert(0, catTab.DOFade(0, fadeOutDuration / 2))
