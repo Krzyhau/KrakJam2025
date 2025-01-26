@@ -37,7 +37,7 @@ namespace Monke.KrakJam2025
 
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
-			if (collision.TryGetComponent(out BaseItem item) && !_itemsOnOrbit.Contains(item))
+			if (collision.TryGetComponent(out BaseItem item) && !_itemsOnOrbit.Contains(item) && !_itemsToAdd.Contains(item))
 			{
 				_itemsToAdd.Add(item);
 				item.Collider2D.excludeLayers = _mixingTriggerLayerMask;
