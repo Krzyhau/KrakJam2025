@@ -61,7 +61,7 @@ namespace Monke.KrakJam2025
 			while (_currentTime < time)
 			{
 				_currentTime += Time.deltaTime;
-				var progress = 1 - _currentTime / time;
+				var progress = _currentTime / time;
 				transform.position = Vector3.Lerp(startPosition, destination, _itemRouteCurve.Evaluate(progress));
 				yield return Timing.WaitForOneFrame;
 			}
