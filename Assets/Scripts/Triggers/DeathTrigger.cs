@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Monke.KrakJam2025
@@ -7,7 +6,12 @@ namespace Monke.KrakJam2025
 	{
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
-			if (IsPlayer(collision, out var playerTrigger))
+			if (IsMother(collision, out MotherTrigger motherTrigger))
+			{
+				motherTrigger.TriggerDeath();
+			}
+
+			if (IsPlayer(collision, out PlayerTrigger playerTrigger))
 			{
 				playerTrigger.PlayerBubbleContext.PlayerDeath.Death();
 			}
@@ -21,14 +25,19 @@ namespace Monke.KrakJam2025
 		private bool IsPlayer(Collider2D collider, out PlayerTrigger playerTrigger)
 		{
 			playerTrigger = null;
-			var state = collider.gameObject.TryGetComponent(out playerTrigger) && playerTrigger.PlayerBubbleContext != null;
-			return state;
+			return collider.TryGetComponent(out playerTrigger) && playerTrigger.PlayerBubbleContext != null;
 		}
 
 		private bool IsItem(Collider2D collider, out BaseItem item)
 		{
 			item = null;
-			return collider.gameObject.TryGetComponent(out item);
+			return collider.TryGetComponent(out item);
+		}
+
+		private bool IsMother(Collider2D collider, out MotherTrigger motherTrigger)
+		{
+			motherTrigger = null;
+			return collider.TryGetComponent(out motherTrigger);
 		}
 	}
 }

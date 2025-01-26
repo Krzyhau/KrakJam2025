@@ -9,9 +9,17 @@ namespace Monke.KrakJam2025
 		private MotherPlayerController mother;
 
 		[SerializeField]
+		private MotherDeathHandler motherDeathHandler;
+
+		[SerializeField]
 		private float cooldown = 2;
 
 		private Ticker ticker;
+
+		public void TriggerDeath()
+		{
+			motherDeathHandler.TriggerDeath();
+		}
 
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
