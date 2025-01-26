@@ -14,20 +14,32 @@ namespace Monke.KrakJam2025
         private AudioClip playerJoined;
 
         [SerializeField]
+        private GameObject playerJoinedParticles;
+
+        [SerializeField]
         private AudioClip playerLeft;
+
+        [SerializeField]
+        private GameObject playerLeftParticles;
 
         [UsedImplicitly]
         private void OnPlayerJoined(PlayerInput playerInput)
         {
             audioSource.PlayOneShot(playerJoined);
-            // PARTICLE PLAY
+            CreateSpawnParticlesAt(playerInput.transform);
         }
 
         [UsedImplicitly]
         private void OnPlayerLeft(PlayerInput playerInput)
         {
             audioSource.PlayOneShot(playerLeft);
-            // PARTICLE PLAY
+            CreateSpawnParticlesAt(playerInput.transform);
+        }
+
+        private void CreateSpawnParticlesAt(Transform parent)
+        {
+            var particles = Instantiate(playerJoinedParticles, parent);
+            particles.transform.localPosition = Vector3.zero;
         }
     }
 }
