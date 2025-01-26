@@ -34,10 +34,13 @@ namespace Monke.KrakJam2025
         private float prependDuration;
 
         private Sequence seq;
+        private FlowSystem flowSystem;
 
         private void Awake()
         {
             Time.timeScale = 0;
+
+            flowSystem = FindAnyObjectByType<FlowSystem>();
 
             seq = DOTween.Sequence();
 
@@ -66,6 +69,7 @@ namespace Monke.KrakJam2025
                 .Join(rightBackground.DOMoveX(1203, fadeOutDuration * 2.5f)).SetLink(this.gameObject).SetUpdate(true);
 
             Time.timeScale = 1;
+            flowSystem.StartGame();
         }
     }
 }
