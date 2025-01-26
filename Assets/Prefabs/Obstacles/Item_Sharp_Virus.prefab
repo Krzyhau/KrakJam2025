@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 194871303628869368}
   - component: {fileID: 361673961277469275}
   - component: {fileID: 4018412407699306315}
+  - component: {fileID: 9027860198768624283}
   m_Layer: 0
   m_Name: Item_Sharp_Virus
   m_TagString: Untagged
@@ -416,6 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de9ffa2460b66a4fb365efec7ed6a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _vortexObject: {fileID: 0}
   _itemRouteCurve:
     serializedVersion: 2
     m_Curve:
@@ -440,6 +442,18 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &9027860198768624283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7044616177726499408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f108530720e4ff240b03a7f4a44d0a79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2478616992692436321
 PrefabInstance:
   m_ObjectHideFlags: 0
