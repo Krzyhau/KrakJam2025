@@ -1,5 +1,6 @@
 using DG.Tweening;
 using JetBrains.Annotations;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,6 +9,9 @@ namespace Monke.KrakJam2025
 {
     public class PlayerManagerInputHandler : MonoBehaviour
     {
+        public event Action OnPlayerJoin;
+        public event Action OnPlayerExit;
+
         [SerializeField]
         private AudioSource audioSource;
 
@@ -40,6 +44,7 @@ namespace Monke.KrakJam2025
             audioSource.PlayOneShot(playerJoined);
             CreateSpawnParticlesAt(playerInput.transform);
             SpawnPlayerUi(playerInput.playerIndex);
+            OnPlayerJoin?.Invoke();
         }
 
         [UsedImplicitly]
@@ -47,6 +52,7 @@ namespace Monke.KrakJam2025
         {
             audioSource.PlayOneShot(playerLeft);
             CreateSpawnParticlesAt(playerInput.transform);
+            OnPlayerExit?.Invoke();
         }
 
         private void SpawnPlayerUi(int index)
