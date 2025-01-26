@@ -441,6 +441,28 @@
                 },
                 {
                     "name": "",
+                    "id": "1372d2fb-67b9-4ae2-9180-cab29140b531",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Split",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "df5dc35b-049c-41d7-b962-e5a904878d11",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Split",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "80f8a4c1-5877-490b-a004-f4670988775d",
                     "path": "<Keyboard>/enter",
                     "interactions": "",
