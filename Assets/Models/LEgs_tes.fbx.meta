@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Mr_Legs
+    second: {fileID: 2100000, guid: 2a154a088dfd51e49a7609b18c312a4f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: leGS
     second: {fileID: 2100000, guid: 2a154a088dfd51e49a7609b18c312a4f, type: 2}
   materials:
