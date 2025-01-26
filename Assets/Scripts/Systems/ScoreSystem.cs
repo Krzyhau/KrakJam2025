@@ -15,7 +15,7 @@ namespace Monke.KrakJam2025
 		[SerializeField]
 		private float scoreAdd = 10;
 
-        private float _currentScore = 0f;
+		private float _currentScore = 0f;
 		private Ticker ticker;
 
 		public float CooldownToScore => cooldownToScore;
@@ -33,18 +33,23 @@ namespace Monke.KrakJam2025
 			}
 		}
 
-        private void Awake()
-        {
-			ticker = TickerCreator.CreateNormalTime(cooldownToScore);
-        }
+		public void AddScore(float score)
+		{
+			CurrentScore += score;
+		}
 
-        private void Update()
-        {
-            if (ticker.Push())
+		private void Awake()
+		{
+			ticker = TickerCreator.CreateNormalTime(cooldownToScore);
+		}
+
+		private void Update()
+		{
+			if (ticker.Push())
 			{
 				CurrentScore += scoreAdd;
 				OnScoreAddedByTime?.Invoke(CurrentScore);
-            }
-        }
-    }
+			}
+		}
+	}
 }

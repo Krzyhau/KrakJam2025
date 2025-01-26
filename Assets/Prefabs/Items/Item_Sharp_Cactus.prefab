@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 4018412407699306315}
   - component: {fileID: 9027860198768624283}
   m_Layer: 0
-  m_Name: Item_Sharp_Virus
+  m_Name: Item_Sharp_Cactus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -33.225212, y: -1.738837, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6739538914213751618}
@@ -131,7 +131,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0ede9c55be5814b4ca7fe658fd064752, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f4683dbb222d2c4a872b7a65ce6f14a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -204,7 +204,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 4
+  m_Radius: 2.1
 --- !u!58 &1835326104067888141
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -240,7 +240,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 4
+  m_Radius: 2.1
 --- !u!114 &4018412407699306315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,6 +278,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _orbitCatapultStrength: 8
 --- !u!114 &9027860198768624283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,15 +302,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4682670874103181075, guid: e6831da5171ebd14da7f7ba7ea8da710, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.17
+      value: 0.79
       objectReference: {fileID: 0}
     - target: {fileID: 4682670874103181075, guid: e6831da5171ebd14da7f7ba7ea8da710, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.17
+      value: 0.79
       objectReference: {fileID: 0}
     - target: {fileID: 4682670874103181075, guid: e6831da5171ebd14da7f7ba7ea8da710, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.17
+      value: 0.79
       objectReference: {fileID: 0}
     - target: {fileID: 4682670874103181075, guid: e6831da5171ebd14da7f7ba7ea8da710, type: 3}
       propertyPath: m_LocalPosition.x
@@ -379,15 +380,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2188106962302711180, guid: 631d8ce04250c9647b39f95233f77534, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.28
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 2188106962302711180, guid: 631d8ce04250c9647b39f95233f77534, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.28
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 2188106962302711180, guid: 631d8ce04250c9647b39f95233f77534, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.28
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 2188106962302711180, guid: 631d8ce04250c9647b39f95233f77534, type: 3}
       propertyPath: m_LocalPosition.x

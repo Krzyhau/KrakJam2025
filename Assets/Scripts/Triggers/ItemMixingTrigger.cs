@@ -30,9 +30,6 @@ namespace Monke.KrakJam2025
 		private float _forceStrength = 10f;
 
 		[SerializeField]
-		private float _catapultStrength = 10f;
-
-		[SerializeField]
 		private LayerMask _mixingTriggerLayerMask;
 
 		private void OnTriggerEnter2D(Collider2D collision)
@@ -86,7 +83,8 @@ namespace Monke.KrakJam2025
 						_maxRightPoint.position - _orbitSource.position,
 						random
 						);
-					itemToRemove.Rigidbody2D.AddForce(randomVector.normalized * _catapultStrength, ForceMode2D.Impulse);
+					itemToRemove.Rigidbody2D.AddForce(
+						randomVector.normalized * itemToRemove.CatapultStrength, ForceMode2D.Impulse);
 					itemToRemove.RegisterToVortex();
 				}
 			}

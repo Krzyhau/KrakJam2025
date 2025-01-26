@@ -159,6 +159,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _orbitCatapultStrength: 8
+  _damage: 40
 --- !u!114 &8281606013895435890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,15 +303,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2188106962302711180, guid: 631d8ce04250c9647b39f95233f77534, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.7
+      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: 2188106962302711180, guid: 631d8ce04250c9647b39f95233f77534, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7
+      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: 2188106962302711180, guid: 631d8ce04250c9647b39f95233f77534, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.7
+      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: 2188106962302711180, guid: 631d8ce04250c9647b39f95233f77534, type: 3}
       propertyPath: m_LocalPosition.x
@@ -379,15 +381,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4682670874103181075, guid: e6831da5171ebd14da7f7ba7ea8da710, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.77
+      value: 0.49000004
       objectReference: {fileID: 0}
     - target: {fileID: 4682670874103181075, guid: e6831da5171ebd14da7f7ba7ea8da710, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.77
+      value: 0.49000004
       objectReference: {fileID: 0}
     - target: {fileID: 4682670874103181075, guid: e6831da5171ebd14da7f7ba7ea8da710, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.77
+      value: 0.49000004
       objectReference: {fileID: 0}
     - target: {fileID: 4682670874103181075, guid: e6831da5171ebd14da7f7ba7ea8da710, type: 3}
       propertyPath: m_LocalPosition.x
