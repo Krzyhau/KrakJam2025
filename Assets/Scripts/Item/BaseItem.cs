@@ -35,6 +35,8 @@ namespace Monke.KrakJam2025
 
 		protected virtual void OnBubbleCollided() { }
 
+		protected virtual void OnThrowEnded() { }
+
 		public void RegisterToVortex()
 		{
 			_vortexObject.Register();
@@ -53,12 +55,13 @@ namespace Monke.KrakJam2025
 			while (_currentTime < time)
 			{
 				_currentTime += Time.deltaTime;
-				var progress = _currentTime / time;
+				var progress = 1 - _currentTime / time;
 				transform.position = Vector3.Lerp(startPosition, destination, _itemRouteCurve.Evaluate(progress));
 				yield return Timing.WaitForOneFrame;
 			}
 
 			transform.position = destination;
+			OnThrowEnded();
 		}
 
 		private bool HasCollidedWithBubble(Collider2D collider)
