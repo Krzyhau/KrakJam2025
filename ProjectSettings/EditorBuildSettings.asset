@@ -6,11 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Gameplay.unity
-    guid: 4fde5a4c3b184d84693ada0ab3143f27
-  - enabled: 1
-    path: Assets/Scenes/POV.unity
-    guid: 47475773ed74e834ba0bdd8d9e2bcdcf
+    path: Assets/Scenes/DemoLevel.unity
+    guid: 7a20434ef0c561247942c6f681a17952
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
