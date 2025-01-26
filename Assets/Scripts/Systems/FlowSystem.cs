@@ -48,10 +48,10 @@ namespace Monke.KrakJam2025
 
 		private IEnumerator<float> StagesRoutine()
 		{
+			yield return Timing.WaitForSeconds(_timeBeforeStart);
+
 			throwingCat.UpdateNewStageParameters(CurrentStage);
 			throwingCat.StartThrowingShit();
-
-			yield return Timing.WaitForSeconds(_timeBeforeStart);
 
 			while (true)
 			{

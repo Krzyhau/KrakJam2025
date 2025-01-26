@@ -53,4 +53,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c62c5483c4f5e9b4182eddae23975ebe, type: 2}
   - {fileID: 11400000, guid: 1c91d147de9b27441b76338810427515, type: 2}
   _timeBetweenStages: 5
-  _timeBeforeStart: 5
+  _timeBeforeStart: 10
