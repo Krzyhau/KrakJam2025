@@ -189,8 +189,8 @@ GameObject:
   - component: {fileID: 4618644593064249940}
   - component: {fileID: 9080496869908752247}
   - component: {fileID: -6053084696270389024}
-  - component: {fileID: 6265085680953583196}
-  - component: {fileID: 2704038885563163618}
+  - component: {fileID: 7904900489402883375}
+  - component: {fileID: 8281898901666342190}
   m_Layer: 0
   m_Name: Item_Obstacle_Sponge
   m_TagString: Bouncable
@@ -353,8 +353,8 @@ MonoBehaviour:
   thrownSound: {fileID: 0}
   _orbitCatapultStrength: 8
   _bounceForce: 5
---- !u!60 &6265085680953583196
-PolygonCollider2D:
+--- !u!61 &7904900489402883375
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -387,7 +387,7 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.052119493, y: -0.037226856}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -397,17 +397,10 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.11895853, y: -1.3272461}
-      - {x: -1.6180544, y: -0.72982574}
-      - {x: -1.5825588, y: 0.16746777}
-      - {x: 0.03754042, y: 1.2388288}
-      - {x: 1.3889922, y: 0.8873794}
-      - {x: 1.4880257, y: -0.16893077}
-  m_UseDelaunayMesh: 0
---- !u!60 &2704038885563163618
-PolygonCollider2D:
+  m_Size: {x: 3.258655, y: 2.603456}
+  m_EdgeRadius: 0
+--- !u!61 &8281898901666342190
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -440,7 +433,7 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.052119493, y: -0.037226856}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -450,15 +443,8 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.11895853, y: -1.3272461}
-      - {x: -1.6180544, y: -0.72982574}
-      - {x: -1.5825588, y: 0.16746777}
-      - {x: 0.03754042, y: 1.2388288}
-      - {x: 1.3889922, y: 0.8873794}
-      - {x: 1.4880257, y: -0.16893077}
-  m_UseDelaunayMesh: 0
+  m_Size: {x: 3.258655, y: 2.603456}
+  m_EdgeRadius: 0
 --- !u!1001 &2267647089354843950
 PrefabInstance:
   m_ObjectHideFlags: 0

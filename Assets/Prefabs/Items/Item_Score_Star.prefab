@@ -79,7 +79,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -33.225212, y: -1.738837, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6739538914213751618}
@@ -204,7 +204,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 4
+  m_Radius: 1.02
 --- !u!58 &1835326104067888141
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -240,7 +240,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 4
+  m_Radius: 1.02
 --- !u!114 &9027860198768624283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,6 +291,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _audioSource: {fileID: 0}
+  thrownSound: {fileID: 0}
   _orbitCatapultStrength: 10
   _scorePoints: 30
 --- !u!1001 &449845471121175852
