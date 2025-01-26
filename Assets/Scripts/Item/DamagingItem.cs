@@ -4,11 +4,17 @@ namespace Monke.KrakJam2025
 {
 	public class DamagingItem : BaseItem
 	{
-		public event Action<BubbleContext> OnSharpTouchedBubble;
-
 		protected override void OnBubbleCollided()
 		{
-			OnSharpTouchedBubble?.Invoke(_bubbleTrigger.BubbleContext);
+			if (_bubbleTrigger is PlayerTrigger playerTrigger)
+			{
+				playerTrigger.PlayerBubbleContext.PlayerDeath.Death();
+			}
+
+			if (_bubbleTrigger is MotherTrigger motherTrigger)
+			{
+				motherTrigger.TriggerDeath();
+			}
 		}
 	}
 }

@@ -15,4 +15,4 @@ MonoBehaviour:
   _timeRangeForNewItem: {x: 8, y: 11}
   _stageTime: 60
   _possibleItemsToSpawn:
-  - {fileID: 11400000, guid: e5e6dc2dad892e14e887d2474b254341, type: 2}
+  - {fileID: 11400000, guid: 36f1f77494c9df842962fd0eb1ba9e9b, type: 2}
