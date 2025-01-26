@@ -51,7 +51,7 @@ Material:
     - _ShoreNoiseScale: 1.5
     - _Smoothness: 1
     m_Colors:
-    - _LineWaveColor: {r: 0.45094335, g: 0.76468986, b: 1, a: 1}
+    - _LineWaveColor: {r: 0.60188675, g: 0.90041256, b: 1, a: 1}
     - _ShoreColor: {r: 1, g: 1, b: 1, a: 1}
     - _WaterColor: {r: 0.28627455, g: 0.7687529, b: 1, a: 1}
   m_BuildTextureStacks: []
