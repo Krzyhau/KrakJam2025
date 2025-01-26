@@ -44,6 +44,7 @@ namespace Monke.KrakJam2025
             audioSource.PlayOneShot(playerJoined);
             CreateSpawnParticlesAt(playerInput.transform);
             SpawnPlayerUi(playerInput.playerIndex);
+            playerInput.GetComponent<PlayerController>().SetPlayerColor(colorForEachPlayerIndex[playerInput.playerIndex]);
             OnPlayerJoin?.Invoke();
         }
 
