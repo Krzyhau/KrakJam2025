@@ -30,6 +30,8 @@ namespace Monke.KrakJam2025
 		private void OnEnable()
 		{
 			var scale = visuals.localScale;
+			var bubbleShapeManipulator = FindAnyObjectByType<MotherBubbleShapeManipulator>();
+			bubbleShapeManipulator.SetStretcherState(transform, true);
 			visuals.localScale = Vector3.zero;
 			visuals.DOScale(scale, 1f).SetEase(Ease.OutElastic);
 			GoToSpawnPoint();
