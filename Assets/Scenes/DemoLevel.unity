@@ -9062,6 +9062,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panel_HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 3438779507947168700, guid: e99df290c88bda54687387743513b0ed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5262270748878326376, guid: e99df290c88bda54687387743513b0ed, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
