@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7145572136798963088}
   - component: {fileID: 5110992111258592908}
   - component: {fileID: 1578534621969097575}
+  - component: {fileID: 6586438806778372456}
   m_Layer: 5
   m_Name: Player_Bar
   m_TagString: Untagged
@@ -92,6 +93,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
+--- !u!114 &6586438806778372456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2512981111669732615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b64c9299a49574e98a0f8af9df6869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundFill: {fileID: 5821334043368005675}
+  playerText: {fileID: 3339062619219211217}
+  playerTextDuplicate: {fileID: 1746408968139532292}
 --- !u!1 &2927308695384165190
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,7 +439,7 @@ GameObject:
   - component: {fileID: 5821334043368005675}
   - component: {fileID: 6597778734698312120}
   m_Layer: 5
-  m_Name: Image
+  m_Name: BackgroundFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

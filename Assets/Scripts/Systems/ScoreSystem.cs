@@ -1,3 +1,4 @@
+using Rubin;
 using System;
 using UnityEngine;
 
@@ -6,8 +7,18 @@ namespace Monke.KrakJam2025
 	public class ScoreSystem : MonoBehaviour
 	{
 		public event Action<float> OnScoreUpdated;
+		public event Action<float> OnScoreAddedByTime;
 
-		private float _currentScore = 0f;
+		[SerializeField]
+		private float cooldownToScore = 10;
+
+		[SerializeField]
+		private float scoreAdd = 10;
+
+        private float _currentScore = 0f;
+		private Ticker ticker;
+
+		public float CooldownToScore => cooldownToScore;
 
 		public float CurrentScore
 		{
@@ -21,5 +32,19 @@ namespace Monke.KrakJam2025
 				}
 			}
 		}
-	}
+
+        private void Awake()
+        {
+			ticker = TickerCreator.CreateNormalTime(cooldownToScore);
+        }
+
+        private void Update()
+        {
+            if (ticker.Push())
+			{
+				CurrentScore += scoreAdd;
+				OnScoreAddedByTime?.Invoke(CurrentScore);
+            }
+        }
+    }
 }

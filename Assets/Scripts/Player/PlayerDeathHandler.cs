@@ -1,5 +1,6 @@
 using MEC;
 using Rubin;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,9 @@ namespace Monke.KrakJam2025
 {
     public class PlayerDeathHandler : MonoBehaviour
     {
+        public event Action OnDeathStarted;
+        public event Action OnPlayerRespawned;
+
         [SerializeField]
         private float cooldownAfterDying;
 
@@ -16,9 +20,12 @@ namespace Monke.KrakJam2025
 
         private CoroutineHandle coroutineHandle;
 
+        public float CooldownAfterDying => cooldownAfterDying;
+
         public void Death()
         {
             context.PlayerController.gameObject.SetActive(false);
+            OnDeathStarted?.Invoke();
 
             Timing.KillCoroutines(coroutineHandle);
             coroutineHandle = Timing.RunCoroutine(WaitForCooldown());
@@ -29,6 +36,7 @@ namespace Monke.KrakJam2025
             yield return Timing.WaitForSeconds(cooldownAfterDying);
             context.PlayerController.GoToSpawnPoint();
             context.PlayerController.gameObject.SetActive(true);
+            OnPlayerRespawned?.Invoke();
         }
     }
 }
