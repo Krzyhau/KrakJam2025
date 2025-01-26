@@ -26,7 +26,7 @@ namespace Monke.KrakJam2025
 
 		private List<PlayerBubbleContext> playersInside = new();
 
-		private const float SAFE_SPACE = 1;
+		private const float SAFE_SPACE = 0.5f;
 
 		private void Subscribe(PlayerController player)
 		{
@@ -74,7 +74,7 @@ namespace Monke.KrakJam2025
 				? (Vector3)playerContext.PlayerController.CachedInput
 				: playerContext.Transform.localPosition.normalized;
 
-            var offsetFromMother = inputDirection * (shapeManipulator.TargetSize + playerContext.Transform.localScale.x * 0.8f);
+            var offsetFromMother = inputDirection * (shapeManipulator.TargetSize + playerContext.Transform.localScale.x * 0.8f + SAFE_SPACE);
 			playerContext.Transform.localPosition = offsetFromMother;
 			playerContext.Transform.SetParent(null);
 			playerContext.Collider2D.excludeLayers = _motherBubbleLayer;
