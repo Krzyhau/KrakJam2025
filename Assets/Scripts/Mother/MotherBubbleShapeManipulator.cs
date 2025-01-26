@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Monke.KrakJam2025
@@ -79,6 +80,7 @@ namespace Monke.KrakJam2025
 
         private void Update()
         {
+            stretchers.RemoveAll(stretcher => stretcher == null);
             RegenerateShape();
         }
 
