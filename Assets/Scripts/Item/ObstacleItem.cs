@@ -9,11 +9,8 @@ namespace Monke.KrakJam2025
 
 		protected override void OnBubbleCollided()
 		{
-			if (_bubbleTrigger.GetBubbleType() == BubbleType.Player)
-			{
-				var bounceDirection = transform.position - _bubbleTrigger.BubbleContext.Transform.position;
-				Rigidbody2D.AddForce(bounceDirection * _bounceForce, ForceMode2D.Impulse);
-			}
+			var bounceDirection = transform.position - _bubbleTrigger.BubbleContext.Transform.position;
+			Rigidbody2D.AddForce(bounceDirection * _bounceForce, ForceMode2D.Impulse);
 		}
 	}
 }
