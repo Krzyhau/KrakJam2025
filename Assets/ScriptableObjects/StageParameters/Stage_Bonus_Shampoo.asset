@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38bcd623198ab5d4a9a6ce4f4c66abb0, type: 3}
   m_Name: Stage_Bonus_Shampoo
   m_EditorClassIdentifier: 
-  _timeRangeForNewItem: {x: 2, y: 5}
-  _stageTime: 5
+  _timeRangeForNewItem: {x: 1, y: 3}
+  _stageTime: 3
   _possibleItemsToSpawn:
   - {fileID: 11400000, guid: 7d9f089d8512e3e4a9a58b626818410e, type: 2}
