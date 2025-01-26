@@ -183,7 +183,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 7418380033322031497}
-  movementMultiplier: 10
   motherBubbleContext: {fileID: 2028291250106182074}
   shapeManipulator: {fileID: 5865413560333154103}
   _motherBubbleLayer:
@@ -344,6 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 7418380033322031497}
+  speedMultiplier: 5
   registerOnStart: 1
 --- !u!1 &4536055267741538794
 GameObject:
@@ -631,12 +631,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8779559392400427715}
     - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToMassCurve.m_Curve.Array.data[0].time
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
       propertyPath: weightToMassCurve.m_Curve.Array.data[1].time
       value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
+      propertyPath: weightToMassCurve.m_Curve.Array.data[0].value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
       propertyPath: weightToMassCurve.m_Curve.Array.data[1].value
-      value: 2.5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
       propertyPath: weightToScaleCurve.m_Curve.Array.data[0].time
@@ -656,19 +664,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
       propertyPath: weightToMassCurve.m_Curve.Array.data[0].inSlope
-      value: 0.006666667
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
       propertyPath: weightToMassCurve.m_Curve.Array.data[1].inSlope
-      value: 0.006666667
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
       propertyPath: weightToMassCurve.m_Curve.Array.data[0].outSlope
-      value: 0.006666667
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
       propertyPath: weightToMassCurve.m_Curve.Array.data[1].outSlope
-      value: 0.006666667
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
       propertyPath: weightToScaleCurve.m_Curve.Array.data[0].inSlope

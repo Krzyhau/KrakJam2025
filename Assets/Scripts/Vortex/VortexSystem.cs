@@ -32,7 +32,7 @@ namespace Monke.KrakJam2025
 			foreach (var vortexObject in registeredObjects)
 			{
 				Vector2 direction = (Vector2)vortexPoint.position - vortexObject.RigidBody.position;
-				vortexObject.RigidBody.AddForce(direction.normalized * _vortexPower);
+				vortexObject.RigidBody.AddForce(_vortexPower * vortexObject.SpeedMultiplier * direction.normalized);
 			}
 		}
 

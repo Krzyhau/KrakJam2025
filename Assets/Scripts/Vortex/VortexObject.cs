@@ -8,11 +8,15 @@ namespace Monke.KrakJam2025
 		private Rigidbody2D rb2d;
 
 		[SerializeField]
+		private float speedMultiplier = 1;
+
+		[SerializeField]
 		private bool registerOnStart = true;
 
 		private VortexSystem vortexSystem;
 
 		public Rigidbody2D RigidBody => rb2d;
+		public float SpeedMultiplier => speedMultiplier;
 
 		private void Awake()
 		{
