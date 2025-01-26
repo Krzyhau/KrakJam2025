@@ -8498,7 +8498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1138381074332174486, guid: e99df290c88bda54687387743513b0ed, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.00012207031
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1138381074332174486, guid: e99df290c88bda54687387743513b0ed, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -8507,6 +8507,10 @@ PrefabInstance:
     - target: {fileID: 2704877480079210677, guid: e99df290c88bda54687387743513b0ed, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850901687714452201, guid: e99df290c88bda54687387743513b0ed, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3438779507947168700, guid: e99df290c88bda54687387743513b0ed, type: 3}
       propertyPath: m_Name
@@ -8591,6 +8595,10 @@ PrefabInstance:
     - target: {fileID: 5262270748878326376, guid: e99df290c88bda54687387743513b0ed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564253100072770362, guid: e99df290c88bda54687387743513b0ed, type: 3}
+      propertyPath: m_Alpha
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7539187952016688499, guid: e99df290c88bda54687387743513b0ed, type: 3}
       propertyPath: hubTab
