@@ -1,4 +1,5 @@
 using MEC;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ namespace Monke.KrakJam2025
 {
 	public class FlowSystem : MonoBehaviour
 	{
+		public event Action OnGameFinished;
+
 		[SerializeField]
 		private List<StageParametersScriptableObject> stageFlow;
 
@@ -65,6 +68,9 @@ namespace Monke.KrakJam2025
 		{
 			throwingCat.StopThrowingShit();
 			Timing.KillCoroutines(_stageTimerHandle);
-		}
+
+			OnGameFinished?.Invoke();
+
+        }
 	}
 }

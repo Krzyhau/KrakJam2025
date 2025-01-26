@@ -4983,6 +4983,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 301d5a5598e28e344a90214d094f5fa3, type: 3}
   m_PrefabInstance: {fileID: 1313278698}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &1379929245 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 5334968732203038723, guid: ca56373f0539c474fb66bd6f961c6a61, type: 3}
+  m_PrefabInstance: {fileID: 5107553763554987821}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1406378219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8494,10 +8499,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
-    - target: {fileID: 5658209518192978784, guid: ca56373f0539c474fb66bd6f961c6a61, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8516,30 +8517,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 53601930}
     m_Modifications:
-    - target: {fileID: 248022077759053025, guid: e99df290c88bda54687387743513b0ed, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 208
-      objectReference: {fileID: 0}
-    - target: {fileID: 740576711217060249, guid: e99df290c88bda54687387743513b0ed, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -244.68042
-      objectReference: {fileID: 0}
-    - target: {fileID: 1138381074332174486, guid: e99df290c88bda54687387743513b0ed, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1138381074332174486, guid: e99df290c88bda54687387743513b0ed, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2704877480079210677, guid: e99df290c88bda54687387743513b0ed, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 2850901687714452201, guid: e99df290c88bda54687387743513b0ed, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3438779507947168700, guid: e99df290c88bda54687387743513b0ed, type: 3}
       propertyPath: m_Name
       value: Panel_HUD
@@ -8624,38 +8601,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5564253100072770362, guid: e99df290c88bda54687387743513b0ed, type: 3}
-      propertyPath: m_Alpha
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7539187952016688499, guid: e99df290c88bda54687387743513b0ed, type: 3}
       propertyPath: hubTab
       value: 
       objectReference: {fileID: 730895685}
     - target: {fileID: 7539187952016688499, guid: e99df290c88bda54687387743513b0ed, type: 3}
-      propertyPath: fadeInDuration
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7539187952016688499, guid: e99df290c88bda54687387743513b0ed, type: 3}
-      propertyPath: fadeOutDuration
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8661185891767295301, guid: e99df290c88bda54687387743513b0ed, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 2766.612
-      objectReference: {fileID: 0}
-    - target: {fileID: 8661185891767295301, guid: e99df290c88bda54687387743513b0ed, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 1558.683
-      objectReference: {fileID: 0}
-    - target: {fileID: 8661185891767295301, guid: e99df290c88bda54687387743513b0ed, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8661185891767295301, guid: e99df290c88bda54687387743513b0ed, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -95
-      objectReference: {fileID: 0}
+      propertyPath: hudTab
+      value: 
+      objectReference: {fileID: 1379929245}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
