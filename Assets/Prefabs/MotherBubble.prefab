@@ -438,6 +438,8 @@ MonoBehaviour:
   bubbleContext: {fileID: 2028291250106182074}
   mother: {fileID: 1613516353984695191}
   motherDeathHandler: {fileID: 3697372056888397669}
+  rb2d: {fileID: 7418380033322031497}
+  bounceForce: 25
   cooldown: 1
 --- !u!58 &9219816701653886723
 CircleCollider2D:

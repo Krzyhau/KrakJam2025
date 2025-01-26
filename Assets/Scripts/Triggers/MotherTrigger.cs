@@ -1,5 +1,6 @@
 using Rubin;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace Monke.KrakJam2025
 {
@@ -10,6 +11,12 @@ namespace Monke.KrakJam2025
 
 		[SerializeField]
 		private MotherDeathHandler motherDeathHandler;
+
+		[SerializeField]
+		private Rigidbody2D rb2d;
+
+		[SerializeField]
+		private float bounceForce;
 
 		[SerializeField]
 		private float cooldown = 2;
@@ -34,13 +41,19 @@ namespace Monke.KrakJam2025
 				ticker = TickerCreator.CreateNormalTime(cooldown);
 				ticker.Reset();
 			}
+
+			if (collision.gameObject.CompareTag("Bouncable"))
+			{
+				var bounceDirection = this.transform.position - collision.gameObject.transform.position;
+				rb2d.AddForce(bounceDirection.normalized * bounceForce, ForceMode2D.Impulse);
+				// Possible audio sound?
+			}
 		}
 
 		private bool IsReady(Collider2D collider, out PlayerTrigger playerTrigger)
 		{
 			playerTrigger = null;
-			var state = ticker.Done && collider.gameObject.TryGetComponent(out playerTrigger) && playerTrigger.PlayerBubbleContext != null;
-			return state;
+			return collider.TryGetComponent(out playerTrigger) && playerTrigger.PlayerBubbleContext != null;
 		}
 	}
 }
