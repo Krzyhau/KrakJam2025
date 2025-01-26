@@ -74,7 +74,7 @@ namespace Monke.KrakJam2025
 				? (Vector3)playerContext.PlayerController.CachedInput
 				: playerContext.Transform.localPosition.normalized;
 
-            var offsetFromMother = inputDirection * (shapeManipulator.TargetSize + playerContext.Transform.localScale.x * 0.4f);
+            var offsetFromMother = inputDirection * (shapeManipulator.TargetSize + playerContext.Transform.localScale.x * 0.8f);
 			playerContext.Transform.localPosition = offsetFromMother;
 			playerContext.Transform.SetParent(null);
 			playerContext.Collider2D.excludeLayers = _motherBubbleLayer;
