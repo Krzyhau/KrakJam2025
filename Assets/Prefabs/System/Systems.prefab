@@ -474,6 +474,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6553126617467795284}
     m_Modifications:
+    - target: {fileID: -5454202574932477272, guid: 31d09b94e0f22ae4faed8a90c27d7dd0, type: 3}
+      propertyPath: _timeBeforeStart
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -5454202574932477272, guid: 31d09b94e0f22ae4faed8a90c27d7dd0, type: 3}
+      propertyPath: _timeBetweenStages
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5454202574932477272, guid: 31d09b94e0f22ae4faed8a90c27d7dd0, type: 3}
+      propertyPath: stageFlow.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -5454202574932477272, guid: 31d09b94e0f22ae4faed8a90c27d7dd0, type: 3}
+      propertyPath: 'stageFlow.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 94f020e39068d5547a6de91698c4d1d5, type: 2}
     - target: {fileID: 7273438799329365466, guid: 31d09b94e0f22ae4faed8a90c27d7dd0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

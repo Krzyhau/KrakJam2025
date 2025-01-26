@@ -8471,13 +8471,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6664342073671408742, guid: 8b26fe06ae03089459f141b2f5faf9a9, type: 3}
-      propertyPath: _timeBeforeStart
-      value: 5
+      propertyPath: stageFlow.Array.size
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6664342073671408742, guid: 8b26fe06ae03089459f141b2f5faf9a9, type: 3}
-      propertyPath: _timeBetweenStages
-      value: 2
-      objectReference: {fileID: 0}
+      propertyPath: 'stageFlow.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c62c5483c4f5e9b4182eddae23975ebe, type: 2}
+    - target: {fileID: 6664342073671408742, guid: 8b26fe06ae03089459f141b2f5faf9a9, type: 3}
+      propertyPath: 'stageFlow.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c91d147de9b27441b76338810427515, type: 2}
+    - target: {fileID: 6664342073671408742, guid: 8b26fe06ae03089459f141b2f5faf9a9, type: 3}
+      propertyPath: 'stageFlow.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 94f020e39068d5547a6de91698c4d1d5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
