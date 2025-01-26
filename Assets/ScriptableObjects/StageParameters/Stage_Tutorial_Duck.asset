@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38bcd623198ab5d4a9a6ce4f4c66abb0, type: 3}
-  m_Name: Stage I (max 2 minutes)
+  m_Name: Stage_Tutorial_Duck
   m_EditorClassIdentifier: 
-  _timeRangeForNewItem: {x: 8, y: 11}
-  _stageTime: 60
+  _timeRangeForNewItem: {x: 2, y: 6}
+  _stageTime: 15
   _possibleItemsToSpawn:
-  - {fileID: 11400000, guid: 7d9f089d8512e3e4a9a58b626818410e, type: 2}
+  - {fileID: 11400000, guid: e5e6dc2dad892e14e887d2474b254341, type: 2}

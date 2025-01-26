@@ -7,11 +7,15 @@ namespace Monke.KrakJam2025
 {
 	public class PlayerController : MonoBehaviour
 	{
+        public event Action<PlayerBubbleContext> OnPlayerSplit;
+
+        [Header("Visuals")]
 		[SerializeField] private Transform visuals;
+		[SerializeField] private ParticleSystem trailParticles;
+		[SerializeField] private MeshRenderer baseMesh;
 
-		public event Action<PlayerBubbleContext> OnPlayerSplit;
-
-		[SerializeField]
+        [Header("Properties")]
+        [SerializeField]
 		private float movementSpeed = 10f;
 
 		[SerializeField]
@@ -41,6 +45,14 @@ namespace Monke.KrakJam2025
 		{
 			rb2d.transform.position = SpawnPoint.transform.position;
 		}
+
+		public void SetPlayerColor(Color c)
+		{
+            var settings = trailParticles.main;
+            settings.startColor = c;
+
+            baseMesh.material.color = c;
+        }
 
 		private void OnMove(InputValue value)
 		{

@@ -1,7 +1,5 @@
 using MEC;
-using System;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 namespace Monke.KrakJam2025
@@ -15,6 +13,9 @@ namespace Monke.KrakJam2025
 
 		[SerializeField]
 		private float _timeBetweenStages = 5;
+
+		[SerializeField]
+		private float _timeBeforeStart = 5;
 
 		private int currentIndex = 0;
 		private ThrowingCat throwingCat;
@@ -34,13 +35,16 @@ namespace Monke.KrakJam2025
 
 		public void StartGame()
 		{
-			throwingCat.UpdateNewStageParameters(CurrentStage);
-			throwingCat.StartThrowingShit();
 			_stageTimerHandle = Timing.RunCoroutine(StagesRoutine());
 		}
 
 		private IEnumerator<float> StagesRoutine()
 		{
+			throwingCat.UpdateNewStageParameters(CurrentStage);
+			throwingCat.StartThrowingShit();
+
+			yield return Timing.WaitForSeconds(_timeBeforeStart);
+
 			while (true)
 			{
 				yield return Timing.WaitForSeconds(CurrentStage.StageTime);

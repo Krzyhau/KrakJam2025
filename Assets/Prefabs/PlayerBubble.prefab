@@ -425,6 +425,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visuals: {fileID: 7602301354186667365}
+  trailParticles: {fileID: 8549141808062817281}
+  baseMesh: {fileID: 1649271456572620502}
   movementSpeed: 40
   rb2d: {fileID: 2562032805228744778}
   playerContext: {fileID: 1871315692035184193}
@@ -864,6 +866,11 @@ PrefabInstance:
 --- !u!4 &6273929774908249917 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4719173334565213601, guid: faa11ad542db9a24d8d3299a453e0deb, type: 3}
+  m_PrefabInstance: {fileID: 1615849738796941980}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8549141808062817281 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6973826133546509981, guid: faa11ad542db9a24d8d3299a453e0deb, type: 3}
   m_PrefabInstance: {fileID: 1615849738796941980}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4227455007665117459

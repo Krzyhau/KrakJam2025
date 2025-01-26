@@ -18,12 +18,12 @@ namespace Monke.KrakJam2025
 
 		private void OnPlayerSplitted(PlayerBubbleContext obj)
 		{
-			shapeManipulator.SetStretcherState(obj.Transform, true);
+			//shapeManipulator.SetStretcherState(obj.Transform, true);
 		}
 
 		private void OnPlayerAbsorbed(PlayerBubbleContext obj)
 		{
-			shapeManipulator.SetStretcherState(obj.Transform, false);
+			//shapeManipulator.SetStretcherState(obj.Transform, false);
 		}
 
 		private void OnDestroy()
