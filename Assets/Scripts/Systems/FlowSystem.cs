@@ -30,11 +30,6 @@ namespace Monke.KrakJam2025
 			throwingCat = FindAnyObjectByType<ThrowingCat>();
 		}
 
-		private void Start()
-		{
-			StartGame();
-		}
-
 		public void StartGame()
 		{
 			throwingCat.UpdateNewStageParameters(CurrentStage);
