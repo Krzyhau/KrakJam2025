@@ -6,6 +6,7 @@ namespace Monke.KrakJam2025
 	{
 		private CameraSystem _cameraSystem;
 		private bool _updateLookAt;
+		[SerializeField] private bool reverse;
 
 		private void Awake()
 		{
@@ -21,7 +22,8 @@ namespace Monke.KrakJam2025
 		{
 			if (_updateLookAt)
 			{
-				transform.LookAt(_cameraSystem.Camera.transform, Vector3.back);
+				var lookAtDir = (_cameraSystem.Camera.transform.position - transform.position).normalized;
+                transform.rotation = Quaternion.LookRotation(lookAtDir * (reverse ? -1 : 1), Vector3.back);
 			}
 		}
 
