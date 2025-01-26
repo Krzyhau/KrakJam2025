@@ -13,6 +13,9 @@ namespace Monke.KrakJam2025
         public event Action OnPlayerExit;
 
         [SerializeField]
+        private PlayerInputManager playerInputManager;
+
+        [SerializeField]
         private AudioSource audioSource;
 
         [SerializeField]
@@ -45,8 +48,14 @@ namespace Monke.KrakJam2025
             CreateSpawnParticlesAt(playerInput.transform);
             SpawnPlayerUi(playerInput.playerIndex);
             var playerController = playerInput.GetComponent<PlayerController>();
+            playerController.OnPlayerStart += OnPlayerStart;
 			playerController.SetPlayerColor(colorForEachPlayerIndex[playerInput.playerIndex]);
             OnPlayerJoin?.Invoke(playerController);
+        }
+
+        private void OnPlayerStart()
+        {
+            playerInputManager.DisableJoining();
         }
 
         [UsedImplicitly]
