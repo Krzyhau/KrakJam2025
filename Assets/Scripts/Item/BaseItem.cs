@@ -14,6 +14,9 @@ namespace Monke.KrakJam2025
 		[SerializeField]
 		private AnimationCurve _itemRouteCurve;
 
+		[SerializeField]
+		private float _orbitCatapultStrength = 8;
+
 		private float _currentTime;
 		private Rigidbody2D _rigidbody2D;
 		private Collider2D _collider2D;
@@ -27,6 +30,8 @@ namespace Monke.KrakJam2025
 		public Collider2D Collider2D => _collider2D != null
 			? _collider2D
 			: _collider2D = GetComponent<Collider2D>();
+
+		public float CatapultStrength => _orbitCatapultStrength;
 
 		protected virtual void OnBubbleCollided() { }
 
