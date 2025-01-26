@@ -51,3 +51,9 @@ MonoBehaviour:
     _itemPrefab: {fileID: 7044616177726499408, guid: 419d726b7e0bf4140af649566ca197c7, type: 3}
   - _itemId: {fileID: 11400000, guid: 36f1f77494c9df842962fd0eb1ba9e9b, type: 2}
     _itemPrefab: {fileID: 7954705873637445305, guid: dfebf4ddda1d7da4bbccb67b4e4e5cfe, type: 3}
+  - _itemId: {fileID: 11400000, guid: 1916620f4f5777f4987fd1d544c571b9, type: 2}
+    _itemPrefab: {fileID: 3559371617582247931, guid: d746a8620d8778640a7cba297925c863, type: 3}
+  - _itemId: {fileID: 11400000, guid: 28f45a30cd4ce2847a94647a5d4efa56, type: 2}
+    _itemPrefab: {fileID: 3559371617582247931, guid: cc0d1d76f8cb245458c52a39de52cb79, type: 3}
+  - _itemId: {fileID: 11400000, guid: f6103f10ad48e1c46b631e515bc2a454, type: 2}
+    _itemPrefab: {fileID: 7044616177726499408, guid: 96a4a45128069154282375f68b9f0c4d, type: 3}
