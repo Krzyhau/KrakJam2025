@@ -50,7 +50,7 @@ namespace Monke.KrakJam2025
 
 		public void ThrowItem(Vector3 destination, float time)
 		{
-			Timing.RunCoroutine(GetThrownRoutine(destination, time));
+			Timing.RunCoroutine(GetThrownRoutine(destination, time).CancelWith(gameObject));
 		}
 
 		private IEnumerator<float> GetThrownRoutine(Vector3 destination, float time)

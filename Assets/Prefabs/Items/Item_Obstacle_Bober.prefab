@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 4618644593064249940}
-  speedMultiplier: 1
+  speedMultiplier: 2
   registerOnStart: 0
 --- !u!1 &3559371617582247931
 GameObject:
@@ -155,8 +155,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 4
-  m_LinearDamping: 1
+  m_Mass: 3
+  m_LinearDamping: 0.7
   m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}

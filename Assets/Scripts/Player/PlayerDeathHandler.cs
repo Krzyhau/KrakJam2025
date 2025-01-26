@@ -28,7 +28,7 @@ namespace Monke.KrakJam2025
             OnDeathStarted?.Invoke();
 
             Timing.KillCoroutines(coroutineHandle);
-            coroutineHandle = Timing.RunCoroutine(WaitForCooldown());
+            coroutineHandle = Timing.RunCoroutine(WaitForCooldown().CancelWith(gameObject));
         }
 
         private IEnumerator<float> WaitForCooldown()
