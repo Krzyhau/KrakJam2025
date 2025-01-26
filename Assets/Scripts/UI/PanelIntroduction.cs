@@ -81,8 +81,9 @@ namespace Monke.KrakJam2025
 
 		private void OnGameFinished()
 		{
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-			/*
+            var gameOverSystem = FindAnyObjectByType<GameOverSystem>();
+			gameOverSystem.StartGameOver();
+            /*
             Time.timeScale = 0;
 
             leftBackground.position = new(leftPositionX, leftBackground.position.y);
@@ -96,7 +97,7 @@ namespace Monke.KrakJam2025
 
             signText.SetText("GAME OVER\nPress any button to continue...");
             */
-		}
+        }
 
 		private void OnPlayerJoin(PlayerController playerController)
 		{
