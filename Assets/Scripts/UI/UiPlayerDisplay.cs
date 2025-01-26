@@ -47,7 +47,9 @@ namespace Monke.KrakJam2025
 
         private void OnDeath()
         {
-            backgroundFill.DOFillAmount(1, deathHandler.CooldownAfterDying)
+            Debug.Log("DEATH");
+
+            backgroundFill.DOFillAmount(0, deathHandler.CooldownAfterDying)
                 .SetLink(this.gameObject);
         }
     }
