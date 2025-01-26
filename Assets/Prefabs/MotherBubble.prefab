@@ -672,7 +672,7 @@ PrefabInstance:
       objectReference: {fileID: 7418380033322031497}
     - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
       propertyPath: weight
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7747241025108420851, guid: 8c163e365e20ab54086fdd2a4595a07b, type: 3}
       propertyPath: shapeManipulator
