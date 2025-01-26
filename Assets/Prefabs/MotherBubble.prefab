@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 7418380033322031497}
-  speedMultiplier: 10
+  speedMultiplier: 30
   registerOnStart: 1
 --- !u!1 &4536055267741538794
 GameObject:

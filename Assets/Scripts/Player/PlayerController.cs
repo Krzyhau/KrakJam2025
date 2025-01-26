@@ -32,6 +32,12 @@ namespace Monke.KrakJam2025
 
 		public Vector2 CachedInput { get; private set; }
 
+		public float MovementSpeed
+		{
+			get => movementSpeed;
+			set => movementSpeed = value;
+		}
+
 		private void OnEnable()
 		{
 			var scale = visuals.localScale;
@@ -64,7 +70,7 @@ namespace Monke.KrakJam2025
 		{
 			if (rb2d != null)
 			{
-				rb2d.AddForce(movementSpeed * Time.fixedDeltaTime * CachedInput, ForceMode2D.Impulse);
+				rb2d.AddForce(MovementSpeed * Time.fixedDeltaTime * CachedInput, ForceMode2D.Impulse);
 			}
 		}
 
