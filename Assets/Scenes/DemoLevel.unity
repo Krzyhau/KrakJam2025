@@ -8312,6 +8312,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6664342073671408742, guid: 8b26fe06ae03089459f141b2f5faf9a9, type: 3}
+      propertyPath: stageFlow.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6664342073671408742, guid: 8b26fe06ae03089459f141b2f5faf9a9, type: 3}
+      propertyPath: 'stageFlow.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ed3c169217dcc0e47afcf6b1ed0ad8ec, type: 2}
+    - target: {fileID: 6664342073671408742, guid: 8b26fe06ae03089459f141b2f5faf9a9, type: 3}
+      propertyPath: 'stageFlow.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 288f913886192484e99347446ce98329, type: 2}
+    - target: {fileID: 6664342073671408742, guid: 8b26fe06ae03089459f141b2f5faf9a9, type: 3}
+      propertyPath: 'stageFlow.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4e10717186c169a418b63432707b302c, type: 2}
+    - target: {fileID: 6664342073671408742, guid: 8b26fe06ae03089459f141b2f5faf9a9, type: 3}
+      propertyPath: 'stageFlow.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c62c5483c4f5e9b4182eddae23975ebe, type: 2}
+    - target: {fileID: 6664342073671408742, guid: 8b26fe06ae03089459f141b2f5faf9a9, type: 3}
+      propertyPath: 'stageFlow.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 998bfa74af7a0434d9154dfbecc626c2, type: 2}
+    - target: {fileID: 6664342073671408742, guid: 8b26fe06ae03089459f141b2f5faf9a9, type: 3}
+      propertyPath: 'stageFlow.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c91d147de9b27441b76338810427515, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
