@@ -192,10 +192,10 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.1
   response:
     m_OverrideState: 1
-    m_Value: 0.8
+    m_Value: 0.249
   texture:
     m_OverrideState: 1
     m_Value: {fileID: 0}
@@ -363,13 +363,13 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.9
+    m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   scatter:
     m_OverrideState: 1
-    m_Value: 0.7
+    m_Value: 1
   clamp:
     m_OverrideState: 1
     m_Value: 65472
@@ -483,7 +483,7 @@ MonoBehaviour:
     m_Value: 0
   tintColor:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_Value: {r: 0, g: 0.5428767, b: 1, a: 1}
   bloomMip:
     m_OverrideState: 1
     m_Value: 1
@@ -510,22 +510,22 @@ MonoBehaviour:
     m_Value: 1
   startingPosition:
     m_OverrideState: 1
-    m_Value: 1.25
+    m_Value: 3
   scale:
     m_OverrideState: 1
-    m_Value: 1.5
+    m_Value: 4
   streaksIntensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   streaksLength:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0
   streaksOrientation:
     m_OverrideState: 1
     m_Value: 0
   streaksThreshold:
     m_OverrideState: 1
-    m_Value: 0.25
+    m_Value: 0.066
   resolution:
     m_OverrideState: 1
     m_Value: 4
@@ -793,25 +793,25 @@ MonoBehaviour:
     m_Value: 0
   gaussianStart:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 31.5
   gaussianEnd:
     m_OverrideState: 1
-    m_Value: 30
+    m_Value: 74.7
   gaussianMaxRadius:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 1.5
   highQualitySampling:
     m_OverrideState: 1
     m_Value: 0
   focusDistance:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 183.46
   aperture:
     m_OverrideState: 1
     m_Value: 5.6
   focalLength:
     m_OverrideState: 1
-    m_Value: 50
+    m_Value: 231
   bladeCount:
     m_OverrideState: 1
     m_Value: 5
@@ -887,10 +887,10 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.3
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.377
   rounded:
     m_OverrideState: 1
     m_Value: 0
