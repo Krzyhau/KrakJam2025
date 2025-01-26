@@ -1,10 +1,10 @@
 using MEC;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Monke.KrakJam2025
 {
+	[RequireComponent(typeof(Rigidbody2D))]
 	[RequireComponent(typeof(Collider2D))]
 	public abstract class BaseItem : MonoBehaviour
 	{
@@ -12,8 +12,18 @@ namespace Monke.KrakJam2025
 		private AnimationCurve _itemRouteCurve;
 
 		private float _currentTime;
+		private Rigidbody2D _rigidbody2D;
+		private Collider2D _collider2D;
 
 		protected BubbleTrigger _bubbleTrigger;
+
+		public Rigidbody2D Rigidbody2D => _rigidbody2D != null
+			? _rigidbody2D
+			: _rigidbody2D = GetComponent<Rigidbody2D>();
+
+		public Collider2D Collider2D => _collider2D != null
+			? _collider2D
+			: _collider2D = GetComponent<Collider2D>();
 
 		protected virtual void OnBubbleCollided() { }
 

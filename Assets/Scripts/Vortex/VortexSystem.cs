@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Monke.KrakJam2025
@@ -26,11 +25,11 @@ namespace Monke.KrakJam2025
 
 		private void FixedUpdate()
 		{
-            registeredObjects.RemoveAll(x => waitingToDeregisterObjects.Contains(x));
-            registeredObjects.AddRange(waitingToRegisterObjects);
-            ClearWaitingLists();
+			registeredObjects.RemoveAll(x => waitingToDeregisterObjects.Contains(x));
+			registeredObjects.AddRange(waitingToRegisterObjects);
+			ClearWaitingLists();
 
-            foreach (var vortexObject in registeredObjects)
+			foreach (var vortexObject in registeredObjects)
 			{
 				Vector2 direction = (Vector2)vortexPoint.position - vortexObject.RigidBody.position;
 				vortexObject.RigidBody.AddForce(direction.normalized * _vortexPower);
