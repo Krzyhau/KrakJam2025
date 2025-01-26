@@ -15,6 +15,12 @@ namespace Monke.KrakJam2025
 		private AnimationCurve _itemRouteCurve;
 
 		[SerializeField]
+		private AudioSource _audioSource;
+
+		[SerializeField]
+		private AudioClip thrownSound;
+
+		[SerializeField]
 		private float _orbitCatapultStrength = 8;
 
 		private float _currentTime;
@@ -62,6 +68,7 @@ namespace Monke.KrakJam2025
 
 			transform.position = destination;
 			OnThrowEnded();
+			_audioSource.PlayOneShot(thrownSound);
 		}
 
 		private bool HasCollidedWithBubble(Collider2D collider)

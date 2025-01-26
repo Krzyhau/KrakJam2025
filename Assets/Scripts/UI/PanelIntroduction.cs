@@ -102,7 +102,7 @@ namespace Monke.KrakJam2025
         {
             seq?.Kill();
 
-            hubTab.alpha = 0;
+            hubTab.alpha = 1;
             catTab.alpha = 0;
             logo.color = new(1, 1, 1, 0);
 
