@@ -131,7 +131,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0ede9c55be5814b4ca7fe658fd064752, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb49c27e64bf31448994757c5a12233c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -278,6 +278,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _orbitCatapultStrength: 8
+  _damage: 40
 --- !u!114 &9027860198768624283
 MonoBehaviour:
   m_ObjectHideFlags: 0

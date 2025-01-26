@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7047076218256256301}
   - component: {fileID: 7429799486393294019}
   m_Layer: 0
-  m_Name: EPIC WARNING AURA 2
+  m_Name: EPIC WIN AURA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4780,7 +4780,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9e948d6296d5ae54b8da6759e133e234, type: 2}
+  - {fileID: 2100000, guid: 279a8463a2e8f2f42bd10e08a89878f7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
