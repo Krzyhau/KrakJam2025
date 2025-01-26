@@ -54,6 +54,7 @@ namespace Monke.KrakJam2025
 			playerContext.Transform.SetParent(rb2d.transform, true);
 			playerContext.Transform.localPosition = Vector2.zero;
 			playerContext.Collider2D.excludeLayers = _bubbleLayer;
+			playerContext.PlayerController.MovementSpeed = 120f;
 
 			OnPlayerAbsorbed?.Invoke(playerContext);
 			motherBubbleContext.AudioSource.PlayOneShot(motherBubbleContext.AbsorbSound);
@@ -78,6 +79,7 @@ namespace Monke.KrakJam2025
 			playerContext.Transform.localPosition = offsetFromMother;
 			playerContext.Transform.SetParent(null);
 			playerContext.Collider2D.excludeLayers = _motherBubbleLayer;
+			playerContext.PlayerController.MovementSpeed = 40f;
 
 			OnPlayerSplitted?.Invoke(playerContext);
 
