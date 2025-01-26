@@ -349,8 +349,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _audioSource: {fileID: 0}
-  thrownSound: {fileID: 0}
+  _audioSource: {fileID: 6630606534171172359}
+  thrownSound: {fileID: 8300000, guid: 279d21ac5b1a91643a383e66aa88737b, type: 3}
   _orbitCatapultStrength: 8
   _bounceForce: 5
 --- !u!61 &7904900489402883375

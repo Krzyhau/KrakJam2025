@@ -55,6 +55,7 @@ namespace Monke.KrakJam2025
 
         private void OnPlayerStart()
         {
+            playerInputManager.enabled = false;
             playerInputManager.DisableJoining();
         }
 
