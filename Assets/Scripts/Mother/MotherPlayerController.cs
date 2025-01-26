@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Monke.KrakJam2025
@@ -12,9 +11,6 @@ namespace Monke.KrakJam2025
 
 		[SerializeField]
 		private Rigidbody2D rb2d;
-
-		[SerializeField]
-		private float movementMultiplier;
 
 		[SerializeField]
 		private MotherBubbleContext motherBubbleContext;
@@ -77,7 +73,7 @@ namespace Monke.KrakJam2025
 			var inputDirection = playerContext.PlayerController.CachedInput != Vector2.zero
 				? (Vector3)playerContext.PlayerController.CachedInput
 				: Vector3.right;
-			var offsetFromMother =  inputDirection * (shapeManipulator.TargetSize + SAFE_SPACE);
+			var offsetFromMother = inputDirection * (shapeManipulator.TargetSize + SAFE_SPACE);
 			playerContext.Transform.localPosition += offsetFromMother;
 			playerContext.Transform.SetParent(null);
 			playerContext.Collider2D.excludeLayers = _motherBubbleLayer;
@@ -85,18 +81,6 @@ namespace Monke.KrakJam2025
 			OnPlayerSplitted?.Invoke(playerContext);
 
 			motherBubbleContext.AudioSource.PlayOneShot(motherBubbleContext.SplitSound);
-		}
-
-		private void FixedUpdate()
-		{
-			if (playersInside != null && playersInside.Count > 0)
-			{
-				float totalInputX = playersInside.Sum(x => x.PlayerController.CachedInput.x);
-				float totalInputY = playersInside.Sum(x => x.PlayerController.CachedInput.y);
-				Vector2 totalInput = new(totalInputX, totalInputY);
-				totalInput.Normalize();
-				rb2d.AddForce(movementMultiplier * Time.fixedDeltaTime * totalInput, ForceMode2D.Impulse);
-			}
 		}
 	}
 }
