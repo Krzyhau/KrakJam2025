@@ -9,7 +9,7 @@ namespace Monke.KrakJam2025
 {
     public class PlayerManagerInputHandler : MonoBehaviour
     {
-        public event Action OnPlayerJoin;
+        public event Action<PlayerController> OnPlayerJoin;
         public event Action OnPlayerExit;
 
         [SerializeField]
@@ -44,8 +44,9 @@ namespace Monke.KrakJam2025
             audioSource.PlayOneShot(playerJoined);
             CreateSpawnParticlesAt(playerInput.transform);
             SpawnPlayerUi(playerInput.playerIndex);
-            playerInput.GetComponent<PlayerController>().SetPlayerColor(colorForEachPlayerIndex[playerInput.playerIndex]);
-            OnPlayerJoin?.Invoke();
+            var playerController = playerInput.GetComponent<PlayerController>();
+			playerController.SetPlayerColor(colorForEachPlayerIndex[playerInput.playerIndex]);
+            OnPlayerJoin?.Invoke(playerController);
         }
 
         [UsedImplicitly]
