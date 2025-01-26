@@ -1,5 +1,7 @@
+using MEC;
 using Rubin;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Monke.KrakJam2025
@@ -12,21 +14,19 @@ namespace Monke.KrakJam2025
         [SerializeField]
         private PlayerBubbleContext context;
 
-        private Ticker ticker;
+        private CoroutineHandle coroutineHandle;
 
         public void Death()
         {
             context.PlayerController.gameObject.SetActive(false);
-            ticker = TickerCreator.CreateNormalTime(cooldownAfterDying);
+
+            Timing.KillCoroutines(coroutineHandle);
+            coroutineHandle = Timing.RunCoroutine(WaitForCooldown());
         }
 
-        private void Update()
+        private IEnumerator<float> WaitForCooldown()
         {
-            if (!ticker.Done)
-            {
-                return;
-            }
-
+            yield return Timing.WaitForSeconds(cooldownAfterDying);
             context.PlayerController.GoToSpawnPoint();
             context.PlayerController.gameObject.SetActive(true);
         }

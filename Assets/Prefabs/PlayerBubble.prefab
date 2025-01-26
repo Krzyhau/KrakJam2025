@@ -292,6 +292,52 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5402102320258093844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4022877522909696376}
+  - component: {fileID: 8227269697494191465}
+  m_Layer: 0
+  m_Name: PlayerDeathHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4022877522909696376
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5402102320258093844}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6261324833895372863}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8227269697494191465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5402102320258093844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b1b7bb477828ef4e811a2d954be38ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownAfterDying: 2
+  context: {fileID: 1871315692035184193}
 --- !u!1 &6292062153589596132
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,6 +378,7 @@ Transform:
   - {fileID: 3277837687677476504}
   - {fileID: 807157864782590590}
   - {fileID: 8430842234962428152}
+  - {fileID: 4022877522909696376}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &967183158625331424
@@ -809,6 +856,10 @@ PrefabInstance:
       propertyPath: _collider2d
       value: 
       objectReference: {fileID: 2878937025313316062}
+    - target: {fileID: 4833514538015609774, guid: 4ba7b8b8eef0cae47aa47a93ba5c8380, type: 3}
+      propertyPath: _playerDeath
+      value: 
+      objectReference: {fileID: 8227269697494191465}
     - target: {fileID: 4833514538015609774, guid: 4ba7b8b8eef0cae47aa47a93ba5c8380, type: 3}
       propertyPath: mainTransform
       value: 
