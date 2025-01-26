@@ -171,6 +171,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Score_BG
       objectReference: {fileID: 0}
+    - target: {fileID: 2580132883226245187, guid: 56be407acdb4e8a4ea45c2052dfea7a9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 935f6175417f407459019e3d85bc9cde, type: 3}
+    - target: {fileID: 2580132883226245187, guid: 56be407acdb4e8a4ea45c2052dfea7a9, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2792993744194696022, guid: 56be407acdb4e8a4ea45c2052dfea7a9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
