@@ -51,8 +51,6 @@ namespace Monke.KrakJam2025
 
 		private void Awake()
 		{
-			Time.timeScale = 0f;
-
 			flowSystem = FindAnyObjectByType<FlowSystem>();
 
 			hubTab.alpha = 0;
@@ -117,9 +115,6 @@ namespace Monke.KrakJam2025
 				.Insert(0, catTab.DOFade(0, fadeOutDuration / 2))
 				.Insert(0, leftBackground.DOMoveX(-2000, fadeOutDuration * 3))
 				.Insert(0, rightBackground.DOMoveX(2000, fadeOutDuration * 3)).SetLink(this.gameObject).SetUpdate(true);
-
-			flowSystem.StartGame();
-			Time.timeScale = 1;
 
 			flowSystem.StartGame();
 		}

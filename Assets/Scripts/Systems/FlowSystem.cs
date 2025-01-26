@@ -23,6 +23,7 @@ namespace Monke.KrakJam2025
 		private int currentIndex = 0;
 		private ThrowingCat throwingCat;
 		private CoroutineHandle _stageTimerHandle;
+		private VortexSystem _vortexSystem;
 
 		private StageParametersScriptableObject CurrentStage => stageFlow[currentIndex];
 
@@ -35,12 +36,14 @@ namespace Monke.KrakJam2025
 		{
 			throwingCat = FindAnyObjectByType<ThrowingCat>();
 			_playerInputManager = FindAnyObjectByType<PlayerInputManager>();
+			_vortexSystem = FindAnyObjectByType<VortexSystem>();
 		}
 
 		public void StartGame()
 		{
 			_playerInputManager.DisableJoining();
 			_stageTimerHandle = Timing.RunCoroutine(StagesRoutine());
+			_vortexSystem.SetVortexActive(true);
 		}
 
 		private IEnumerator<float> StagesRoutine()
