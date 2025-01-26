@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54465ee2550193b4685d2a2c5e698f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bubbleShapeOwner: {fileID: 0}
   easingAcceleration: 300
   easingDampening: 10
   insideStretch:
@@ -141,6 +142,7 @@ MonoBehaviour:
     Distance: 2
     Exponent: 2
     Force: 1
+  minimumSize: 1
   meshToUse: {fileID: 8627534574614662395}
   meshesData:
   - Height: 0

@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   motherBubbleShapeManipulator: {fileID: 6376777932921917943}
+  targetSize: 1
 --- !u!4 &658155557
 Transform:
   m_ObjectHideFlags: 0
@@ -326,8 +327,8 @@ Transform:
   m_GameObject: {fileID: 747012238}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.059281185, y: -0.072057515, z: -3.5875285}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.059281185, y: -0.072057515, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6376777932921917944}
@@ -645,7 +646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5204328966886213263, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.5875285
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5204328966886213263, guid: 0e7581e4e4a1fca44828bdf615a871ba, type: 3}
       propertyPath: m_LocalRotation.w

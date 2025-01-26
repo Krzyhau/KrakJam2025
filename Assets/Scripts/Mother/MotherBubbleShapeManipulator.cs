@@ -13,6 +13,7 @@ namespace Monke.KrakJam2025
         [SerializeField] private float easingDampening = 5.0f;
         [SerializeField] private StretchForceParameters insideStretch;
         [SerializeField] private StretchForceParameters outsideStretch;
+        [SerializeField] private float minimumSize;
         [SerializeField] private MeshFilter meshToUse;
         [SerializeField] private MeshData[] meshesData;
 
@@ -25,8 +26,10 @@ namespace Monke.KrakJam2025
         private float[] shapeVelocities = Array.Empty<float>();
         private float[] shapeOffsets = Array.Empty<float>();
         private float[] lerpedShapeOffsets = Array.Empty<float>();
-
+        private float lastTargetSize;
         public float TargetSize { get; set; } = 1.0f;
+
+        float NormalizedTargetSize => Mathf.Max(TargetSize, minimumSize);
 
         public void SetStretcherState(Transform transform, bool state)
         {
@@ -109,8 +112,8 @@ namespace Monke.KrakJam2025
             {
                 float circlePosRad = i / (float)shapeOffsets.Length * Mathf.PI * 2.0f;
                 Vector3 circleNormal = new(-Mathf.Cos(circlePosRad), 0, Mathf.Sin(circlePosRad));
-                float stretchForce = GetStretchForceForPoint(circleNormal * TargetSize);
-                shapeOffsets[i] = TargetSize + stretchForce;
+                float stretchForce = GetStretchForceForPoint(circleNormal * NormalizedTargetSize);
+                shapeOffsets[i] = NormalizedTargetSize + stretchForce;
             }
         }
 
@@ -131,7 +134,7 @@ namespace Monke.KrakJam2025
             Vector3 stretcherLocalPoint = GetStretcherLocalPoint(stretcher);
             Vector3 stretcherToVertexDelta = vertexPoint - stretcherLocalPoint;
 
-            bool isInside = stretcherLocalPoint.magnitude <= 1f;
+            bool isInside = stretcherLocalPoint.magnitude <= NormalizedTargetSize;
             var stretchParams = isInside ? insideStretch : outsideStretch;
             var stretchMultiplier = isInside ? 1.0f : -1.0f;
 
@@ -142,6 +145,11 @@ namespace Monke.KrakJam2025
 
         private void NormalizeDistancesToSize()
         {
+            for (int i = 0; i < shapeOffsets.Length; i++)
+            {
+                shapeOffsets[i] = Mathf.Max(0.0f, shapeOffsets[i]);
+            }
+
             float totalDistances = 0.0f;
             for (int i = 0; i < shapeOffsets.Length; i++)
             {
@@ -149,7 +157,7 @@ namespace Monke.KrakJam2025
             }
 
             float averageDistance = totalDistances / shapeOffsets.Length;
-            float sizeDifference = TargetSize / averageDistance;
+            float sizeDifference = NormalizedTargetSize / averageDistance;
 
             for (int i = 0; i < shapeOffsets.Length; i++)
             {
@@ -198,7 +206,7 @@ namespace Monke.KrakJam2025
                 var displacedVertexPos = originalVertex * lerpedShapeOffsets[vertexIndex];
 
                 displacedVertexPos = Vector3.ProjectOnPlane(displacedVertexPos, Vector3.up);
-                displacedVertexPos += Vector3.Project(originalVertex, Vector3.up) * TargetSize;
+                displacedVertexPos += Vector3.Project(originalVertex, Vector3.up) * NormalizedTargetSize;
 
                 meshFilterVertices[i] = displacedVertexPos;
             }
@@ -208,15 +216,29 @@ namespace Monke.KrakJam2025
 
         private void EnsureProperGameObjectSize()
         {
-            float currentSize = bubbleShapeOwner.localScale.x;
-            if (currentSize == TargetSize)
+            bubbleShapeOwner.localScale = Vector3.one * TargetSize;
+
+            if (TargetSize == NormalizedTargetSize)
             {
-                return;
+                transform.localScale = new Vector3(
+                    1 / bubbleShapeOwner.localScale.x,
+                    1 / bubbleShapeOwner.localScale.y,
+                    1 / bubbleShapeOwner.localScale.z
+                );
+            }
+            else
+            {
+                transform.localScale = Vector3.one;
+                if(lastTargetSize != TargetSize)
+                {
+                    for(int i = 0; i < lerpedShapeOffsets.Length; i++)
+                    {
+                        lerpedShapeOffsets[i] *= lastTargetSize / TargetSize;
+                    }
+                }
             }
 
-            Vector3 newScale = Vector3.right + Vector3.up;
-            bubbleShapeOwner.localScale = newScale * TargetSize;
-            transform.localScale = newScale / TargetSize;
+            lastTargetSize = TargetSize;
         }
 
         [Serializable]
