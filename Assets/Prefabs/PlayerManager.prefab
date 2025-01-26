@@ -95,6 +95,13 @@ MonoBehaviour:
   playerJoinedParticles: {fileID: 5850997337680316994, guid: 819c8eedbef8f75438abd6515ea9ca19, type: 3}
   playerLeft: {fileID: 8300000, guid: e233b3c5cb4067e44b1f1e4680bdff74, type: 3}
   playerLeftParticles: {fileID: 5850997337680316994, guid: 819c8eedbef8f75438abd6515ea9ca19, type: 3}
+  uiPrefab: {fileID: 6586438806778372456, guid: 480fab37df1d0be49b93386820876e35, type: 3}
+  uiParent: {fileID: 0}
+  colorForEachPlayerIndex:
+  - {r: 0.8784314, g: 0.2627451, b: 0.63529414, a: 1}
+  - {r: 0.88235295, g: 0.9254902, b: 0.2, a: 1}
+  - {r: 1, g: 0.3529412, b: 0, a: 1}
+  - {r: 0.3886881, g: 0, b: 1, a: 1}
 --- !u!82 &5006075275144656557
 AudioSource:
   m_ObjectHideFlags: 0

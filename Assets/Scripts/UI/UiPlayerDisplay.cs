@@ -31,9 +31,18 @@ namespace Monke.KrakJam2025
             deathHandler.OnPlayerRespawned -= OnPlayerRespawned;
         }
 
+        public void Setup(string name, Color color)
+        {
+            playerText.SetText(name);
+            playerTextDuplicate.SetText(name);
+
+            backgroundFill.color = color;
+            backgroundFill.fillAmount = 1;
+        }
+
         private void OnPlayerRespawned()
         {
-            backgroundFill.fillAmount = 0;
+            backgroundFill.fillAmount = 1;
         }
 
         private void OnDeath()
