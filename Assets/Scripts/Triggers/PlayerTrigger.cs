@@ -21,6 +21,11 @@ namespace Monke.KrakJam2025
 
 		public PlayerBubbleContext PlayerBubbleContext => _playerBubbleContext;
 
+		public override BubbleType GetBubbleType()
+		{
+			return BubbleType.Player;
+		}
+
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
 			if (collision.gameObject.CompareTag("Bouncable"))

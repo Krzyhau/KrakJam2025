@@ -21,6 +21,11 @@ namespace Monke.KrakJam2025
 			motherDeathHandler.TriggerDeath();
 		}
 
+		public override BubbleType GetBubbleType()
+		{
+			return BubbleType.Mother;
+		}
+
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
 			if (IsReady(collision, out var playerTrigger))

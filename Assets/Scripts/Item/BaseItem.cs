@@ -56,14 +56,14 @@ namespace Monke.KrakJam2025
 			transform.position = destination;
 		}
 
-		private bool HasCollidedWithBubble(Collision2D collision)
+		private bool HasCollidedWithBubble(Collider2D collider)
 		{
-			return collision.gameObject.TryGetComponent(out _bubbleTrigger) && _bubbleTrigger.BubbleContext != null;
+			return collider.gameObject.TryGetComponent(out _bubbleTrigger) && _bubbleTrigger.BubbleContext != null;
 		}
 
-		private void OnCollisionEnter2D(Collision2D collision)
+		private void OnTriggerEnter2D(Collider2D collider)
 		{
-			if (HasCollidedWithBubble(collision))
+			if (HasCollidedWithBubble(collider))
 			{
 				OnBubbleCollided();
 			}

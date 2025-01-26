@@ -8,6 +8,18 @@ namespace Monke.KrakJam2025
 		[SerializeField]
 		private BubbleContext bubbleContext;
 
+		public virtual BubbleType GetBubbleType()
+		{
+			return BubbleType.None;
+		}
+
 		public BubbleContext BubbleContext => bubbleContext;
+	}
+
+	public enum BubbleType
+	{
+		None,
+		Mother,
+		Player
 	}
 }
