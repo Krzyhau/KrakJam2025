@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38bcd623198ab5d4a9a6ce4f4c66abb0, type: 3}
   m_Name: Stage_Damagable
   m_EditorClassIdentifier: 
-  _timeRangeForNewItem: {x: 1, y: 3}
-  _stageTime: 30
+  _timeRangeForNewItem: {x: 3, y: 5}
+  _stageTime: 45
   _possibleItemsToSpawn:
   - {fileID: 11400000, guid: 36f1f77494c9df842962fd0eb1ba9e9b, type: 2}
   - {fileID: 11400000, guid: f6103f10ad48e1c46b631e515bc2a454, type: 2}
