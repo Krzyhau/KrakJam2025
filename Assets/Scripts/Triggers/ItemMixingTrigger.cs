@@ -18,9 +18,6 @@ namespace Monke.KrakJam2025
 		private Vector2 _mixingTimeRange = Vector2.one;
 
 		[SerializeField]
-		private float _orbitSpeed = 30f;
-
-		[SerializeField]
 		private float _orbitRadius = 5f;
 
 		[SerializeField]
