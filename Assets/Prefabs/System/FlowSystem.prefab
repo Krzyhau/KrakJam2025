@@ -46,3 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageFlow:
   - {fileID: 11400000, guid: 4a41afe5b49fd99458ccbd49454e4ea6, type: 2}
+  - {fileID: 11400000, guid: d68e641d1c6acbe47abc502f1d64c983, type: 2}
+  - {fileID: 11400000, guid: d21af9af806934e4e8497d4c664f988a, type: 2}
+  _timeBetweenStages: 5

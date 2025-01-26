@@ -16,4 +16,3 @@ MonoBehaviour:
   _stageTime: 60
   _possibleItemsToSpawn:
   - {fileID: 11400000, guid: e5e6dc2dad892e14e887d2474b254341, type: 2}
-  - {fileID: 11400000, guid: 44eb1bbab2541534099bf88b8d25542e, type: 2}

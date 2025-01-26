@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeRangeForNewItem: {x: 5, y: 8}
   _stageTime: 180
-  _possibleItemsToSpawn: []
+  _possibleItemsToSpawn:
+  - {fileID: 11400000, guid: 36f1f77494c9df842962fd0eb1ba9e9b, type: 2}
+  - {fileID: 11400000, guid: 44eb1bbab2541534099bf88b8d25542e, type: 2}
