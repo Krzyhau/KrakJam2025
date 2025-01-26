@@ -38,8 +38,6 @@ namespace Monke.KrakJam2025
 
         private void Awake()
         {
-            Time.timeScale = 0;
-
             flowSystem = FindAnyObjectByType<FlowSystem>();
 
             seq = DOTween.Sequence();
@@ -54,7 +52,7 @@ namespace Monke.KrakJam2025
                 .Append(logo.DOFade(0, fadeOutDuration))
                 .Append(catTab.DOFade(1, fadeInDuration))
                 .Append(catHandPivot.DORotate(new(0, 0, 90), fadeOutDuration))
-                .SetLink(this.gameObject).SetUpdate(true);
+                .SetLink(this.gameObject);
 
             var playerManager = FindAnyObjectByType<PlayerManagerInputHandler>();
             playerManager.OnPlayerJoin += OnPlayerJoin;
@@ -62,13 +60,12 @@ namespace Monke.KrakJam2025
 
         private void OnPlayerJoin()
         {
-            seq.Kill(true);
+            seq?.Kill(true);
             var openSilloueteSequence = DOTween.Sequence()
                 .Insert(0, catTab.DOFade(0, fadeOutDuration / 2))
-                .Append(leftBackground.DOMoveX(-1203, fadeOutDuration * 2.5f))
-                .Join(rightBackground.DOMoveX(1203, fadeOutDuration * 2.5f)).SetLink(this.gameObject).SetUpdate(true);
+                .Insert(0, leftBackground.DOMoveX(-1203, fadeOutDuration * 2.5f))
+                .Insert(0, rightBackground.DOMoveX(1203, fadeOutDuration * 2.5f)).SetLink(this.gameObject);
 
-            Time.timeScale = 1;
             flowSystem.StartGame();
         }
     }

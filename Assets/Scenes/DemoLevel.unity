@@ -8508,6 +8508,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 27
       objectReference: {fileID: 0}
+    - target: {fileID: 2850901687714452201, guid: e99df290c88bda54687387743513b0ed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3438779507947168700, guid: e99df290c88bda54687387743513b0ed, type: 3}
       propertyPath: m_Name
       value: Panel_HUD
@@ -8607,10 +8611,6 @@ PrefabInstance:
     - target: {fileID: 7539187952016688499, guid: e99df290c88bda54687387743513b0ed, type: 3}
       propertyPath: fadeOutDuration
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7845781462224508699, guid: e99df290c88bda54687387743513b0ed, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8661185891767295301, guid: e99df290c88bda54687387743513b0ed, type: 3}
       propertyPath: m_SizeDelta.x
