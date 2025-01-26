@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38bcd623198ab5d4a9a6ce4f4c66abb0, type: 3}
   m_Name: Stage_Tutorial_Duck
   m_EditorClassIdentifier: 
-  _timeRangeForNewItem: {x: 5, y: 10}
-  _stageTime: 20
+  _timeRangeForNewItem: {x: 2, y: 4}
+  _stageTime: 10
   _possibleItemsToSpawn:
   - {fileID: 11400000, guid: e5e6dc2dad892e14e887d2474b254341, type: 2}

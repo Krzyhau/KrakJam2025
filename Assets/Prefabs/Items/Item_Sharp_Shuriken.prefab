@@ -159,6 +159,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _audioSource: {fileID: 0}
+  thrownSound: {fileID: 0}
   _orbitCatapultStrength: 8
   _damage: 40
 --- !u!114 &8281606013895435890
