@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac3abc148ed84449a406e284ccc9951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInputManager: {fileID: 7997833680972691164}
   audioSource: {fileID: 5006075275144656557}
   playerJoined: {fileID: 8300000, guid: e233b3c5cb4067e44b1f1e4680bdff74, type: 3}
   playerJoinedParticles: {fileID: 5850997337680316994, guid: 819c8eedbef8f75438abd6515ea9ca19, type: 3}
