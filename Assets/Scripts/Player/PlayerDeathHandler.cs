@@ -24,7 +24,11 @@ namespace Monke.KrakJam2025
 
         public void Death()
         {
-            context.PlayerController.gameObject.SetActive(false);
+
+            // HACK
+            // context.PlayerController.gameObject.SetActive(false);
+            context.PlayerController.transform.position = new Vector3(-1000,-1000,-1000);
+
             OnDeathStarted?.Invoke();
             Timing.KillCoroutines(coroutineHandle);
             coroutineHandle = Timing.RunCoroutine(WaitForCooldown());
@@ -34,7 +38,7 @@ namespace Monke.KrakJam2025
         {
             yield return Timing.WaitForSeconds(cooldownAfterDying);
             context.PlayerController.GoToSpawnPoint();
-            context.PlayerController.gameObject.SetActive(true);
+            //context.PlayerController.gameObject.SetActive(true);
             OnPlayerRespawned?.Invoke();
         }
     }
